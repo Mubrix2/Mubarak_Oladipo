@@ -144,46 +144,6 @@ nav{
     aspect-ratio:4/5;
     object-fit:cover;
 }
-.pipeline-mini{
-  background:var(--s1);border:1px solid var(--border);
-  border-radius:var(--radius);padding:1.1rem 1.4rem;
-  width:100%;max-width:380px;
-  display:flex;align-items:center;gap:0.5rem;
-  flex-wrap:nowrap;overflow:hidden;
-}
-.pipe-step{
-  font-family:'JetBrains Mono',monospace;
-  font-size:0.68rem;color:var(--muted);
-  white-space:nowrap;padding:0.2rem 0.5rem;
-  border:1px solid var(--border);border-radius:5px;
-}
-.pipe-step.active{color:var(--teal);border-color:var(--teal-dim);}
-.pipe-arrow{color:var(--border);font-size:0.75rem;flex-shrink:0;}
-.pipe-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:var(--teal);flex-shrink:0;
-  animation:pulse-dot 1.8s ease-in-out infinite;
-}
-@keyframes pulse-dot{0%,100%{opacity:0.3;}50%{opacity:1;}}
-
-/* ── Stats strip ─────────────────────────────────── */
-.stats-strip{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  background:var(--s1);
-}
-.stat-item{
-  padding:2rem;text-align:center;
-  border-right:1px solid var(--border);
-}
-.stat-item:last-child{border-right:none;}
-.stat-num{
-  font-family:'Syne',sans-serif;
-  font-size:2rem;font-weight:800;color:var(--teal);
-  display:block;margin-bottom:0.3rem;
-}
-.stat-desc{font-size:0.82rem;color:var(--muted);}
 
 /* ── Sections ─────────────────────────────────────── */
 section{padding:5.5rem 6rem;}
@@ -496,39 +456,12 @@ section{padding:5.5rem 6rem;}
   </div>
 
   <div class="hero-visual">
-    <!-- Live pipeline mini -->
-    <div class="pipeline-mini">
-      <span class="pipe-step active">TX</span>
-      <span class="pipe-arrow">→</span>
-      <div class="pipe-dot"></div>
-      <span class="pipe-arrow">→</span>
-      <span class="pipe-step">KAFKA</span>
-      <span class="pipe-arrow">→</span>
-      <div class="pipe-dot" style="animation-delay:0.4s"></div>
-      <span class="pipe-arrow">→</span>
-      <span class="pipe-step">ML</span>
-      <span class="pipe-arrow">→</span>
-      <div class="pipe-dot" style="animation-delay:0.8s"></div>
-      <span class="pipe-arrow">→</span>
-      <span class="pipe-step">SHAP</span>
-      <span class="pipe-arrow">→</span>
-      <span class="pipe-step active">DECISION</span>
-    </div>
-
     <!-- Sample profile card -->
     <div class="profile-card">
     <img src="/mubrix.png" alt="Mubarak Oladipo" class="profile-image">
 </div>
   </div>
 </section>
-
-<!-- STATS -->
-<div class="stats-strip">
-  <div class="stat-item"><span class="stat-num">98.7%</span><span class="stat-desc">Fraud Recall (XGBoost)</span></div>
-  <div class="stat-item"><span class="stat-num">&lt;200ms</span><span class="stat-desc">End-to-End Decision Time</span></div>
-  <div class="stat-item"><span class="stat-num">7,469+</span><span class="stat-desc">OFAC Sanctions Entries Screened</span></div>
-  <div class="stat-item"><span class="stat-num">2</span><span class="stat-desc">Production Systems Deployed</span></div>
-</div>
 
 <!-- ABOUT -->
 <section id="about">
