@@ -144,6 +144,7 @@ nav{
     display:block;
     aspect-ratio:4/4;
     object-fit:cover;
+    height: auto;
 }
 
 /* ── Sections ─────────────────────────────────────── */
@@ -394,6 +395,14 @@ section{padding:5.5rem 6rem;}
   .stats-strip{grid-template-columns:repeat(2,1fr);}
   .stat-item{border-right:none;border-bottom:1px solid var(--border);}
   .stat-item:last-child,.stat-item:nth-child(2){border-bottom:none;}
+   #hero{grid-template-columns: 1fr 1fr;  
+    gap: 2rem;
+    padding: 7rem 2rem 4rem;
+  }
+  .hero-name{
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+  .hero-desc{font-size: 0.98rem;}
 }
 @media(max-width:640px){
   .nav-links,.nav-cta{display:none;}
@@ -407,7 +416,32 @@ section{padding:5.5rem 6rem;}
   .reg-grid{grid-template-columns:1fr 1fr;}
   .stats-strip{grid-template-columns:1fr 1fr;}
   .footer-line{flex-direction:column;gap:0.5rem;text-align:center;}
-  #hero{padding:7rem 1.5rem 3rem;}
+  #hero{
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    padding: 7rem 3rem 4rem;
+  }
+}
+/* Small mobile screens */
+@media(max-width:520px){
+  #hero{
+    grid-template-columns: 1fr 1fr;  /* still side-by-side */
+    gap: 1rem;
+    align-items: center;
+    padding: 6.5rem 1rem 3rem;
+  }
+
+  .hero-desc{
+    font-size: 0.9rem;
+  }
+
+  .profile-card{
+    max-width: 160px;  /* 🔥 key change: prevents overflow */
+  }
+
+  .hero-actions{
+    gap: 0.6rem;
+  }
 }
 </style>
 </head>
