@@ -4,450 +4,320 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Mubarak Oladipo — Fintech AI Engineer</title>
-<link rel="icon" href="mubrix.png" type="image/png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23050C1A'/><text x='50' y='65' font-family='Arial, sans-serif' font-weight='800' font-size='40' fill='%2300C2A8' text-anchor='middle'>MO</text></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:#050C1A;
-  --s1:#0D1B2A;
-  --s2:#122033;
-  --teal:#00C2A8;
-  --teal-dim:#007A6B;
-  --amber:#F59E0B;
-  --red:#F43F5E;
-  --green:#10B981;
-  --text:#EFF6FF;
-  --muted:#7A9BBF;
-  --border:#1A3050;
-  --radius:14px;
+  --bg:#050C1A;--s1:#0D1B2A;--s2:#122033;
+  --teal:#00C2A8;--teal-dim:#007A6B;
+  --amber:#F59E0B;--red:#F43F5E;--green:#10B981;
+  --text:#EFF6FF;--muted:#7A9BBF;--border:#1A3050;
+  --r:14px;--nav:60px;
 }
 html{scroll-behavior:smooth;}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:16px;
-  line-height:1.6;
-  overflow-x:hidden;
-}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;}
 
-/* ── Nav ──────────────────────────────────────────── */
+/* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:1rem 2rem;
+  height:var(--nav);padding:0 1.5rem;
   display:flex;justify-content:space-between;align-items:center;
-  background:rgba(5,12,26,0.85);
-  backdrop-filter:blur(12px);
+  background:rgba(5,12,26,0.92);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--border);
 }
-.nav-logo{
-  font-family:'Syne',sans-serif;
-  font-weight:700;font-size:1.1rem;
-  color:var(--teal);letter-spacing:0.01em;
-}
-.nav-links{display:flex;gap:2rem;list-style:none;}
-.nav-links a{
-  color:var(--muted);font-size:0.875rem;text-decoration:none;
-  transition:color 0.2s;
-}
+.nav-logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.1rem;color:var(--teal);}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{color:var(--muted);font-size:0.85rem;text-decoration:none;transition:color .2s;}
 .nav-links a:hover{color:var(--text);}
 .nav-cta{
   background:var(--teal);color:#050C1A;
-  padding:0.45rem 1.1rem;border-radius:8px;
-  font-size:0.875rem;font-weight:600;text-decoration:none;
-  transition:opacity 0.2s;
+  padding:.4rem 1.1rem;border-radius:8px;
+  font-size:.85rem;font-weight:600;text-decoration:none;
+  white-space:nowrap;
 }
-.nav-cta:hover{opacity:0.88;}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
-.hamburger span{display:block;width:22px;height:2px;background:var(--muted);}
-.mobile-menu{display:none;}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.ham span{display:block;width:22px;height:2px;background:var(--muted);border-radius:2px;transition:all .3s;}
+.mobile-nav{
+  display:none;position:fixed;top:var(--nav);left:0;right:0;z-index:99;
+  background:var(--s1);border-bottom:1px solid var(--border);
+  flex-direction:column;padding:1.2rem 1.5rem;gap:1rem;
+}
+.mobile-nav a{color:var(--muted);text-decoration:none;font-size:1rem;padding:.3rem 0;}
+.mobile-nav.open{display:flex;}
 
-/* ── Hero ─────────────────────────────────────────── */
+/* ── HERO ── */
 #hero{
-  min-height:100vh;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:4rem;
-  align-items:center;
-  padding:8rem 6rem 5rem;
-  position:relative;
-  overflow:hidden;
+  min-height:100svh;
+  display:flex;flex-direction:column;
+  padding:calc(var(--nav) + 3.5rem) 1.5rem 3rem;
+  gap:2.5rem;
 }
-#hero::before{
-  content:'';
-  position:absolute;top:-30%;left:-10%;
-  width:70%;height:80%;
-  background:radial-gradient(ellipse at 20% 40%, rgba(0,194,168,0.06) 0%, transparent 60%);
-  pointer-events:none;
+@media(min-width:900px){
+  #hero{
+    flex-direction:row;align-items:center;
+    padding:calc(var(--nav) + 2rem) 6rem 4rem;
+    gap:4rem;
+  }
+  .hero-left{flex:1;}
+  .hero-right{flex:1;display:flex;flex-direction:column;gap:1rem;align-items:flex-start;}
 }
+
+/* Hero photo */
+.hero-photo-wrap{display:flex;align-items:center;gap:1rem;margin-bottom:.6rem;}
+.hero-photo{
+  width:72px;height:72px;border-radius:50%;
+  border:2px solid var(--teal-dim);overflow:hidden;flex-shrink:0;
+  background:var(--s2);display:flex;align-items:center;justify-content:center;
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.hero-photo-initials{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.4rem;color:var(--teal);}
 .hero-eyebrow{
   font-family:'JetBrains Mono',monospace;
-  font-size:0.78rem;color:var(--teal);letter-spacing:0.12em;text-transform:uppercase;
-  margin-bottom:1.2rem;display:flex;align-items:center;gap:0.6rem;
+  font-size:.72rem;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;
+  display:flex;align-items:center;gap:.5rem;
 }
-.hero-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--teal);}
+.hero-eyebrow::before{content:'';width:18px;height:1px;background:var(--teal);}
 .hero-name{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(2.4rem,5vw,3.8rem);
-  font-weight:800;line-height:1.08;
-  letter-spacing:-0.02em;
-  margin-bottom:0.8rem;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:clamp(2.2rem,8vw,3.8rem);
+  font-weight:800;line-height:1.08;letter-spacing:-.02em;
+  margin:.5rem 0 .4rem;
 }
 .hero-name span{color:var(--teal);}
-.hero-title{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(1rem,2vw,1.25rem);
-  font-weight:600;color:var(--muted);
-  margin-bottom:1.4rem;
-  letter-spacing:0.01em;
+.hero-tagline{
+  font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;
+  font-size:clamp(.95rem,2.5vw,1.15rem);
+  color:var(--muted);margin-bottom:1rem;
 }
-.hero-desc{
-  font-size:1.06rem;color:var(--muted);
-  max-width:450px;line-height:1.8;
-  margin-bottom:2.2rem;
-}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
-.btn-primary{
+.hero-desc{font-size:.95rem;color:var(--muted);line-height:1.8;margin-bottom:1.6rem;max-width:480px;}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;}
+.btn-p{
   background:var(--teal);color:#050C1A;
-  padding:0.7rem 1.6rem;border-radius:10px;
-  font-weight:600;font-size:0.95rem;text-decoration:none;
-  transition:transform 0.15s,opacity 0.15s;
-  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:.65rem 1.5rem;border-radius:10px;
+  font-weight:600;font-size:.9rem;text-decoration:none;
+  display:inline-flex;align-items:center;gap:.4rem;
+  transition:transform .15s,opacity .15s;
 }
-.btn-primary:hover{transform:translateY(-2px);opacity:0.9;}
-.btn-outline{
+.btn-p:hover{transform:translateY(-2px);opacity:.9;}
+.btn-o{
   border:1px solid var(--border);color:var(--text);
-  padding:0.7rem 1.6rem;border-radius:10px;
-  font-weight:500;font-size:0.95rem;text-decoration:none;
-  transition:border-color 0.15s,transform 0.15s;
-  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:.65rem 1.5rem;border-radius:10px;
+  font-weight:500;font-size:.9rem;text-decoration:none;
+  display:inline-flex;align-items:center;gap:.4rem;
+  transition:border-color .15s,transform .15s;
 }
-.btn-outline:hover{border-color:var(--teal);transform:translateY(-2px);}
+.btn-o:hover{border-color:var(--teal);transform:translateY(-2px);}
 
-/* Profile Card (Hero Visual) */
-.hero-visual{display:flex;flex-direction:column;gap:1rem;align-items:flex-start;}
-.profile-card{
-    width:100%;
-    max-width:380px;
-    border-radius:18px;
-    overflow:hidden;
-    border:1px solid var(--border);
-    background:var(--s1);
-    position:relative;
+/* Terminal — decision logic snippet */
+.term{
+  background:var(--s1);border:1px solid var(--border);border-radius:10px;
+  width:100%;overflow:hidden;
 }
+.term-bar{
+  display:flex;align-items:center;gap:.4rem;
+  padding:.6rem .9rem;border-bottom:1px solid var(--border);
+  background:var(--s2);
+}
+.term-dot{width:8px;height:8px;border-radius:50%;}
+.term-dot.r{background:#F43F5E;}
+.term-dot.y{background:#F59E0B;}
+.term-dot.g{background:#10B981;}
+.term-file{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);
+  margin-left:.4rem;
+}
+.term-body{
+  padding:.9rem 1.1rem;font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;line-height:1.85;overflow-x:auto;
+}
+.tk-c{color:#5C7A99;}
+.tk-kw{color:#C792EA;}
+.tk-fn{color:#82AAFF;}
+.tk-str{color:#C3E88D;}
+.tk-cm{color:#546E8E;font-style:italic;}
 
-.profile-image{
-    width:100%;
-    display:block;
-    aspect-ratio:4/4;
-    object-fit:cover;
-    height: auto;
+/* Decision card */
+/* .decision-card{
+  background:var(--s1);border:1px solid var(--border);border-radius:var(--r);
+  padding:1.2rem;width:100%;position:relative;overflow:hidden;
 }
+.decision-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--teal),var(--amber));
+}
+.cm{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);
+  margin-bottom:.4rem;display:flex;justify-content:space-between;}
+.ca{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:.7rem;}
+.cv{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.78rem;font-weight:600;padding:.3rem .9rem;border-radius:6px;margin-bottom:.9rem;
+  background:rgba(244,63,94,.12);color:#F43F5E;
+}
+.sl{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;}
+.sr{display:flex;align-items:center;gap:.5rem;margin-bottom:.35rem;}
+.srl{font-size:.72rem;color:var(--muted);width:110px;flex-shrink:0;}
+.srt{flex:1;height:5px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;}
+.srf{height:100%;border-radius:3px;transition:width 1.2s ease;}
+.srv{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--teal);width:32px;text-align:right;} */
 
-/* ── Sections ─────────────────────────────────────── */
-section{padding:5.5rem 6rem;}
-.section-eyebrow{
-  font-family:'JetBrains Mono',monospace;
-  font-size:0.73rem;color:var(--teal);letter-spacing:0.12em;
-  text-transform:uppercase;margin-bottom:0.8rem;
-  display:flex;align-items:center;gap:0.6rem;
-}
-.section-eyebrow::after{content:'';flex:1;height:1px;background:var(--border);max-width:60px;}
-.section-title{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(1.8rem,3vw,2.4rem);
-  font-weight:800;letter-spacing:-0.02em;
-  margin-bottom:1rem;
-}
-.section-sub{font-size:1rem;color:var(--muted);max-width:520px;line-height:1.7;}
-
-/* ── About ─────────────────────────────────────────── */
-#about{background:var(--bg);}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3.5rem;align-items:start;}
-.about-text p{font-weight:450; color:var(--muted);line-height:1.85;margin-bottom:1rem;}
-.about-text p strong{color:var(--text);}
-.about-stack{
-  background:var(--s1);border:1px solid var(--border);
-  border-radius:var(--radius);padding:1.8rem;
-}
-.stack-title{
-  font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;
-  margin-bottom:1.2rem;color:var(--text);
-}
-.stack-tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
-.tag{
-  font-family:'JetBrains Mono',monospace;
-  font-size:0.72rem;padding:0.3rem 0.75rem;
-  border-radius:5px;border:1px solid var(--border);
-  color:var(--muted);background:var(--s2);
-}
-.tag.highlight{border-color:var(--teal-dim);color:var(--teal);}
-
-/* ── Projects ─────────────────────────────────────── */
-#projects{background:var(--s1);}
-.projects-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1.5rem;margin-top:3.5rem;
-}
-.project-card{
-  background:var(--bg);border:1px solid var(--border);
-  border-radius:var(--radius);padding:1.8rem;
-  display:flex;flex-direction:column;
-  transition:border-color 0.2s,transform 0.2s;
-  position:relative;overflow:hidden;
-}
-.project-card:hover{border-color:var(--teal);transform:translateY(-4px);}
-.project-card::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--teal),transparent);
-  opacity:0;transition:opacity 0.2s;
-}
-.project-card:hover::after{opacity:1;}
-.project-placeholder{
-  border-style:dashed;opacity:0.5;
-  display:flex;flex-direction:column;align-items:center;
-  justify-content:center;text-align:center;min-height:280px;
-}
-.project-placeholder:hover{opacity:0.75;transform:none;}
-.project-num{
-  font-family:'JetBrains Mono',monospace;
-  font-size:0.7rem;color:var(--teal);letter-spacing:0.1em;
-  margin-bottom:1rem;
-}
-.project-name{
-  font-family:'Syne',sans-serif;
-  font-size:1.1rem;font-weight:700;
-  margin-bottom:0.8rem;line-height:1.35;
-}
-.project-desc{
-  font-size:0.875rem;color:var(--muted);
-  line-height:1.7;margin-bottom:1.2rem;flex:1;
-}
-.project-metrics{
-  display:flex;gap:1rem;margin-bottom:1.2rem;flex-wrap:wrap;
-}
-.metric{
-  font-family:'JetBrains Mono',monospace;
-  font-size:0.7rem;color:var(--amber);
-  background:rgba(245,158,11,0.08);
-  border:1px solid rgba(245,158,11,0.2);
-  padding:0.2rem 0.6rem;border-radius:4px;
-}
-.project-tech{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.4rem;}
-.tech-tag{
-  font-size:0.72rem;font-family:'JetBrains Mono',monospace;
-  color:var(--muted);background:var(--s1);
-  border:1px solid var(--border);
-  padding:0.2rem 0.6rem;border-radius:4px;
-}
-.project-links{display:flex;gap:0.75rem;flex-wrap:wrap;}
-.proj-link{
-  font-size:0.8rem;font-weight:500;text-decoration:none;
-  padding:0.4rem 1rem;border-radius:7px;
-  transition:opacity 0.15s;
-  display:inline-flex;align-items:center;gap:0.35rem;
-}
-.proj-link.primary{background:var(--teal);color:#050C1A;}
-.proj-link.ghost{
-  border:1px solid var(--border);color:var(--muted);
-}
-.proj-link.ghost:hover{border-color:var(--muted);}
-.proj-link:hover{opacity:0.85;}
-.placeholder-icon{font-size:2.5rem;margin-bottom:1rem;opacity:0.4;}
-.placeholder-text{
-  font-family:'Syne',sans-serif;font-weight:700;
-  font-size:1rem;margin-bottom:0.5rem;
-}
-.placeholder-sub{font-size:0.8rem;color:var(--muted);}
-
-/* ── Skills ───────────────────────────────────────── */
-#skills{background:var(--bg);}
-.skills-grid{
+/* ── STATS ── */
+.stats{
   display:grid;grid-template-columns:repeat(2,1fr);
-  gap:1.5rem;margin-top:3.5rem;
-}
-.skill-group{
-  background:var(--s1);border:1px solid var(--border);
-  border-radius:var(--radius);padding:1.8rem;
-}
-.skill-group-title{
-  font-family:'Syne',sans-serif;font-weight:700;
-  font-size:0.95rem;margin-bottom:1.2rem;
-  display:flex;align-items:center;gap:0.6rem;
-}
-.skill-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);}
-.skill-dot.amber{background:var(--amber);}
-.skill-dot.red{background:var(--red);}
-.skill-dot.green{background:var(--green);}
-.skill-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
-.skill-list li{
-  font-size:0.875rem;color:var(--muted);
-  padding-left:1rem;position:relative;
-}
-.skill-list li::before{
-  content:'→';position:absolute;left:0;
-  color:var(--border);font-size:0.7rem;top:2px;
-}
-
-/* ── Regulatory ───────────────────────────────────── */
-#regulatory{
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
   background:var(--s1);
-  padding:4rem 6rem;
 }
-.reg-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:1rem;margin-top:3rem;
+@media(min-width:640px){.stats{grid-template-columns:repeat(4,1fr);}}
+.si{
+  padding:1.5rem 1.2rem;text-align:center;
+  border-right:1px solid var(--border);border-bottom:1px solid var(--border);
 }
-.reg-card{
-  background:var(--bg);border:1px solid var(--border);
-  border-radius:10px;padding:1.2rem;
-  font-size:0.82rem;
+@media(min-width:640px){
+  .si:nth-child(even),.si:last-child{border-right:none;}
+  .si:nth-child(3),.si:nth-child(4){border-bottom:none;}
 }
-.reg-abbr{
-  font-family:'Syne',sans-serif;font-weight:700;
-  font-size:1rem;color:var(--teal);margin-bottom:0.3rem;
-}
-.reg-full{color:var(--muted);font-size:0.75rem;line-height:1.5;}
+.si:nth-child(2n){border-right:none;}
+.si:nth-child(3),.si:nth-child(4){border-bottom:none;}
+.sn{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.7rem;font-weight:800;color:var(--teal);display:block;margin-bottom:.2rem;}
+.sd{font-size:.78rem;color:var(--muted);}
 
-/* ── Experience ──────────────────────────────────── */
-#experience{background:var(--bg);}
-.exp-list{margin-top:3.5rem;display:flex;flex-direction:column;gap:0;position:relative;}
-.exp-list::before{
-  content:'';position:absolute;left:11px;top:8px;bottom:8px;
-  width:1px;background:var(--border);
+/* ── SECTIONS ── */
+.sec{padding:4rem 1.5rem;}
+@media(min-width:900px){.sec{padding:5.5rem 6rem;}}
+.ey{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  color:var(--teal);letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;
 }
-.exp-item{
-  display:grid;grid-template-columns:24px 1fr;
-  gap:1.5rem;padding-bottom:2.5rem;
+.ey::after{content:'';flex:1;height:1px;background:var(--border);max-width:60px;}
+.sh{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.6rem,4vw,2.2rem);
+  font-weight:800;letter-spacing:-.02em;margin-bottom:.8rem;
 }
-.exp-dot{
-  width:24px;height:24px;border-radius:50%;
-  background:var(--s2);border:2px solid var(--teal);
-  flex-shrink:0;margin-top:2px;position:relative;z-index:1;
-}
-/* .exp-content{} */
-.exp-role{
-  font-family:'Syne',sans-serif;font-weight:700;
-  font-size:1.05rem;margin-bottom:0.2rem;
-}
-.exp-company{color:var(--teal);font-size:0.9rem;margin-bottom:0.2rem;}
-.exp-period{
-  font-family:'JetBrains Mono',monospace;
-  font-size:0.72rem;color:var(--muted);margin-bottom:0.8rem;
-}
-.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
-.exp-bullets li{font-size:0.875rem;color:var(--muted);padding-left:1rem;position:relative;}
-.exp-bullets li::before{content:'·';position:absolute;left:0;color:var(--teal);}
+.ss{font-size:.95rem;color:var(--muted);max-width:500px;line-height:1.75;}
 
-/* ── Education ──────────────────────────────────── */
-#education{background:var(--s1);padding:5.5rem 6rem;}
-.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;}
-.edu-card{
-  background:var(--bg);border:1px solid var(--border);
-  border-radius:var(--radius);padding:1.6rem;
-}
-.edu-degree{
-  font-family:'Syne',sans-serif;font-weight:700;
-  font-size:1.05rem;margin-bottom:0.25rem;
-}
-.edu-school{color:var(--teal);font-size:0.9rem;margin-bottom:0.2rem;}
-.edu-year{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--muted);}
+/* ── ABOUT ── */
+#about .ag{display:grid;gap:2rem;margin-top:2.5rem;}
+@media(min-width:900px){#about .ag{grid-template-columns:1fr 1fr;gap:3.5rem;}}
+.ap p{color:var(--muted);line-height:1.85;margin-bottom:.9rem;}
+.ap p strong{color:var(--text);}
+.as{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;}
+.at{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:1rem;}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.tag{font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:.25rem .7rem;
+  border-radius:5px;border:1px solid var(--border);color:var(--muted);background:var(--s2);}
+.tag.h{border-color:var(--teal-dim);color:var(--teal);}
 
-/* ── Contact ────────────────────────────────────── */
-#contact{background:var(--bg);text-align:center;}
-.contact-inner{max-width:560px;margin:0 auto;}
-#contact .section-eyebrow{justify-content:center;}
-#contact .section-eyebrow::after{display:none;}
-#contact .section-title{margin-bottom:0.8rem;}
-#contact .section-sub{margin:0 auto 2.5rem;text-align:center;}
-.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;}
-.contact-link{
-  display:flex;align-items:center;gap:0.5rem;
-  font-size:0.875rem;color:var(--muted);text-decoration:none;
-  padding:0.6rem 1.2rem;border:1px solid var(--border);
-  border-radius:9px;transition:border-color 0.15s,color 0.15s;
+/* ── PROJECTS ── */
+#projects{background:var(--s1);}
+.pg{display:grid;gap:1.2rem;margin-top:2.5rem;}
+@media(min-width:640px){.pg{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1100px){.pg{grid-template-columns:repeat(3,1fr);}}
+.pc{
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--r);
+  padding:1.5rem;display:flex;flex-direction:column;
+  transition:border-color .2s,transform .2s;position:relative;overflow:hidden;
 }
-.contact-link:hover{border-color:var(--teal);color:var(--teal);}
-.contact-link svg{width:16px;height:16px;flex-shrink:0;}
-.footer-line{
-  border-top:1px solid var(--border);
-  padding-top:2rem;margin-top:2rem;
-  font-size:0.78rem;color:var(--muted);
-  display:flex;justify-content:space-between;
-  font-family:'JetBrains Mono',monospace;
-}
+.pc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--teal),transparent);opacity:0;transition:opacity .2s;}
+.pc:hover{border-color:var(--teal);transform:translateY(-3px);}
+.pc:hover::after{opacity:1;}
+.pph{border-style:dashed;opacity:.5;align-items:center;justify-content:center;
+  text-align:center;min-height:240px;}
+.pph:hover{opacity:.7;transform:none;}
+.pn{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--teal);letter-spacing:.1em;margin-bottom:.8rem;}
+.pname{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.7rem;line-height:1.35;}
+.pdesc{font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;flex:1;}
+.pm{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap;}
+.metric{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--amber);
+  background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);
+  padding:.2rem .55rem;border-radius:4px;}
+.ptechs{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.2rem;}
+.tt{font-size:.68rem;font-family:'JetBrains Mono',monospace;color:var(--muted);
+  background:var(--s1);border:1px solid var(--border);padding:.18rem .55rem;border-radius:4px;}
+.plinks{display:flex;gap:.6rem;flex-wrap:wrap;}
+.pl{font-size:.78rem;font-weight:500;text-decoration:none;padding:.38rem .9rem;
+  border-radius:7px;transition:opacity .15s;display:inline-flex;align-items:center;gap:.3rem;}
+.pl.pp{background:var(--teal);color:#050C1A;}
+.pl.pg2{border:1px solid var(--border);color:var(--muted);}
+.pl:hover{opacity:.82;}
+.phi{font-size:2.2rem;margin-bottom:.8rem;opacity:.35;}
+.pht{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.95rem;margin-bottom:.4rem;}
+.phs{font-size:.78rem;color:var(--muted);}
 
-/* ── Responsive ─────────────────────────────────── */
-@media(max-width:1100px){
-  #hero{grid-template-columns:1fr;padding:7rem 3rem 4rem;}
-  .hero-visual{align-items:flex-start;}
-  section{padding:4rem 3rem;}
-  #regulatory{padding:4rem 3rem;}
-  #education{padding:4rem 3rem;}
-}
-@media(max-width:900px){
-  .projects-grid{grid-template-columns:1fr 1fr;}
-  .about-grid{grid-template-columns:1fr;}
-  .reg-grid{grid-template-columns:repeat(2,1fr);}
-  .stats-strip{grid-template-columns:repeat(2,1fr);}
-  .stat-item{border-right:none;border-bottom:1px solid var(--border);}
-  .stat-item:last-child,.stat-item:nth-child(2){border-bottom:none;}
-   #hero{grid-template-columns: 1fr 1fr;  
-    gap: 2rem;
-    padding: 7rem 2rem 4rem;
-  }
-  .hero-name{
-    font-size: clamp(2rem, 5vw, 3rem);
-  }
-  .hero-desc{font-size: 0.98rem;}
-}
-@media(max-width:640px){
-  .nav-links,.nav-cta{display:none;}
-  .hamburger{display:flex;}
-  section{padding:3.5rem 1.5rem;}
-  #regulatory{padding:3.5rem 1.5rem;}
-  #education{padding:3.5rem 1.5rem;}
-  .projects-grid{grid-template-columns:1fr;}
-  .skills-grid{grid-template-columns:1fr;}
-  .edu-grid{grid-template-columns:1fr;}
-  .reg-grid{grid-template-columns:1fr 1fr;}
-  .stats-strip{grid-template-columns:1fr 1fr;}
-  .footer-line{flex-direction:column;gap:0.5rem;text-align:center;}
-  #hero{
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-    padding: 7rem 3rem 4rem;
-  }
-}
-/* Small mobile screens */
-@media(max-width:520px){
-  #hero{
-    grid-template-columns: 1fr 1fr;  /* still side-by-side */
-    gap: 1rem;
-    align-items: center;
-    padding: 6.5rem 1rem 3rem;
-  }
+/* ── SKILLS ── */
+.sg{display:grid;gap:1.2rem;margin-top:2.5rem;}
+@media(min-width:640px){.sg{grid-template-columns:repeat(2,1fr);}}
+.skgroup{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;}
+.sgt{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.92rem;margin-bottom:1rem;
+  display:flex;align-items:center;gap:.5rem;}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--teal);}
+.dot.a{background:var(--amber);}
+.dot.r{background:var(--red);}
+.dot.g{background:var(--green);}
+.skl{list-style:none;display:flex;flex-direction:column;gap:.4rem;}
+.skl li{font-size:.85rem;color:var(--muted);padding-left:1rem;position:relative;}
+.skl li::before{content:'→';position:absolute;left:0;color:var(--border);font-size:.7rem;top:2px;}
 
-  .hero-desc{
-    font-size: 0.9rem;
-  }
+/* ── REGULATORY ── */
+#regulatory{background:var(--s1);}
+.rg{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2rem;}
+@media(min-width:640px){.rg{grid-template-columns:repeat(4,1fr);}}
+.rc{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.1rem;}
+.ra{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.95rem;color:var(--teal);margin-bottom:.3rem;}
+.rf{color:var(--muted);font-size:.75rem;line-height:1.5;}
 
-  .profile-card{
-    max-width: 160px;  /* 🔥 key change: prevents overflow */
-  }
+/* ── EXPERIENCE ── */
+.el{margin-top:2.5rem;display:flex;flex-direction:column;gap:0;position:relative;}
+.el::before{content:'';position:absolute;left:10px;top:8px;bottom:8px;width:1px;background:var(--border);}
+.ei{display:grid;grid-template-columns:24px 1fr;gap:1.2rem;padding-bottom:2.5rem;}
+.edot{width:22px;height:22px;border-radius:50%;background:var(--s2);border:2px solid var(--teal);flex-shrink:0;margin-top:2px;position:relative;z-index:1;}
+.er{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.15rem;}
+.ec{color:var(--teal);font-size:.87rem;margin-bottom:.15rem;}
+.ep{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);margin-bottom:.7rem;}
+.eb{list-style:none;display:flex;flex-direction:column;gap:.35rem;}
+.eb li{font-size:.84rem;color:var(--muted);padding-left:1rem;position:relative;}
+.eb li::before{content:'·';position:absolute;left:0;color:var(--teal);}
 
-  .hero-actions{
-    gap: 0.6rem;
-  }
+/* ── EDUCATION ── */
+#education{background:var(--s1);}
+.edu{display:grid;gap:1rem;margin-top:2rem;}
+@media(min-width:640px){.edu{grid-template-columns:1fr 1fr;}}
+.edc{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;}
+.edeg{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.2rem;}
+.esch{color:var(--teal);font-size:.87rem;margin-bottom:.2rem;}
+.eyr{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);}
+.ecert{color:var(--muted);font-size:.8rem;line-height:1.9;margin-top:.5rem;}
+
+/* ── CONTACT ── */
+#contact{text-align:center;}
+.ci{max-width:520px;margin:0 auto;}
+#contact .ey{justify-content:center;}
+#contact .ey::after{display:none;}
+#contact .sh{margin-bottom:.7rem;}
+#contact .ss{margin:0 auto 2rem;text-align:center;}
+.cls{display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap;margin-bottom:1.8rem;}
+.cl{
+  display:flex;align-items:center;gap:.45rem;
+  font-size:.83rem;color:var(--muted);text-decoration:none;
+  padding:.55rem 1.1rem;border:1px solid var(--border);border-radius:9px;
+  transition:border-color .15s,color .15s;white-space:nowrap;
 }
+.cl:hover{border-color:var(--teal);color:var(--teal);}
+.cl svg{width:15px;height:15px;flex-shrink:0;}
+.ft{
+  border-top:1px solid var(--border);padding-top:1.8rem;margin-top:1.5rem;
+  font-size:.75rem;color:var(--muted);font-family:'JetBrains Mono',monospace;
+  display:flex;flex-direction:column;gap:.4rem;align-items:center;text-align:center;
+}
+@media(min-width:640px){.ft{flex-direction:row;justify-content:space-between;}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <span class="nav-logo">MO.</span>
   <ul class="nav-links">
@@ -456,87 +326,121 @@ section{padding:5.5rem 6rem;}
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
   </ul>
-  <a href="mailto:your@email.com" class="nav-cta">Get in Touch</a>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+  <a href="#contact" class="nav-cta" style="display:none" id="nctaD">Get in Touch</a>
+  <button class="ham" onclick="toggleNav()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
+<div class="mobile-nav" id="mnav">
+  <a href="#about" onclick="closeNav()">About</a>
+  <a href="#projects" onclick="closeNav()">Projects</a>
+  <a href="#skills" onclick="closeNav()">Skills</a>
+  <a href="#experience" onclick="closeNav()">Experience</a>
+  <a href="#contact" onclick="closeNav()">Get in Touch</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">Fintech AI Engineer</div>
-    <h1 class="hero-name">
-      Mubarak<br/>
-      <span>Oladipo.</span>
-    </h1>
-    <p class="hero-title">Fraud Detection · AML Systems · Identity Risk</p>
-    <p class="hero-desc">
-      I build the systems that decide — in under 200ms — whether a
-      financial transaction is legitimate, suspicious, or fraud. Real-time
-      ML pipelines, AML compliance engines, and KYC risk platforms built
-      for production.
-    </p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn-primary">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 12 12 5 19 12"/><polyline points="5 19 12 12 19 19"/></svg>
-        View Projects
-      </a>
-      <a href="https://github.com/Mubrix2" target="_blank" class="btn-outline">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <a href="#contact" class="btn-outline">Contact</a>
+    <div class="hero-photo-wrap">
+      <!-- Replace YOUR_PHOTO_URL with your actual photo link -->
+      <div class="hero-photo">
+        <img src="mubrix.png" alt="Mubarak Oladipo"
+             onerror="this.style.display='none';document.querySelector('.hero-photo-initials').style.display='flex'">
+        <span class="hero-photo-initials" style="display:none">MO</span>
+      </div>
+      <div class="hero-eyebrow">Fintech AI Engineer</div>
+    </div>
+    <h1 class="hero-name">Mubarak<br/><span>Oladipo.</span></h1>
+    <p class="hero-tagline">Fraud Detection · AML Systems · Identity Risk</p>
+    <p class="hero-desc">I build the systems that decide — in under 200ms — whether a financial transaction is legitimate, suspicious, or fraud. Real-time ML pipelines, AML compliance engines, and KYC risk platforms built for production.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-p">View Projects</a>
+      <a href="https://github.com/Mubrix2" target="_blank" class="btn-o">GitHub</a>
+      <a href="#contact" class="btn-o">Contact</a>
     </div>
   </div>
 
-  <div class="hero-visual">
-    <!-- Sample profile card -->
-    <div class="profile-card">
-    <img src="/mubrix.png" alt="Mubarak Oladipo" class="profile-image">
-</div>
+  <div class="hero-right">
+    <div class="term">
+      <div class="term-bar">
+        <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+        <span class="term-file">rules_engine.py</span>
+      </div>
+      <div class="term-body">
+        <span class="tk-cm"># Rules override ML — compliance is deterministic</span><br/>
+        <span class="tk-kw">if</span> sanctions_match:<br/>
+        &nbsp;&nbsp;<span class="tk-kw">return</span> <span class="tk-str">"REJECT"</span> <span class="tk-cm"># not a model decision</span><br/>
+        <br/>
+        <span class="tk-kw">if</span> fraud_probability >= <span class="tk-fn">0.85</span>:<br/>
+        &nbsp;&nbsp;<span class="tk-kw">return</span> <span class="tk-str">"BLOCK"</span><br/>
+        <span class="tk-kw">elif</span> fraud_probability >= <span class="tk-fn">0.60</span>:<br/>
+        &nbsp;&nbsp;<span class="tk-kw">return</span> <span class="tk-str">"REVIEW"</span><br/>
+        <span class="tk-kw">else</span>:<br/>
+        &nbsp;&nbsp;<span class="tk-kw">return</span> <span class="tk-str">"APPROVE"</span>
+      </div>
+    </div>
+
+    <!-- <div class="decision-card">
+      <div class="cm"><span>TXN-D8F2A · TRANSFER</span><span>87ms</span></div>
+      <div class="ca">₦850,000</div>
+      <div class="cv">🚫 BLOCKED · 98.7% fraud probability</div>
+      <div class="sl">SHAP — Why this decision</div>
+      <div class="sr">
+        <span class="srl">Account drain</span>
+        <div class="srt"><div class="srf" id="b1" style="width:0;background:#F43F5E"></div></div>
+        <span class="srv">+0.82</span>
+      </div>
+      <div class="sr">
+        <span class="srl">Mule destination</span>
+        <div class="srt"><div class="srf" id="b2" style="width:0;background:#F43F5E"></div></div>
+        <span class="srv">+0.61</span>
+      </div>
+      <div class="sr">
+        <span class="srl">Amount ratio</span>
+        <div class="srt"><div class="srf" id="b3" style="width:0;background:#F59E0B"></div></div>
+        <span class="srv">+0.54</span>
+      </div>
+    </div> -->
   </div>
 </section>
 
+<!-- STATS -->
+<div class="stats">
+  <div class="si"><span class="sn">98.7%</span><span class="sd">Fraud Recall</span></div>
+  <div class="si"><span class="sn">&lt;200ms</span><span class="sd">Decision Time</span></div>
+  <div class="si"><span class="sn">7,469+</span><span class="sd">Sanctions Entries</span></div>
+  <div class="si"><span class="sn">2</span><span class="sd">Systems Deployed</span></div>
+</div>
+
 <!-- ABOUT -->
-<section id="about">
-  <div class="section-eyebrow">About</div>
-  <h2 class="section-title">Building the Systems Behind Financial Safety</h2>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>I am a <strong>Fintech AI Engineer</strong> based in Ibadan, Nigeria, specialising in financial crime detection and risk management infrastructure. I build the systems that run silently behind every card swipe, every bank transfer, every account opening — deciding in milliseconds whether something is legitimate or fraud.</p>
+<section id="about" class="sec">
+  <div class="ey">About</div>
+  <h2 class="sh">Building the Infrastructure Behind Financial Safety</h2>
+  <div class="ag">
+    <div class="ap">
+      <p>I am a <strong>Fintech AI Engineer</strong> based in Ibadan, Nigeria, specialising in financial crime detection and risk management infrastructure. I build the systems that run silently behind every card swipe, every bank transfer, every account opening.</p>
       <p>My work sits at the intersection of <strong>machine learning, event-driven architecture, and financial compliance</strong>. I understand not just how to build these systems, but why they are designed the way they are — the regulatory requirements, the operational trade-offs, and what happens when they get things wrong.</p>
-      <p>I am open to remote roles, internships, and collaboration opportunities in fraud engineering, risk scoring, and AML compliance systems.</p>
+      <p>Open to remote roles, internships, and collaboration in fraud engineering, risk scoring, and AML compliance systems.</p>
     </div>
     <div>
-      <div class="about-stack" style="margin-bottom:1rem;">
-        <div class="stack-title">Core Stack</div>
-        <div class="stack-tags">
-          <span class="tag highlight">Apache Kafka</span>
-          <span class="tag highlight">XGBoost</span>
-          <span class="tag highlight">SHAP</span>
-          <span class="tag">FastAPI</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">Docker</span>
-          <span class="tag">LangGraph</span>
-          <span class="tag">Pydantic v2</span>
-          <span class="tag">SQLAlchemy 2.0</span>
-          <span class="tag">Isolation Forest</span>
-          <span class="tag">Tesseract OCR</span>
-          <span class="tag">RapidFuzz</span>
-          <span class="tag">React</span>
-          <span class="tag">Python</span>
+      <div class="as" style="margin-bottom:1rem">
+        <div class="at">Core Stack</div>
+        <div class="tags">
+          <span class="tag h">Apache Kafka</span><span class="tag h">XGBoost</span>
+          <span class="tag h">SHAP</span><span class="tag">FastAPI</span>
+          <span class="tag">PostgreSQL</span><span class="tag">Docker</span>
+          <span class="tag">LangGraph</span><span class="tag">Pydantic v2</span>
+          <span class="tag">Isolation Forest</span><span class="tag">Tesseract OCR</span>
+          <span class="tag">RapidFuzz</span><span class="tag">React</span>
         </div>
       </div>
-      <div class="about-stack">
-        <div class="stack-title">Regulatory Knowledge</div>
-        <div class="stack-tags">
-          <span class="tag highlight">GDPR Art. 22</span>
-          <span class="tag highlight">CBN CPF</span>
-          <span class="tag highlight">NFIU</span>
-          <span class="tag">ML(P) Act 2022</span>
-          <span class="tag">FATF Rec. 10 & 12</span>
-          <span class="tag">OFAC SDN</span>
+      <div class="as">
+        <div class="at">Regulatory Knowledge</div>
+        <div class="tags">
+          <span class="tag h">GDPR Art. 22</span><span class="tag h">CBN CPF</span>
+          <span class="tag h">NFIU</span><span class="tag">ML(P) Act 2022</span>
+          <span class="tag">FATF Rec. 10&12</span><span class="tag">OFAC SDN</span>
         </div>
       </div>
     </div>
@@ -544,301 +448,277 @@ section{padding:5.5rem 6rem;}
 </section>
 
 <!-- PROJECTS -->
-<section id="projects">
-  <div class="section-eyebrow">Projects</div>
-  <h2 class="section-title">Production Systems, Not Demos</h2>
-  <p class="section-sub">Both platforms are live, documented, and publicly accessible — built the way fintech risk systems are actually built.</p>
+<section id="projects" class="sec" style="background:var(--s1)">
+  <div class="ey">Projects</div>
+  <h2 class="sh">Production Systems, Not Demos</h2>
+  <p class="ss">Both platforms are live, documented, and publicly accessible — built the way fintech risk systems are actually built.</p>
+  <div class="pg">
 
-  <div class="projects-grid">
-
-    <!-- Project 1 -->
-    <div class="project-card">
-      <div class="project-num">PROJECT 01</div>
-      <h3 class="project-name">Real-Time Fraud Detection & Risk Management Pipeline</h3>
-      <p class="project-desc">Event-driven fraud detection processing every transaction through a 9-stage ML pipeline — dual model scoring, AML typology detection, velocity engines (per-customer and cross-customer), SHAP explainability, and an AI investigation agent.</p>
-      <div class="project-metrics">
+    <div class="pc">
+      <div class="pn">PROJECT 01</div>
+      <h3 class="pname">Real-Time Fraud Detection &amp; Risk Management Pipeline</h3>
+      <p class="pdesc">Event-driven fraud detection processing every transaction through a 9-stage ML pipeline — dual model scoring, AML typology detection, velocity engines (per-customer and cross-customer), SHAP explainability, and an AI investigation agent.</p>
+      <div class="pm">
         <span class="metric">98.7% fraud recall</span>
         <span class="metric">&lt;200ms decisions</span>
         <span class="metric">NFIU compliant</span>
       </div>
-      <div class="project-tech">
-        <span class="tech-tag">Kafka KRaft</span>
-        <span class="tech-tag">XGBoost</span>
-        <span class="tech-tag">Isolation Forest</span>
-        <span class="tech-tag">SHAP</span>
-        <span class="tech-tag">FastAPI</span>
-        <span class="tech-tag">React</span>
-        <span class="tech-tag">LangGraph</span>
-        <span class="tech-tag">Docker</span>
+      <div class="ptechs">
+        <span class="tt">Kafka KRaft</span><span class="tt">XGBoost</span>
+        <span class="tt">Isolation Forest</span><span class="tt">SHAP</span>
+        <span class="tt">FastAPI</span><span class="tt">React</span>
+        <span class="tt">LangGraph</span><span class="tt">Docker</span>
       </div>
-      <div class="project-links">
-        <a href="https://ai-fraud-detection-pipeline.vercel.app/" target="_blank" class="proj-link primary">Live Demo</a>
-        <a href="https://github.com/Mubrix2/ai-fraud-detection-pipeline" target="_blank" class="proj-link ghost">GitHub</a>
-        <a href="https://ai-fraud-detection-pipeline.onrender.com/docs" target="_blank" class="proj-link ghost">API Docs</a>
+      <div class="plinks">
+        <a href="#" target="_blank" class="pl pp">Live Demo</a>
+        <a href="https://github.com/Mubrix2/realtime-fraud-detection-pipeline" target="_blank" class="pl pg2">GitHub</a>
+        <a href="#" class="pl pg2">API Docs</a>
       </div>
     </div>
 
-    <!-- Project 2 -->
-    <div class="project-card">
-      <div class="project-num">PROJECT 02</div>
-      <h3 class="project-name">KYC & Identity Risk Intelligence Platform</h3>
-      <p class="project-desc">End-to-end KYC onboarding risk system with Tesseract OCR extraction, OFAC sanctions screening against 7,469+ real entries, XGBoost identity risk scoring, and a compliance reviewer dashboard with PostgreSQL audit trail.</p>
-      <div class="project-metrics">
+    <div class="pc">
+      <div class="pn">PROJECT 02</div>
+      <h3 class="pname">KYC &amp; Identity Risk Intelligence Platform</h3>
+      <p class="pdesc">End-to-end KYC onboarding risk system with OCR document extraction, OFAC sanctions screening against 7,469+ real entries, XGBoost identity risk scoring, and a compliance reviewer dashboard with PostgreSQL audit trail.</p>
+      <div class="pm">
         <span class="metric">7,469+ sanctions entries</span>
         <span class="metric">PostgreSQL audit</span>
         <span class="metric">GDPR Art.22</span>
       </div>
-      <div class="project-tech">
-        <span class="tech-tag">Tesseract OCR</span>
-        <span class="tech-tag">RapidFuzz</span>
-        <span class="tech-tag">OFAC SDN</span>
-        <span class="tech-tag">XGBoost</span>
-        <span class="tech-tag">SHAP</span>
-        <span class="tech-tag">PostgreSQL</span>
-        <span class="tech-tag">Kafka</span>
-        <span class="tech-tag">React</span>
+      <div class="ptechs">
+        <span class="tt">Tesseract OCR</span><span class="tt">RapidFuzz</span>
+        <span class="tt">OFAC SDN</span><span class="tt">XGBoost</span>
+        <span class="tt">SHAP</span><span class="tt">PostgreSQL</span>
+        <span class="tt">Kafka</span><span class="tt">React</span>
       </div>
-      <div class="project-links">
-        <a href="https://kyc-identity-risk-platform.vercel.app/" target="_blank" class="proj-link primary">Live Demo</a>
-        <a href="https://github.com/Mubrix2/kyc-identity-risk-platform" target="_blank" class="proj-link ghost">GitHub</a>
-        <a href="https://kyc-identity-risk-platform.onrender.com/docs" target="_blank" class="proj-link ghost">API Docs</a>
+      <div class="plinks">
+        <a href="#" target="_blank" class="pl pp">Live Demo</a>
+        <a href="https://github.com/Mubrix2/kyc-identity-risk-platform" target="_blank" class="pl pg2">GitHub</a>
+        <a href="#" class="pl pg2">API Docs</a>
       </div>
     </div>
 
-    <!-- Project 3 Placeholder -->
-    <div class="project-card project-placeholder">
-      <div class="placeholder-icon">⚙️</div>
-      <div class="placeholder-text">Next Project</div>
-      <div class="placeholder-sub" style="color:var(--muted);font-size:0.82rem;margin-top:0.3rem;">Coming Soon</div>
-      <div class="placeholder-sub" style="margin-top:0.8rem;font-size:0.78rem;">
-        Reserved for the next system in the financial crime risk stack.
-      </div>
+    <!-- PLACEHOLDER — Replace this card when Project 3 is ready -->
+    <div class="pc pph">
+      <div class="phi">⚙️</div>
+      <div class="pht">Next Project</div>
+      <div class="phs">Coming Soon</div>
+      <div class="phs" style="margin-top:.6rem;font-size:.75rem">Reserved for the next system in the financial crime risk stack.</div>
     </div>
 
   </div>
 </section>
 
 <!-- SKILLS -->
-<section id="skills">
-  <div class="section-eyebrow">Skills</div>
-  <h2 class="section-title">What I Actually Know How to Build</h2>
-  <div class="skills-grid">
-
-    <div class="skill-group">
-      <div class="skill-group-title"><span class="skill-dot"></span>Fraud & Risk Engineering</div>
-      <ul class="skill-list">
+<section id="skills" class="sec">
+  <div class="ey">Skills</div>
+  <h2 class="sh">What I Know How to Build</h2>
+  <div class="sg">
+    <div class="skgroup">
+      <div class="sgt"><span class="dot"></span>Fraud &amp; Risk Engineering</div>
+      <ul class="skl">
         <li>Real-time transaction fraud detection pipelines</li>
-        <li>Velocity engine design (per-customer &amp; destination-level)</li>
+        <li>Velocity engine design — per-customer &amp; destination-level</li>
         <li>AML typology detection — structuring, layering, CTR/SAR</li>
         <li>Three-tier decision systems (APPROVE / REVIEW / BLOCK)</li>
-        <li>Rules engine architecture — rules-over-ML precedence</li>
-        <li>Circuit breaker &amp; rule fallback resilience patterns</li>
+        <li>Rules engine — rules-over-ML precedence</li>
+        <li>Circuit breaker &amp; rule fallback resilience</li>
         <li>Immutable audit log design for compliance</li>
       </ul>
     </div>
-
-    <div class="skill-group">
-      <div class="skill-group-title"><span class="skill-dot amber"></span>Machine Learning &amp; AI</div>
-      <ul class="skill-list">
+    <div class="skgroup">
+      <div class="sgt"><span class="dot a"></span>Machine Learning &amp; AI</div>
+      <ul class="skl">
         <li>XGBoost — supervised fraud classification</li>
         <li>Isolation Forest — unsupervised anomaly detection</li>
         <li>SHAP TreeExplainer — exact feature attribution</li>
-        <li>SMOTE &amp; scale_pos_weight for class imbalance</li>
+        <li>SMOTE &amp; class imbalance handling</li>
         <li>Feature engineering for financial transaction data</li>
         <li>Threshold optimisation (AUCPR, F1 search)</li>
         <li>LangGraph multi-agent investigation pipelines</li>
       </ul>
     </div>
-
-    <div class="skill-group">
-      <div class="skill-group-title"><span class="skill-dot red"></span>KYC &amp; Identity Risk</div>
-      <ul class="skill-list">
+    <div class="skgroup">
+      <div class="sgt"><span class="dot r"></span>KYC &amp; Identity Risk</div>
+      <ul class="skl">
         <li>OCR document extraction (Tesseract)</li>
-        <li>Fuzzy name matching for sanctions screening (RapidFuzz)</li>
+        <li>Fuzzy name matching for sanctions screening</li>
         <li>OFAC SDN &amp; PEP list screening</li>
         <li>Declared-vs-extracted field cross-validation</li>
         <li>Enhanced Due Diligence (EDD) workflow design</li>
-        <li>Document quality scoring</li>
-        <li>Onboarding velocity and device fingerprint tracking</li>
+        <li>Onboarding velocity &amp; device fingerprint tracking</li>
       </ul>
     </div>
-
-    <div class="skill-group">
-      <div class="skill-group-title"><span class="skill-dot green"></span>Backend &amp; Infrastructure</div>
-      <ul class="skill-list">
-        <li>Apache Kafka (KRaft mode) — event-driven streaming</li>
-        <li>FastAPI with Pydantic v2 validation</li>
+    <div class="skgroup">
+      <div class="sgt"><span class="dot g"></span>Backend &amp; Infrastructure</div>
+      <ul class="skl">
+        <li>Apache Kafka (KRaft) — event-driven streaming</li>
+        <li>FastAPI with Pydantic v2 strict validation</li>
         <li>PostgreSQL + SQLAlchemy 2.0 + psycopg3</li>
         <li>Docker &amp; Docker Compose orchestration</li>
-        <li>nginx reverse proxy &amp; API gateway patterns</li>
-        <li>Render (API) + Vercel (frontend) deployment</li>
+        <li>nginx reverse proxy &amp; gateway patterns</li>
+        <li>Render + Vercel cloud deployment</li>
         <li>React + Recharts investigation dashboards</li>
       </ul>
     </div>
-
   </div>
 </section>
 
 <!-- REGULATORY -->
-<div id="regulatory">
-  <div style="max-width:1000px;margin:0 auto;">
-    <div class="section-eyebrow" style="margin-bottom:0.8rem;">Compliance Context</div>
-    <h2 class="section-title" style="font-size:1.6rem;">I Build With Regulation as a Design Requirement</h2>
-    <div class="reg-grid">
-      <div class="reg-card">
-        <div class="reg-abbr">GDPR Art. 22</div>
-        <div class="reg-full">Right not to be subject to solely automated decisions. Satisfied via SHAP explainability in every scoring output.</div>
-      </div>
-      <div class="reg-card">
-        <div class="reg-abbr">CBN CPF</div>
-        <div class="reg-full">CBN Consumer Protection Framework — transparency and auditability requirements for AI-driven financial decisions.</div>
-      </div>
-      <div class="reg-card">
-        <div class="reg-abbr">NFIU</div>
-        <div class="reg-full">Nigerian Financial Intelligence Unit — SAR/CTR filing requirements under Money Laundering (Prohibition) Act 2022.</div>
-      </div>
-      <div class="reg-card">
-        <div class="reg-abbr">FATF</div>
-        <div class="reg-full">Recommendations 10 (CDD) &amp; 12 (PEPs) — Customer Due Diligence and Enhanced Due Diligence standards.</div>
-      </div>
+<section id="regulatory" class="sec" style="background:var(--s1)">
+  <div class="ey">Compliance</div>
+  <h2 class="sh">Regulation as a Design Requirement</h2>
+  <p class="ss">I build with compliance in mind from the first line of code — not as an afterthought.</p>
+  <div class="rg">
+    <div class="rc">
+      <div class="ra">GDPR Art. 22</div>
+      <div class="rf">Right to explanation for automated decisions. Satisfied via SHAP output on every scored transaction.</div>
+    </div>
+    <div class="rc">
+      <div class="ra">CBN CPF</div>
+      <div class="rf">CBN Consumer Protection Framework — transparency requirements for AI-driven financial decisions.</div>
+    </div>
+    <div class="rc">
+      <div class="ra">NFIU</div>
+      <div class="rf">Nigerian Financial Intelligence Unit — SAR/CTR filing under Money Laundering (Prohibition) Act 2022.</div>
+    </div>
+    <div class="rc">
+      <div class="ra">FATF</div>
+      <div class="rf">Recommendations 10 (CDD) &amp; 12 (PEPs) — Customer Due Diligence standards informing KYC design.</div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-eyebrow">Experience</div>
-  <h2 class="section-title">Career</h2>
-  <div class="exp-list">
-
-    <div class="exp-item">
-      <div class="exp-dot"></div>
-      <div class="exp-content">
-        <div class="exp-role">Data Science &amp; Machine Learning Engineer</div>
-        <div class="exp-company">Katsina Directorate of ICT</div>
-        <div class="exp-period">March 2025 — March 2026 · Nigeria</div>
-        <ul class="exp-bullets">
-          <li>Built and deployed ML pipelines for risk scoring and churn prediction using XGBoost, improving minority-class recall by over 20% through SMOTE rebalancing</li>
-          <li>Built a document RAG system enabling semantic search and LLM-based Q&amp;A over multi-page PDFs with embedding-based retrieval</li>
-          <li>Replaced manual spreadsheet-based prediction workflows with production FastAPI inference APIs, reducing turnaround time by ~60%</li>
+<section id="experience" class="sec">
+  <div class="ey">Experience</div>
+  <h2 class="sh">Career</h2>
+  <div class="el">
+    <div class="ei">
+      <div class="edot"></div>
+      <div>
+        <div class="er">Data Science &amp; Machine Learning Engineer</div>
+        <div class="ec">Katsina Directorate of ICT</div>
+        <div class="ep">March 2025 — March 2026 · Nigeria</div>
+        <ul class="eb">
+          <li>Built ML pipelines for risk scoring and churn prediction using XGBoost, improving minority-class recall by 20%+ through SMOTE rebalancing</li>
+          <li>Built a document RAG system enabling semantic search and LLM-based Q&amp;A over multi-page PDFs</li>
+          <li>Replaced manual spreadsheet workflows with production FastAPI inference APIs, cutting turnaround time by ~60%</li>
         </ul>
       </div>
     </div>
-
-    <div class="exp-item">
-      <div class="exp-dot" style="border-color:var(--border);"></div>
-      <div class="exp-content">
-        <div class="exp-role">Software Engineering &amp; Data Science Intern</div>
-        <div class="exp-company">Digprom IT</div>
-        <div class="exp-period">July 2023 — December 2023 · Nigeria</div>
-        <ul class="exp-bullets">
-          <li>Built modular Python applications using object-oriented design, emphasising clean structure and separation of concerns</li>
-          <li>Trained and evaluated ML models for Diabetes Prediction and House Price Prediction using Scikit-learn</li>
-          <li>Deployed selected models as FastAPI inference services for real-time prediction testing</li>
+    <div class="ei">
+      <div class="edot" style="border-color:var(--border)"></div>
+      <div>
+        <div class="er">Software Engineering &amp; Data Science Intern</div>
+        <div class="ec">Digprom IT</div>
+        <div class="ep">July 2023 — December 2023 · Nigeria</div>
+        <ul class="eb">
+          <li>Built modular Python applications with clean object-oriented architecture</li>
+          <li>Trained and evaluated ML models (Diabetes Prediction, House Price Prediction) using Scikit-learn</li>
+          <li>Deployed models as FastAPI inference services for real-time prediction testing</li>
         </ul>
       </div>
     </div>
-
   </div>
 </section>
 
 <!-- EDUCATION -->
-<div id="education">
-  <div style="max-width:1000px;margin:0 auto;">
-    <div class="section-eyebrow" style="margin-bottom:0.8rem;">Education &amp; Development</div>
-    <div class="edu-grid">
-      <div class="edu-card">
-        <div class="edu-degree">B.Sc. Computer Science</div>
-        <div class="edu-school">University of Ilorin</div>
-        <div class="edu-year">2019 — 2024</div>
-      </div>
-      <div class="edu-card">
-        <div class="edu-degree">Certifications</div>
-        <!-- <div class="edu-school" style="color:var(--muted);font-size:0.82rem;margin-top:0.4rem;">NYSC Completion · 2025</div> -->
-        <div class="edu-school" style="color:var(--muted);font-size:0.82rem;">X-Culture International Business · 2024</div>
-        <!-- <div class="edu-school" style="color:var(--muted);font-size:0.82rem;">Microsoft Agentic AI Course</div> -->
-        <div class="edu-school" style="color:var(--muted);font-size:0.82rem;">NACOSS ML Track</div>
+<section id="education" class="sec" style="background:var(--s1)">
+  <div class="ey">Education</div>
+  <h2 class="sh">Academic Background</h2>
+  <div class="edu">
+    <div class="edc">
+      <div class="edeg">B.Sc. Computer Science</div>
+      <div class="esch">University of Ilorin</div>
+      <div class="eyr">2019 — 2024</div>
+    </div>
+    <div class="edc">
+      <div class="edeg">Certifications &amp; Development</div>
+      <div class="ecert">
+        NYSC Completion Certificate · 2025<br/>
+        X-Culture International Business · 2024<br/>
+        <!-- Microsoft Agentic AI Course<br/> -->
+        NACOSS Tech Accelerator — ML Track<br/>
+        <!-- Python Essentials 1 &amp; 2 -->
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- CONTACT -->
-<section id="contact">
-  <div class="contact-inner">
-    <div class="section-eyebrow">Contact</div>
-    <h2 class="section-title">Let's Work Together</h2>
-    <p class="section-sub">Open to remote roles, internships, freelance projects, and collaboration in fraud detection, AML compliance, and risk scoring systems.</p>
-    <div class="contact-links">
-      <a href="mailto:oladipomubarak2017@email.com" class="contact-link">
+<section id="contact" class="sec">
+  <div class="ci">
+    <div class="ey" style="justify-content:center"><span>Contact</span></div>
+    <h2 class="sh">Let's Work Together</h2>
+    <p class="ss">Open to remote roles, internships, freelance projects, and collaboration in fraud detection, AML compliance, and risk scoring systems.</p>
+    <div class="cls">
+      <a href="mailto:olaipomubarak2017@email.com" class="cl">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-        oladipomubarak2017@email.com
+        Email
       </a>
-      <a href="https://github.com/Mubrix2" target="_blank" class="contact-link">
+      <a href="https://github.com/Mubrix2" target="_blank" class="cl">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
         GitHub
       </a>
-      <a href="https://linkedin.com/in/mubarak-oladipo" target="_blank" class="contact-link">
+      <a href="https://linkedin.com/in/mubarak-oladipo" target="_blank" class="cl">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         LinkedIn
       </a>
-      <a href="tel:+2348143530951" class="contact-link">
+      <a href="tel:+2348143530951" class="cl">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
         +234 814 353 0951
       </a>
     </div>
-    <div class="footer-line">
+    <div class="ft">
       <span>© 2026 Mubarak Olalekan Oladipo</span>
-      <span>Ibadan, Nigeria · Open to Relocation & Remote</span>
+      <span>Ibadan, Nigeria · Open to Relocation &amp; Remote</span>
     </div>
   </div>
 </section>
 
 <script>
-// Animate SHAP bars on load
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('bar1').style.width = '92%';
-    document.getElementById('bar2').style.width = '74%';
-    document.getElementById('bar3').style.width = '62%';
-  }, 600);
+// Nav desktop CTA visibility
+window.addEventListener('resize',()=>{
+  document.getElementById('nctaD').style.display = window.innerWidth>=900?'inline-flex':'none';
+},{passive:true});
+document.getElementById('nctaD').style.display = window.innerWidth>=900?'inline-flex':'none';
+
+// Mobile nav toggle
+function toggleNav(){document.getElementById('mnav').classList.toggle('open');}
+function closeNav(){document.getElementById('mnav').classList.remove('open');}
+document.addEventListener('click',e=>{
+  const nav = document.getElementById('mnav');
+  if(!nav.contains(e.target)&&!e.target.closest('.ham'))closeNav();
 });
 
-// Mobile menu toggle
-function toggleMenu(){
-  const existing = document.querySelector('.mobile-menu-open');
-  if(existing){ existing.remove(); return; }
-  const menu = document.createElement('div');
-  menu.className = 'mobile-menu-open';
-  menu.style.cssText = `
-    position:fixed;top:61px;left:0;right:0;
-    background:#0D1B2A;border-bottom:1px solid #1A3050;
-    padding:1.5rem 2rem;z-index:99;
-    display:flex;flex-direction:column;gap:1.2rem;
-  `;
-  const links = [['#about','About'],['#projects','Projects'],['#skills','Skills'],['#experience','Experience'],['#contact','Contact']];
-  links.forEach(([href,text]) => {
-    const a = document.createElement('a');
-    a.href = href; a.textContent = text;
-    a.style.cssText = 'color:#7A9BBF;text-decoration:none;font-size:1rem;';
-    a.onclick = () => menu.remove();
-    menu.appendChild(a);
+// SHAP bar animation
+let animated=false;
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&!animated){
+      animated=true;
+      setTimeout(()=>{
+        document.getElementById('b1').style.width='92%';
+        document.getElementById('b2').style.width='73%';
+        document.getElementById('b3').style.width='62%';
+      },400);
+    }
   });
-  document.body.appendChild(menu);
-}
+},{threshold:.3});
+observer.observe(document.querySelector('.decision-card'));
 
-// Smooth active nav highlighting
-const sections = document.querySelectorAll('section[id], div[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => {
-    if(window.scrollY >= s.offsetTop - 200) current = s.id;
+// Active nav link on scroll
+const navAs=document.querySelectorAll('.nav-links a,.mobile-nav a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  document.querySelectorAll('section[id],div[id]').forEach(s=>{
+    if(scrollY>=s.offsetTop-120)cur=s.id;
   });
-  navLinks.forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + current ? '#F0F4F8' : '';
+  navAs.forEach(a=>{
+    a.style.color=a.getAttribute('href')==='#'+cur?'#EFF6FF':'';
   });
-}, {passive:true});
+},{passive:true});
 </script>
 </body>
 </html>
