@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mubarak Oladipo — Technical Operations</title>
+<meta name="description" content="Technical Operations & Executive Support. Executive Operations Hub and Finance & Meeting Operations System — case studies.">
+
+<!-- Set theme before first paint, no flash -->
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('portfolio-theme');
+    if (saved !== 'light') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    // Dark is the default in every other case; light only shows if the visitor picked it before.
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS — light (default) + dark
+   ============================================================ */
+:root {
+  --bg: #ECEEE7;
+  --surface: #F7F8F3;
+  --surface-2: #E3E6DC;
+  --ink: #000000;
+  --ink-soft: #4A5751;
+  --line: #9FAC9A;
+  --line-strong: #7C8B79;
+  --brass: #A8763A;
+  --brass-deep: #8A6029;
+  --teal: #2F6B5C;
+  --teal-bg: #E1EAE5;
+  --shadow: 0 1px 0 rgba(27,36,32,0.04);
+  --radius: 4px;
+  --max-w: 760px;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #141F1A;
+  --surface: #1B2822;
+  --surface-2: #24342C;
+  --ink: #FFFFFF;
+  --ink-soft: #A9B8AD;
+  --line: #2C3B33;
+  --line-strong: #3B4C42;
+  --brass: #D3A25F;
+  --brass-deep: #E7BB78;
+  --teal: #6FBFA8;
+  --teal-bg: #223B33;
+  --shadow: 0 1px 0 rgba(0,0,0,0.2);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  transition: background .25s ease, color .25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+a { color: inherit; }
+
+/* ============================================================
+   TOP BAR — brand + theme toggle (always visible)
+   ============================================================ */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 70;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+.topnav-links { display: none; gap: 26px; }
+.topnav-links a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  transition: color .15s ease;
+}
+.topnav-links a.active, .topnav-links a:hover { color: var(--brass-deep); }
+
+@media (min-width: 860px) {
+  .topbar { padding: 16px 48px; }
+  .topnav-links { display: flex; }
+}
+
+/* Theme toggle — physical rocker-switch styling */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 4px;
+  cursor: pointer;
+  width: 56px;
+  height: 30px;
+  position: relative;
+  flex-shrink: 0;
+}
+.theme-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--brass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left .2s ease, background .2s ease;
+}
+:root[data-theme="dark"] .theme-toggle__thumb { left: 27px; background: var(--brass-deep); }
+.theme-toggle__thumb svg { width: 13px; height: 13px; color: var(--surface); }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+
+.section { padding: 48px 0 36px; border-bottom: 1px solid var(--line); }
+.section--last { border-bottom: none; padding-bottom: 96px; }
+@media (min-width: 860px) { .section { padding: 76px 0 56px; } }
+
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--brass-deep);
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+.display-xl {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 8vw, 50px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+.display-lg {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: clamp(23px, 5vw, 31px);
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  margin: 0 0 16px;
+}
+.role-line {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 0 0 18px;
+}
+.hero-body, .section-lead {
+  font-size: 16px;
+  max-width: 58ch;
+  margin: 0 0 24px;
+}
+.section-lead { color: var(--ink-soft); }
+
+/* ============================================================
+   HERO METRICS — instrument readout row
+   ============================================================ */
+.metric-strip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 26px;
+}
+@media (min-width: 560px) { .metric-strip { grid-template-columns: repeat(4, 1fr); } }
+.metric-cell {
+  background: var(--surface);
+  padding: 14px 12px;
+  text-align: center;
+}
+.metric-cell__num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--teal);
+  display: block;
+}
+.metric-cell__label {
+  font-size: 11px;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+.chip {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  background: var(--surface);
+}
+.chip--live { color: var(--teal); border-color: var(--teal); background: var(--teal-bg); }
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  display: inline-block;
+  border: 1px solid transparent;
+  transition: transform .12s ease, background .15s ease, border-color .15s ease;
+  cursor: pointer;
+}
+.btn--primary { background: var(--ink); color: var(--bg); }
+.btn--primary:hover { background: var(--brass-deep); }
+.btn--ghost { border-color: var(--ink); }
+.btn--ghost:hover { background: var(--surface); }
+.btn:active { transform: scale(0.98); }
+
+/* ============================================================
+   CASE FILES
+   ============================================================ */
+.case-file {
+  margin-top: 30px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+.case-file + .case-file { margin-top: 40px; }
+.case-file__tab {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 18px;
+  background: var(--ink);
+}
+.case-file__stamp {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  padding: 3px 9px;
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  border-radius: 999px;
+  transform: rotate(-2deg);
+}
+.case-file__body { padding: 22px 20px 26px; }
+.case-file__title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(19px, 3.4vw, 24px); margin: 0 0 6px; }
+.case-file__meta { font-size: 12.5px; color: var(--ink-soft); margin: 0 0 16px; }
+.case-file__overview { margin: 0 0 20px; padding-left: 14px; border-left: 2px solid var(--brass); }
+
+/* project metric strip variant (smaller, inline) */
+.proj-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+@media (min-width: 480px) { .proj-metrics { grid-template-columns: repeat(4, 1fr); } }
+.proj-metrics .metric-cell { padding: 10px 8px; }
+.proj-metrics .metric-cell__num { font-size: 16px; }
+.proj-metrics .metric-cell__label { font-size: 10px; }
+
+/* accordions */
+.fold { border-top: 1px solid var(--line); padding: 14px 0; }
+.fold summary {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+.fold summary::-webkit-details-marker { display: none; }
+.fold summary::before { content: '+'; display: inline-block; width: 18px; color: var(--brass-deep); font-weight: 600; }
+.fold[open] summary::before { content: '\2013'; }
+.fold p, .fold ul { margin: 12px 0 0; font-size: 14.5px; }
+.fold ul { padding-left: 20px; }
+.fold li { margin-bottom: 6px; }
+
+.stack-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13.5px; }
+.stack-table td { padding: 8px 10px; border: 1px solid var(--line); }
+.stack-table td:first-child { font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: var(--brass-deep); white-space: nowrap; }
+
+.impact-list { margin: 14px 0 0; padding: 0; list-style: none; }
+.impact-item { padding: 12px 0; border-top: 1px dashed var(--line); }
+.impact-item:last-child { border-bottom: 1px dashed var(--line); }
+.impact-item__head { font-family: 'IBM Plex Mono', monospace; font-size: 13.5px; color: var(--teal); margin: 0 0 4px; }
+.impact-item p { margin: 0; font-size: 14px; }
+
+.ledger { margin-top: 8px; }
+.ledger__row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-top: 1px dashed var(--line); font-size: 14px; }
+.ledger__row:last-child { border-bottom: 1px dashed var(--line); }
+.ledger__num { font-family: 'IBM Plex Mono', monospace; font-weight: 600; color: var(--teal); white-space: nowrap; }
+
+/* ============================================================
+   RESPONSIVE SCREENSHOT SLOTS
+   ============================================================ */
+.snapshot-group { margin-top: 8px; }
+.snapshot-group__label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 18px 0 10px;
+}
+.shot-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 560px) { .shot-grid { grid-template-columns: 1fr 1fr; } }
+
+.shot {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface-2);
+  cursor: zoom-in;
+}
+.shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.shot__fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 14px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.shot img.is-hidden { display: none; }
+
+/* lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.82);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 24px;
+}
+.lightbox.is-open { display: flex; }
+.lightbox img { max-width: 100%; max-height: 90vh; border-radius: var(--radius); }
+.lightbox__close {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: none; border: 1px solid rgba(255,255,255,0.4);
+  color: #fff; width: 36px; height: 36px; border-radius: 50%;
+  font-size: 18px; cursor: pointer;
+}
+
+/* ============================================================
+   SKILLS / CERTS
+   ============================================================ */
+.cap-columns { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 8px; }
+@media (min-width: 640px) { .cap-columns { grid-template-columns: 1fr 1fr; } }
+.cap-col__title { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brass-deep); margin: 0 0 10px; }
+.tag-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+
+.cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
+@media (min-width: 640px) { .cert-grid { grid-template-columns: repeat(3, 1fr); } }
+.cert-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+.cert-card__thumb {
+  aspect-ratio: 4/3;
+  background: var(--surface-2);
+  position: relative;
+}
+.cert-card__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cert-card__thumb .shot__fallback { font-size: 10px; }
+.cert-card__name { font-size: 12px; padding: 8px 10px; font-family: 'IBM Plex Mono', monospace; }
+
+/* ============================================================
+   RESUME (link only, no embedded content)
+   ============================================================ */
+.resume-card {
+  margin-top: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.resume-card__text { font-size: 14px; color: var(--ink-soft); max-width: 40ch; }
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-list { margin-top: 20px; }
+.contact-row {
+  display: flex; justify-content: space-between;
+  padding: 15px 0; border-top: 1px solid var(--line);
+  text-decoration: none; font-size: 14.5px;
+}
+.contact-row:last-child { border-bottom: 1px solid var(--line); }
+.contact-row span:first-child {
+  font-family: 'IBM Plex Mono', monospace; color: var(--ink-soft);
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.contact-row__value { font-weight: 500; }
+.contact-row:hover .contact-row__value { color: var(--brass-deep); }
+
+.footer-note { margin-top: 32px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-soft); text-align: center; }
+
+/* ============================================================
+   BOTTOM TAB BAR (mobile)
+   ============================================================ */
+.tabbar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; background: var(--surface);
+  border-top: 1px solid var(--line);
+  padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+  z-index: 60;
+}
+.tabbar__item {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 6px 2px; text-decoration: none; color: var(--ink-soft);
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.02em;
+}
+.tabbar__item.active { color: var(--brass-deep); }
+.tabbar__icon { width: 20px; height: 20px; }
+@media (min-width: 860px) {
+  .tabbar { display: none; }
+  .section--last { padding-bottom: 64px; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="#home" class="brand">M.O.O</a>
+  <nav class="topnav-links">
+    <a href="#home" data-nav="home">Home</a>
+    <a href="#work" data-nav="work">Systems</a>
+    <a href="#skills" data-nav="skills">Capabilities</a>
+    <a href="#certs" data-nav="certs">Certifications</a>
+    <a href="#contact" data-nav="contact">Contact</a>
+  </nav>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <span class="theme-toggle__thumb">
+      <svg id="themeIcon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </span>
+  </button>
+</header>
+
+<main>
+
+  <!-- ============ HOME ============ -->
+  <section id="home" class="section hero">
+    <h1 class="display-xl">Mubarak<br>Oladipo</h1>
+    <p class="role-line">Technical Operations &amp; Executive Support</p>
+    <p class="hero-body">
+      I design operational systems that help founders and remote teams stay
+      organised, improve visibility, and reduce repetitive work — through
+      structured workflows, documentation, and business tools.
+    </p>
+
+    <div class="metric-strip">
+      <div class="metric-cell"><span class="metric-cell__num">2</span><span class="metric-cell__label">Operational Systems</span></div>
+      <div class="metric-cell"><span class="metric-cell__num">15+</span><span class="metric-cell__label">Business Tools</span></div>
+      <div class="metric-cell"><span class="metric-cell__num">15+</span><span class="metric-cell__label">SOPs &amp; Process Docs</span></div>
+      <div class="metric-cell"><span class="metric-cell__num">20+</span><span class="metric-cell__label">Business Workflows</span></div>
+    </div>
+
+    <div class="chip-row">
+      <span class="chip chip--live">● Full-Time</span>
+      <span class="chip chip--live">● Contract</span>
+      <span class="chip chip--live">● Remote</span>
+      <span class="chip">Nigeria — Open to Remote Roles</span>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#work" class="btn btn--primary">View systems</a>
+      <a href="#resume" class="btn btn--ghost">Résumé</a>
+    </div>
+  </section>
+
+  <!-- ============ SYSTEMS ============ -->
+  <section id="work" class="section">
+    <p class="eyebrow">02 — FEATURED SYSTEMS</p>
+    <h2 class="display-lg">Two systems, not two demos</h2>
+    <p class="section-lead">
+      Each system below is a complete simulated business build, documented
+      end to end — the problem it solves, the architecture behind it, and
+      the tools underneath.
+    </p>
+
+    <!-- ===== CASE FILE — EOH ===== -->
+    <article class="case-file" id="project-eoh">
+      <div class="case-file__tab">
+        <span class="case-file__stamp">COMPLETED</span>
+      </div>
+      <div class="case-file__body">
+        <h3 class="case-file__title">Executive Operations Hub</h3>
+        <p class="case-file__meta">Simulated Business System &nbsp;·&nbsp; Business Consulting &nbsp;·&nbsp; Users: Founder, Executive Assistant, Operations Team</p>
+
+        <p class="case-file__overview">
+          A centralised operating system built to streamline executive
+          support activities — combining communication, scheduling, project
+          management, documentation, and standardised operating procedures
+          into a single, organised workflow.
+        </p>
+
+        <div class="proj-metrics">
+          <div class="metric-cell"><span class="metric-cell__num">4</span><span class="metric-cell__label">Calendar Systems</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">SOP Documents</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">12</span><span class="metric-cell__label">Operational Workflows</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">4</span><span class="metric-cell__label">Platforms Used</span></div>
+        </div>
+
+        <details class="fold">
+          <summary>Technology stack</summary>
+          <table class="stack-table">
+            <tr><td>Google Workspace</td><td>Communication &amp; Collaboration</td></tr>
+            <tr><td>ClickUp</td><td>Task &amp; Project Management</td></tr>
+            <tr><td>Google Drive</td><td>File Management</td></tr>
+          </table>
+        </details>
+
+        <details class="fold" open>
+          <summary>System snapshots</summary>
+
+          <div class="snapshot-group">
+            <p class="snapshot-group__label">Communication Systems</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="images/eoh-communication-1.jpg" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/eoh-communication-1.jpg</span></figure>
+              <figure class="shot"><img src="images/eoh-communication-2.jpg" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/eoh-communication-2.jpg</span></figure>
+            </div>
+
+            <p class="snapshot-group__label">Planning &amp; Calendar</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="images/eoh-calendar-1.jpg" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/eoh-calendar-1.jpg</span></figure>
+              <figure class="shot"><img src="images/eoh-calendar-2.jpg" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/eoh-calendar-2.jpg</span></figure>
+            </div>
+
+            <p class="snapshot-group__label">Task &amp; Project Management</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="images/eoh-clickup-1.jpg" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/eoh-clickup-1.jpg</span></figure>
+              <figure class="shot"><img src="images/eoh-clickup-2.jpg" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/eoh-clickup-2.jpg</span></figure>
+            </div>
+
+            <p class="snapshot-group__label">Automation &amp; Recurring Tasks</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="images/eoh-automation-1.jpg" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/eoh-automation-1.jpg</span></figure>
+              <figure class="shot"><img src="images/eoh-automation-2.jpg" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/eoh-automation-2.jpg</span></figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>Business impact</summary>
+          <ul class="impact-list">
+            <li class="impact-item">
+              <p class="impact-item__head">Centralized Executive Operations</p>
+              <p>Consolidated executive scheduling, communication, documentation, and task management into a single operational system, making information easier to locate and manage.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Improved Operational Consistency</p>
+              <p>Standardized recurring administrative processes through documented SOPs, reducing dependence on memory and enabling repeatable execution.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Better Collaboration</p>
+              <p>Established organized communication channels, shared documentation, and collaborative workspaces that support effective coordination across team members.</p>
+            </li>
+          </ul>
+        </details>
+
+        <div class="ledger">
+          <p class="snapshot-group__label" style="margin-top:20px;">Measured Results</p>
+          <div class="ledger__row"><span>Document retrieval time reduced</span><span class="ledger__num">40%</span></div>
+          <div class="ledger__row"><span>Client onboarding time reduced</span><span class="ledger__num">90 → 20 min</span></div>
+          <div class="ledger__row"><span>Missed deadlines eliminated</span><span class="ledger__num">100%</span></div>
+          <div class="ledger__row"><span>Users with role-based Drive access</span><span class="ledger__num">5</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ===== CASE FILE — FMO ===== -->
+    <article class="case-file" id="project-fmo">
+      <div class="case-file__tab">
+        <span class="case-file__stamp">COMPLETED</span>
+      </div>
+      <div class="case-file__body">
+        <h3 class="case-file__title">Finance &amp; Meeting Operations System</h3>
+        <p class="case-file__meta">Simulated Business System &nbsp;·&nbsp; Business Consulting</p>
+
+        <p class="case-file__overview">
+          A centralised operational framework for invoicing, financial
+          reporting, meeting coordination, documentation, and team
+          communication — improving visibility, accountability, and
+          consistency across day-to-day operations.
+        </p>
+
+        <div class="proj-metrics">
+          <div class="metric-cell"><span class="metric-cell__num">20</span><span class="metric-cell__label">Invoices Managed</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">10</span><span class="metric-cell__label">Clients Billed</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">Slack Channels</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">2</span><span class="metric-cell__label">SOP Documents</span></div>
+        </div>
+
+        <details class="fold">
+          <summary>Technology stack</summary>
+          <table class="stack-table">
+            <tr><td>Zoho Invoice</td><td>Client invoicing &amp; payment tracking</td></tr>
+            <tr><td>Google Sheets</td><td>Financial dashboard &amp; action tracker</td></tr>
+            <tr><td>Google Docs</td><td>SOPs, agendas, meeting minutes</td></tr>
+            <tr><td>Google Calendar</td><td>Meeting scheduling</td></tr>
+            <tr><td>Slack</td><td>Team communication</td></tr>
+          </table>
+        </details>
+
+        <details class="fold" open>
+          <summary>System snapshots</summary>
+
+          <div class="snapshot-group">
+            <p class="snapshot-group__label">Finance Operations</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="images/fmo-finance-1.jpg" alt="Finance & Meeting Operations System — finance dashboard screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/fmo-finance-1.jpg</span></figure>
+              <figure class="shot"><img src="images/fmo-finance-2.jpg" alt="Finance & Meeting Operations System — finance dashboard screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/fmo-finance-2.jpg</span></figure>
+            </div>
+
+            <p class="snapshot-group__label">Meeting Operations</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="images/fmo-meeting-1.jpg" alt="Finance & Meeting Operations System — meeting tracker screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/fmo-meeting-1.jpg</span></figure>
+              <figure class="shot"><img src="images/fmo-meeting-2.jpg" alt="Finance & Meeting Operations System — meeting tracker screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/fmo-meeting-2.jpg</span></figure>
+            </div>
+
+            <p class="snapshot-group__label">Documentation</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="images/fmo-docs-1.jpg" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/fmo-docs-1.jpg</span></figure>
+              <figure class="shot"><img src="images/fmo-docs-2.jpg" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/fmo-docs-2.jpg</span></figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>Business impact</summary>
+          <ul class="impact-list">
+            <li class="impact-item">
+              <p class="impact-item__head">Centralized Financial Tracking</p>
+              <p>Structured invoicing and reporting processes for consistent financial record-keeping.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Revenue Visibility</p>
+              <p>Interactive dashboards showing revenue, outstanding balances, and payment status in real time.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Standardized Meeting Operations</p>
+              <p>Reusable templates and action trackers for meeting preparation and follow-up.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Documented Procedures</p>
+              <p>Established operational SOPs ensuring consistent execution and smoother onboarding.</p>
+            </li>
+          </ul>
+        </details>
+
+        <div class="ledger">
+          <p class="snapshot-group__label" style="margin-top:20px;">Measured Results</p>
+          <div class="ledger__row"><span>Simulated late payments reduced</span><span class="ledger__num">60%</span></div>
+          <div class="ledger__row"><span>Action items tracked to completion</span><span class="ledger__num">100%</span></div>
+          <div class="ledger__row"><span>Revenue visibility</span><span class="ledger__num">Real-time</span></div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ CAPABILITIES ============ -->
+  <section id="skills" class="section">
+    <p class="eyebrow">03 — CAPABILITIES</p>
+    <h2 class="display-lg">Core capabilities</h2>
+    <div class="cap-columns">
+      <div>
+        <p class="cap-col__title">Operations</p>
+        <div class="tag-grid">
+          <span class="tag">Executive Support</span>
+          <span class="tag">Google Workspace</span>
+          <span class="tag">Calendar Management</span>
+          <span class="tag">Meeting Coordination</span>
+          <span class="tag">Documentation</span>
+          <span class="tag">Process Improvement</span>
+        </div>
+      </div>
+      <div>
+        <p class="cap-col__title">Systems</p>
+        <div class="tag-grid">
+          <span class="tag">ClickUp</span>
+          <span class="tag">Zoho Invoice</span>
+          <span class="tag">Slack</span>
+          <span class="tag">Google Sheets Dashboards</span>
+          <span class="tag">Workflow Automation</span>
+          <span class="tag">SOP Development</span>
+          <span class="tag">Microsoft</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATIONS ============ -->
+  <section id="certs" class="section">
+    <p class="eyebrow">04 — CREDENTIALS</p>
+    <h2 class="display-lg">Certifications</h2>
+    <p class="section-lead">A selection of professional certifications completed to strengthen expertise in technical operations, executive support, project coordination, and productivity tools.</p>
+
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-card__thumb"><img src="images/cert-clickup.jpg" alt="ClickUp Foundations Certificate" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>cert-clickup.jpg</span></div>
+        <p class="cert-card__name">ClickUp Foundations Certificate</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-card__thumb"><img src="images/cert-google-workspace.jpg" alt="Google Workspace Skill Badges" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>cert-google-workspace.jpg</span></div>
+        <p class="cert-card__name">Google Workspace Skill Badges</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-card__thumb"><img src="images/cert-business-comm.jpg" alt="Business Communication Certificate" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>cert-business-comm.jpg</span></div>
+        <p class="cert-card__name">Business Communication Certificate</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-card__thumb"><img src="images/cert-jobberman.jpg" alt="Jobberman Soft Skills Course" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>cert-jobberman.jpg</span></div>
+        <p class="cert-card__name">Jobberman Soft Skills Course</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-card__thumb"><img src="images/cert-kpmg.jpg" alt="Introduction to Technology, KPMG-UK Job Simulation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>cert-kpmg.jpg</span></div>
+        <p class="cert-card__name">Intro to Technology — KPMG-UK</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-card__thumb"><img src="images/cert-xculture.jpg" alt="International Business Certificate, X-Culture" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>cert-xculture.jpg</span></div>
+        <p class="cert-card__name">International Business — X-Culture</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESUME (link only) ============ -->
+  <section id="resume" class="section">
+    <p class="eyebrow">05 — RÉSUMÉ</p>
+    <h2 class="display-lg">Résumé</h2>
+    <div class="resume-card">
+      <p class="resume-card__text">Download or view the latest résumé, outlining experience, projects, and certifications.</p>
+      <a href="#" id="resumeLink" class="btn btn--primary" target="_blank" rel="noopener">View résumé</a>
+    </div>
+    <p class="footer-note" style="text-align:left; margin-top:12px;">Edit the Drive link near the bottom of this file (search for RESUME_LINK) to point this button at your résumé.</p>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section section--last">
+    <p class="eyebrow">06 — CONTACT</p>
+    <h2 class="display-lg">Let's talk</h2>
+    <p class="section-lead">
+      Open to remote opportunities in Technical Operations, Executive
+      Support, Operations Coordination, and Administrative Operations.
+      If you'd like to discuss a role or collaboration, feel free to reach out.
+    </p>
+    <div class="contact-list">
+      <a href="mailto:youremail@example.com" class="contact-row">
+        <span>Email</span><span class="contact-row__value">youremail@example.com</span>
+      </a>
+      <a href="https://linkedin.com/in/your-profile" class="contact-row" target="_blank" rel="noopener">
+        <span>LinkedIn</span><span class="contact-row__value">/in/your-profile</span>
+      </a>
+      <div class="contact-row">
+        <span>Location</span><span class="contact-row__value">Nigeria — Open to Remote Roles</span>
+      </div>
+    </div>
+    <p class="footer-note">File closed. Thank you for reading. — M.O.O</p>
+  </section>
+
+</main>
+
+<nav class="tabbar" id="tabbar">
+  <a href="#home" data-nav="home" class="tabbar__item">
+    <svg viewBox="0 0 24 24" class="tabbar__icon"><path d="M4 11.5 12 4l8 7.5V20a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <span>Home</span>
+  </a>
+  <a href="#work" data-nav="work" class="tabbar__item">
+    <svg viewBox="0 0 24 24" class="tabbar__icon"><rect x="3" y="7" width="18" height="13" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    <span>Systems</span>
+  </a>
+  <a href="#skills" data-nav="skills" class="tabbar__item">
+    <svg viewBox="0 0 24 24" class="tabbar__icon"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <span>Skills</span>
+  </a>
+  <a href="#certs" data-nav="certs" class="tabbar__item">
+    <svg viewBox="0 0 24 24" class="tabbar__icon"><path d="M6 3h9l3 3v15H6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 10h6M9 13.5h6M9 17h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <span>Certs</span>
+  </a>
+  <a href="#contact" data-nav="contact" class="tabbar__item">
+    <svg viewBox="0 0 24 24" class="tabbar__icon"><path d="M3.5 5.5h17v13h-17z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m4 6 8 7 8-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <span>Contact</span>
+  </a>
+</nav>
+
+<!-- Lightbox for enlarging screenshots -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+  // ============================================================
+  // EDIT THIS: your résumé's Google Drive share link
+  // ============================================================
+  const RESUME_LINK = "https://drive.google.com/your-resume-link-here";
+  document.getElementById('resumeLink').setAttribute('href', RESUME_LINK);
+
+  // ---- Theme toggle ----
+  const themeToggle = document.getElementById('themeToggle');
+  function setTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    try { localStorage.setItem('portfolio-theme', t); } catch (e) {}
+  }
+  themeToggle.addEventListener('click', function () {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // ---- Active nav highlight on scroll ----
+  const sections = document.querySelectorAll('main .section[id]');
+  const navLinks = document.querySelectorAll('[data-nav]');
+  function setActive(id) {
+    navLinks.forEach((link) => link.classList.toggle('active', link.dataset.nav === id));
+  }
+  if ('IntersectionObserver' in window && sections.length) {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); }),
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    );
+    sections.forEach((s) => observer.observe(s));
+  }
+
+  // ---- Lightbox for screenshots ----
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.shot img, .cert-card__thumb img').forEach((img) => {
+    img.addEventListener('click', function () {
+      if (this.classList.contains('is-hidden') || this.style.display === 'none') return;
+      lightboxImg.src = this.src;
+      lightboxImg.alt = this.alt;
+      lightbox.classList.add('is-open');
+    });
+  });
+  function closeLightbox() { lightbox.classList.remove('is-open'); lightboxImg.src = ''; }
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
