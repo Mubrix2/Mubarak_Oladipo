@@ -5,7 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mubarak Oladipo — Technical Operations Assistant</title>
 <meta name="description" content="Technical Operations & Executive Support. Executive Operations Hub and Finance & Meeting Operations System — case studies.">
-<link rel="icon" type="image/x-icon" href="/mubrix.png">
+<link rel="icon" type="image/png" href="mubrix.png">
+<!-- EDIT: replace og-image.png with a real screenshot or logo (ideally 1200x630px) for link previews on LinkedIn/Slack/etc -->
+<meta property="og:title" content="Mubarak Oladipo — Technical Operations Assistant">
+<meta property="og:description" content="Technical Operations & Executive Support. Executive Operations Hub and Finance & Meeting Operations System — case studies.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mubarak Oladipo — Technical Operations Assistant">
+<meta name="twitter:description" content="Technical Operations & Executive Support. Executive Operations Hub and Finance & Meeting Operations System — case studies.">
+<meta name="twitter:image" content="og-image.png">
   
 <!-- Set theme before first paint, no flash -->
 <script>
@@ -268,6 +277,17 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
 .btn:active { transform: scale(0.98); }
 
 /* ============================================================
+   ABOUT
+   ============================================================ */
+.about-card {
+  margin-top: 8px;
+  border-left: 3px solid var(--brass);
+  padding-left: 16px;
+}
+.about-card p { margin: 0 0 14px; max-width: 60ch; }
+.about-card p:last-child { margin-bottom: 0; }
+
+/* ============================================================
    CASE FILES
    ============================================================ */
 .case-file {
@@ -335,8 +355,10 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
 .fold li { margin-bottom: 6px; }
 
 .stack-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13.5px; }
-.stack-table td { padding: 8px 10px; border: 3px solid var(--line); }
+.stack-table td { padding: 8px 10px; border: 3px solid var(--line); vertical-align: top; }
 .stack-table td:first-child { font-family: 'Manrope', monospace; font-weight: 600; color: var(--brass-deep); white-space: nowrap; }
+.stack-table ul { margin: 0; padding-left: 16px; font-size: 13px; }
+.stack-table li { margin-bottom: 3px; }
 
 .impact-list { margin: 14px 0 0; padding: 0; list-style: none; }
 .impact-item { padding: 12px 0; border-top: 3px dashed var(--line); }
@@ -345,9 +367,36 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
 .impact-item p { margin: 0; font-size: 14px; }
 
 .ledger { margin-top: 8px; }
+.ledger__note { font-size: 12.5px; color: var(--ink-soft); margin: -2px 0 10px; }
 .ledger__row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-top: 3px dashed var(--line); font-size: 14px; }
 .ledger__row:last-child { border-bottom: 3px dashed var(--line); }
 .ledger__num { font-family: 'Manrope', monospace; font-weight: 600; color: var(--teal); white-space: nowrap; }
+
+/* process flow */
+.process-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 12px;
+}
+.process-flow__step {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  padding: 7px 12px;
+  border: 3px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+.process-flow__arrow { color: var(--brass-deep); font-weight: 700; }
+
+/* role block */
+.role-block__title { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 6px; }
+.role-block__value { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 16px; margin: 0 0 14px; }
+
+/* timeline */
+.timeline-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
+.timeline-col__label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 6px; }
 
 /* ============================================================
    RESPONSIVE SCREENSHOT SLOTS
@@ -443,7 +492,8 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
 }
 .cert-card__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .cert-card__thumb .shot__fallback { font-size: 10px; }
-.cert-card__name { font-size: 12px; padding: 8px 10px; font-family: 'Manrope', monospace; }
+.cert-card__name { font-size: 12px; padding: 8px 10px 2px; font-family: 'Manrope', monospace; }
+.cert-card__date { font-size: 11px; padding: 0 10px 10px; font-family: 'IBM Plex Mono', monospace; color: var(--ink-soft); }
 
 /* ============================================================
    RESUME (link only, no embedded content)
@@ -465,6 +515,8 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
 /* ============================================================
    CONTACT
    ============================================================ */
+.availability-block { margin: 0 0 26px; }
+.availability-block__title { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 10px; }
 .contact-list { margin-top: 20px; }
 .contact-row {
   display: flex; justify-content: space-between;
@@ -510,6 +562,7 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
   <a href="#home" class="brand">M.O.O</a>
   <nav class="topnav-links">
     <a href="#home" data-nav="home">Home</a>
+    <a href="#about" data-nav="about">About</a>
     <a href="#work" data-nav="work">Systems</a>
     <a href="#skills" data-nav="skills">Capabilities</a>
     <a href="#certs" data-nav="certs">Certifications</a>
@@ -529,9 +582,10 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
     <h1 class="display-xl">Mubarak<br>Oladipo</h1>
     <p class="role-line">Technical Operations &amp; Executive Support</p>
     <p class="hero-body">
-      I design operational systems that help founders and remote teams stay
-      organised, improve visibility, and reduce repetitive work — through
-      structured workflows, documentation, and business tools.
+      I build operational systems that give founders and remote teams a
+      single place to manage projects, meetings, documents, communication,
+      and recurring work — through structured workflows, documentation,
+      and business tools.
     </p>
 
     <div class="metric-strip">
@@ -554,13 +608,23 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
     </div>
   </section>
 
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section">
+    <p class="eyebrow">01 — ABOUT</p>
+    <h2 class="display-lg">About</h2>
+    <div class="about-card">
+      <p>I'm a Technical Operations Assistant who enjoys organising messy business processes.</p>
+      <p>I specialise in building structured operational systems using Google Workspace, ClickUp, documentation, finance tracking, and executive support workflows.</p>
+      <p>I enjoy improving visibility, reducing manual work, and creating systems teams can actually use.</p>
+    </div>
+  </section>
+
   <!-- ============ SYSTEMS ============ -->
   <section id="work" class="section">
     <p class="eyebrow">02 — FEATURED SYSTEMS</p>
-    <h2 class="display-lg">Two systems, not two demos</h2>
     <p class="section-lead">
       Each system below is a complete simulated business build, documented
-      end to end — the problem it solves, the architecture behind it, and
+      end to end: the problem it solves, the architecture behind it, and
       the tools underneath.
     </p>
 
@@ -572,6 +636,9 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
       <div class="case-file__body">
         <h3 class="case-file__title">Executive Operations Hub</h3>
         <p class="case-file__meta">Simulated Business System &nbsp;·&nbsp; Business Consulting &nbsp;·&nbsp; Users: Founder, Executive Assistant, Operations Team</p>
+
+        <p class="role-block__title">Role</p>
+        <p class="role-block__value">Technical Operations Assistant</p>
 
         <p class="case-file__overview">
           A centralised operating system built to streamline executive
@@ -587,41 +654,88 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
           <div class="metric-cell"><span class="metric-cell__num">4</span><span class="metric-cell__label">Platforms Used</span></div>
         </div>
 
+        <details class="fold" open>
+          <summary>Business problem</summary>
+          <p>The founder had no single system for executive support — scheduling, inbox triage, task follow-up, and travel logistics were each handled separately, with no shared documentation. Nothing was repeatable without the founder's direct involvement.</p>
+        </details>
+
+        <details class="fold">
+          <summary>Process</summary>
+          <div class="process-flow">
+            <span class="process-flow__step">Problem</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Analysis</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">System Design</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Implementation</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Results</span>
+          </div>
+          <p>Started by mapping every recurring executive task, grouped them by function (communication, scheduling, task management, documentation), then designed a single workspace architecture in Google Workspace and ClickUp before building out SOPs for each recurring process.</p>
+        </details>
+
+        <details class="fold">
+          <summary>Key workflow</summary>
+          <div class="process-flow">
+            <span class="process-flow__step">Meeting Request</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Calendar</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Agenda Template</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Meeting</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Minutes</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Action Tracker</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Weekly Review</span>
+          </div>
+        </details>
+
         <details class="fold">
           <summary>Technology stack</summary>
           <table class="stack-table">
-            <tr><td>Google Workspace</td><td>Communication &amp; Collaboration</td></tr>
-            <tr><td>ClickUp</td><td>Task &amp; Project Management</td></tr>
-            <tr><td>Google Drive</td><td>File Management</td></tr>
+            <tr><td>Google Workspace</td><td>
+              <ul>
+                <li>Gmail</li>
+                <li>Calendar</li>
+                <li>Drive</li>
+                <li>Docs</li>
+                <li>Sheets</li>
+                <li>Meet</li>
+              </ul>
+            </td></tr>
+            <tr><td>ClickUp</td><td>
+              <ul>
+                <li>Dashboards</li>
+                <li>Automations</li>
+                <li>Recurring Tasks</li>
+                <li>Docs</li>
+                <li>Custom Fields</li>
+              </ul>
+            </td></tr>
+            <tr><td>Google Drive</td><td>File management &amp; role-based access</td></tr>
           </table>
         </details>
 
-        <details class="fold" open>
+        <details class="fold">
           <summary>System snapshots</summary>
 
           <div class="snapshot-group">
             <p class="snapshot-group__label">Communication Systems</p>
             <div class="shot-grid">
-              <figure class="shot"><img src="executive/communication_1.png" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
-              <figure class="shot"><img src="executive/communications_2.png" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
+              <figure class="shot"><img src="executive/communication_1.png" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/communication_1.png</span></figure>
+              <figure class="shot"><img src="executive/communications_2.png" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/communications_2.png</span></figure>
             </div>
 
             <p class="snapshot-group__label">Planning &amp; Calendar</p>
             <div class="shot-grid">
-              <figure class="shot"><img src="executive/planning_calendar1.png" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
-              <figure class="shot"><img src="executive/planning_calendar2.png" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
+              <figure class="shot"><img src="executive/planning_calendar1.png" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/planning_calendar1.png</span></figure>
+              <figure class="shot"><img src="executive/planning_calendar2.png" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/planning_calendar2.png</span></figure>
             </div>
 
             <p class="snapshot-group__label">Task &amp; Project Management</p>
             <div class="shot-grid">
-              <figure class="shot"><img src="executive/task_n_project1.png" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
-              <figure class="shot"><img src="executive/task_n_project2.png" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
+              <figure class="shot"><img src="executive/task_n_project1.png" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/task_n_project1.png</span></figure>
+              <figure class="shot"><img src="executive/task_n_project2.png" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/task_n_project2.png</span></figure>
             </div>
 
             <p class="snapshot-group__label">Automation &amp; Recurring Tasks</p>
             <div class="shot-grid">
-              <figure class="shot"><img src="executive/Automation & Recurring Tasks1.png" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
-              <figure class="shot"><img src="executive/Automation & Recurring Tasks2.png" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
+              <figure class="shot"><img src="executive/Automation & Recurring Tasks1.png" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/Automation & Recurring Tasks1.png</span></figure>
+              <figure class="shot"><img src="executive/Automation & Recurring Tasks2.png" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/Automation & Recurring Tasks2.png</span></figure>
             </div>
           </div>
         </details>
@@ -644,13 +758,44 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
           </ul>
         </details>
 
+        <details class="fold">
+          <summary>Timeline</summary>
+          <div class="timeline-row">
+            <div>
+              <p class="timeline-col__label">Duration</p>
+              <p style="margin:0;">3 weeks</p>
+            </div>
+            <div>
+              <p class="timeline-col__label">Deliverables</p>
+              <ul style="margin:0; padding-left:18px;">
+                <li>6 SOPs</li>
+                <li>Calendar architecture</li>
+                <li>ClickUp dashboard</li>
+                <li>Documentation library</li>
+                <li>Onboarding templates</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
         <div class="ledger">
           <p class="snapshot-group__label" style="margin-top:20px;">Measured Results</p>
+          <p class="ledger__note">Based on before/after comparisons within the simulated system.</p>
           <div class="ledger__row"><span>Document retrieval time reduced</span><span class="ledger__num">40%</span></div>
           <div class="ledger__row"><span>Client onboarding time reduced</span><span class="ledger__num">90 → 20 min</span></div>
           <div class="ledger__row"><span>Missed deadlines eliminated</span><span class="ledger__num">100%</span></div>
           <div class="ledger__row"><span>Users with role-based Drive access</span><span class="ledger__num">5</span></div>
         </div>
+
+        <details class="fold">
+          <summary>Lessons learned</summary>
+          <ul>
+            <li>Documentation reduces onboarding time.</li>
+            <li>Standardised templates reduce mistakes.</li>
+            <li>Visibility improves accountability.</li>
+            <li>Simple workflows outperform complicated ones.</li>
+          </ul>
+        </details>
       </div>
     </article>
 
@@ -662,6 +807,9 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
       <div class="case-file__body">
         <h3 class="case-file__title">Finance &amp; Meeting Operations System</h3>
         <p class="case-file__meta">Simulated Business System &nbsp;·&nbsp; Business Consulting</p>
+
+        <p class="role-block__title">Role</p>
+        <p class="role-block__value">Technical Operations Assistant</p>
 
         <p class="case-file__overview">
           A centralised operational framework for invoicing, financial
@@ -677,41 +825,76 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
           <div class="metric-cell"><span class="metric-cell__num">2</span><span class="metric-cell__label">SOP Documents</span></div>
         </div>
 
+        <details class="fold" open>
+          <summary>Business problem</summary>
+          <p>Invoicing, revenue tracking, and meeting follow-up were handled inconsistently, with no shared view of what was paid, outstanding, or overdue — and no reliable record of what was agreed in meetings.</p>
+        </details>
+
+        <details class="fold">
+          <summary>Process</summary>
+          <div class="process-flow">
+            <span class="process-flow__step">Problem</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Analysis</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">System Design</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Implementation</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Results</span>
+          </div>
+          <p>Mapped the invoicing and meeting lifecycle end to end, then built a connected system linking Zoho Invoice to a live Google Sheets dashboard, paired with reusable meeting templates and a shared action tracker.</p>
+        </details>
+
+        <details class="fold">
+          <summary>Key workflow</summary>
+          <div class="process-flow">
+            <span class="process-flow__step">Invoice</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Zoho</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Google Sheets</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Dashboard</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Reminder</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Paid</span>
+          </div>
+        </details>
+
         <details class="fold">
           <summary>Technology stack</summary>
           <table class="stack-table">
             <tr><td>Zoho Invoice</td><td>Client invoicing &amp; payment tracking</td></tr>
-            <tr><td>Google Sheets</td><td>Financial dashboard &amp; action tracker</td></tr>
+            <tr><td>Google Sheets</td><td>
+              <ul>
+                <li>Financial dashboard</li>
+                <li>Action tracker</li>
+                <li>Conditional formatting</li>
+              </ul>
+            </td></tr>
             <tr><td>Google Docs</td><td>SOPs, agendas, meeting minutes</td></tr>
             <tr><td>Google Calendar</td><td>Meeting scheduling</td></tr>
             <tr><td>Slack</td><td>Team communication</td></tr>
           </table>
         </details>
 
-        <details class="fold" open>
+        <details class="fold">
           <summary>System snapshots</summary>
 
           <div class="snapshot-group">
             <p class="snapshot-group__label">Finance Operations</p>
             <div class="shot-grid">
-              <figure class="shot"><img src="aklix finance/Finance Operations1.png" alt="Finance & Meeting Operations System — finance dashboard screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
-              <figure class="shot"><img src="aklix finance/Finance Operations2.png" alt="Finance & Meeting Operations System — finance dashboard screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
-              <figure class="shot"><img src="aklix finance/Finance Operations3.png" alt="Finance & Meeting Operations System — finance dashboard screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
+              <figure class="shot"><img src="aklix finance/Finance Operations1.png" alt="Finance & Meeting Operations System — finance dashboard screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Finance Operations1.png</span></figure>
+              <figure class="shot"><img src="aklix finance/Finance Operations2.png" alt="Finance & Meeting Operations System — finance dashboard screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Finance Operations2.png</span></figure>
+              <figure class="shot"><img src="aklix finance/Finance Operations3.png" alt="Finance & Meeting Operations System — finance dashboard screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Finance Operations3.png</span></figure>
             </div>
 
             <p class="snapshot-group__label">Meeting Operations</p>
             <div class="shot-grid">
-              <figure class="shot"><img src="aklix finance/Meeting Operations1.png" alt="Finance & Meeting Operations System — meeting tracker screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/fmo-meeting-1.jpg</span></figure>
-              <figure class="shot"><img src="aklix finance/Meeting Operations2.png" alt="Finance & Meeting Operations System — meeting tracker screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>images/fmo-meeting-2.jpg</span></figure>
+              <figure class="shot"><img src="aklix finance/Meeting Operations1.png" alt="Finance & Meeting Operations System — meeting tracker screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Meeting Operations1.png</span></figure>
+              <figure class="shot"><img src="aklix finance/Meeting Operations2.png" alt="Finance & Meeting Operations System — meeting tracker screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Meeting Operations2.png</span></figure>
             </div>
 
             <p class="snapshot-group__label">Documentation</p>
             <div class="shot-grid">
-              <figure class="shot"><img src="aklix finance/Documentation1.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
-              <figure class="shot"><img src="aklix finance/Documentation2.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
-              <figure class="shot"><img src="aklix finance/Documentation3.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
-              <figure class="shot"><img src="aklix finance/Documentation4.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
-              <figure class="shot"><img src="aklix finance/Documentation5.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
+              <figure class="shot"><img src="aklix finance/Documentation1.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation1.png</span></figure>
+              <figure class="shot"><img src="aklix finance/Documentation2.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation2.png</span></figure>
+              <figure class="shot"><img src="aklix finance/Documentation3.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation3.png</span></figure>
+              <figure class="shot"><img src="aklix finance/Documentation4.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation4.png</span></figure>
+              <figure class="shot"><img src="aklix finance/Documentation5.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation5.png</span></figure>
             </div>
           </div>
         </details>
@@ -738,12 +921,42 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
           </ul>
         </details>
 
+        <details class="fold">
+          <summary>Timeline</summary>
+          <div class="timeline-row">
+            <div>
+              <p class="timeline-col__label">Duration</p>
+              <p style="margin:0;">2 weeks</p>
+            </div>
+            <div>
+              <p class="timeline-col__label">Deliverables</p>
+              <ul style="margin:0; padding-left:18px;">
+                <li>2 SOPs</li>
+                <li>Financial dashboard</li>
+                <li>Slack workspace</li>
+                <li>Meeting templates</li>
+                <li>Action tracker</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
         <div class="ledger">
           <p class="snapshot-group__label" style="margin-top:20px;">Measured Results</p>
+          <p class="ledger__note">Based on before/after comparisons within the simulated system.</p>
           <div class="ledger__row"><span>Simulated late payments reduced</span><span class="ledger__num">60%</span></div>
           <div class="ledger__row"><span>Action items tracked to completion</span><span class="ledger__num">100%</span></div>
           <div class="ledger__row"><span>Revenue visibility</span><span class="ledger__num">Real-time</span></div>
         </div>
+
+        <details class="fold">
+          <summary>Lessons learned</summary>
+          <ul>
+            <li>Real-time dashboards only get used if they're trusted — consistent update cadence matters more than extra features.</li>
+            <li>Reusable templates reduce meeting prep time significantly.</li>
+            <li>Shared action trackers improve accountability across a team.</li>
+          </ul>
+        </details>
       </div>
     </article>
   </section>
@@ -787,28 +1000,34 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
 
     <div class="cert-grid">
       <div class="cert-card">
-        <div class="cert-card__thumb"><img src="clickup_certificate.png" alt="ClickUp Foundations Certificate" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></div>
+        <div class="cert-card__thumb"><img src="clickup_certificate.png" alt="ClickUp Foundations Certificate" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>clickup_certificate.png</span></div>
         <p class="cert-card__name">ClickUp Foundations Certificate</p>
+        <p class="cert-card__date">2026</p>
       </div>
       <div class="cert-card">
-        <div class="cert-card__thumb"><img src="Google_workspace_certificate.png" alt="Google Workspace Skill Badges" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></div>
+        <div class="cert-card__thumb"><img src="Google_workspace_certificate.png" alt="Google Workspace Skill Badges" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>Google_workspace_certificate.png</span></div>
         <p class="cert-card__name">Google Workspace Skill Badges</p>
+        <p class="cert-card__date">2026</p>
       </div>
       <div class="cert-card">
-        <div class="cert-card__thumb"><img src="hplife_certificate.png" alt="Business Communication Certificate" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></div>
+        <div class="cert-card__thumb"><img src="hplife_certificate.png" alt="Business Communication Certificate" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>hplife_certificate.png</span></div>
         <p class="cert-card__name">Business Communication Certificate</p>
+        <p class="cert-card__date">2024</p>
       </div>
       <div class="cert-card">
-        <div class="cert-card__thumb"><img src="jobberman_certificate.png" alt="Jobberman Soft Skills Course" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></div>
+        <div class="cert-card__thumb"><img src="jobberman_certificate.png" alt="Jobberman Soft Skills Course" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>jobberman_certificate.png</span></div>
         <p class="cert-card__name">Jobberman Soft Skills Course</p>
+        <p class="cert-card__date">2024</p>
       </div>
       <div class="cert-card">
-        <div class="cert-card__thumb"><img src="kpmg_uk_certificate.png" alt="Introduction to Technology, KPMG-UK Job Simulation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></div>
+        <div class="cert-card__thumb"><img src="kpmg_uk_certificate.png" alt="Introduction to Technology, KPMG-UK Job Simulation" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>kpmg_uk_certificate.png</span></div>
         <p class="cert-card__name">Intro to Technology — KPMG-UK</p>
+        <p class="cert-card__date">2024</p>
       </div>
       <div class="cert-card">
-        <div class="cert-card__thumb"><img src="x_culture certificate.png" alt="International Business Certificate, X-Culture" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></div>
+        <div class="cert-card__thumb"><img src="x_culture-certificate.png" alt="International Business Certificate, X-Culture" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>x_culture-certificate.png</span></div>
         <p class="cert-card__name">International Business — X-Culture</p>
+        <p class="cert-card__date">2024</p>
       </div>
     </div>
   </section>
@@ -828,10 +1047,24 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
     <p class="eyebrow">06 — CONTACT</p>
     <h2 class="display-lg">Let's talk</h2>
     <p class="section-lead">
-      Open to remote opportunities in Technical Operations, Executive
-      Support, Operations Coordination, and Administrative Operations.
       If you'd like to discuss a role or collaboration, feel free to reach out.
     </p>
+
+    <div class="availability-block">
+      <p class="availability-block__title">Available for</p>
+      <div class="tag-grid">
+        <span class="tag">Technical Operations</span>
+        <span class="tag">Executive Assistant</span>
+        <span class="tag">Operations Coordinator</span>
+        <span class="tag">Administrative Operations</span>
+      </div>
+      <div class="chip-row" style="margin-top:12px;">
+        <span class="chip chip--live">Remote</span>
+        <span class="chip chip--live">Contract</span>
+        <span class="chip chip--live">Full-Time</span>
+      </div>
+    </div>
+
     <div class="contact-list">
       <a href="mailto:oladipomubarak2017@gmail.com" class="contact-row">
         <span>Email</span><span class="contact-row__value">oladipomubarak2017@gmail.com</span>
