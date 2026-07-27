@@ -656,31 +656,13 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
 
         <details class="fold" open>
           <summary>Business problem</summary>
-          <p>The founder had no single system for executive support — scheduling, inbox triage, task follow-up, and travel logistics were each handled separately, with no shared documentation. Nothing was repeatable without the founder's direct involvement.</p>
+          <p>As the company grew past a handful of clients, the founder was still running day-to-day operations manually — replying to emails between meetings, tracking tasks in a personal notebook, and coordinating calendars over text. There was no shared system the assistant or operations team could step into, so every recurring task depended on the founder remembering it themselves.</p>
         </details>
 
         <details class="fold">
-          <summary>Process</summary>
-          <div class="process-flow">
-            <span class="process-flow__step">Problem</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Analysis</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">System Design</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Implementation</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Results</span>
-          </div>
-          <p>Started by mapping every recurring executive task, grouped them by function (communication, scheduling, task management, documentation), then designed a single workspace architecture in Google Workspace and ClickUp before building out SOPs for each recurring process.</p>
-        </details>
-
-        <details class="fold">
-          <summary>Key workflow</summary>
-          <div class="process-flow">
-            <span class="process-flow__step">Meeting Request</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Calendar</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Agenda Template</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Meeting</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Minutes</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Action Tracker</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Weekly Review</span>
+          <summary>System architecture</summary>
+          <div class="shot-grid" style="grid-template-columns: 1fr;">
+            <figure class="shot" style="aspect-ratio: 16/9;"><img src="executive/architecture.png" alt="Executive Operations Hub — system architecture diagram" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/architecture.png</span></figure>
           </div>
         </details>
 
@@ -758,32 +740,11 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
           </ul>
         </details>
 
-        <details class="fold">
-          <summary>Timeline</summary>
-          <div class="timeline-row">
-            <div>
-              <p class="timeline-col__label">Duration</p>
-              <p style="margin:0;">3 weeks</p>
-            </div>
-            <div>
-              <p class="timeline-col__label">Deliverables</p>
-              <ul style="margin:0; padding-left:18px;">
-                <li>6 SOPs</li>
-                <li>Calendar architecture</li>
-                <li>ClickUp dashboard</li>
-                <li>Documentation library</li>
-                <li>Onboarding templates</li>
-              </ul>
-            </div>
-          </div>
-        </details>
-
         <div class="ledger">
           <p class="snapshot-group__label" style="margin-top:20px;">Measured Results</p>
           <p class="ledger__note">Based on before/after comparisons within the simulated system.</p>
-          <div class="ledger__row"><span>Document retrieval time reduced</span><span class="ledger__num">40%</span></div>
-          <div class="ledger__row"><span>Client onboarding time reduced</span><span class="ledger__num">90 → 20 min</span></div>
-          <div class="ledger__row"><span>Missed deadlines eliminated</span><span class="ledger__num">100%</span></div>
+          <div class="ledger__row"><span>Average document retrieval reduced</span><span class="ledger__num">2 minutes → under 45 seconds</span></div>
+          <div class="ledger__row"><span>Missed deadline eliminated</span><span class="ledger__num">by 100%</span></div>
           <div class="ledger__row"><span>Users with role-based Drive access</span><span class="ledger__num">5</span></div>
         </div>
 
@@ -827,30 +788,13 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
 
         <details class="fold" open>
           <summary>Business problem</summary>
-          <p>Invoicing, revenue tracking, and meeting follow-up were handled inconsistently, with no shared view of what was paid, outstanding, or overdue — and no reliable record of what was agreed in meetings.</p>
+          <p>Invoices were tracked in a mix of email threads and spreadsheets that weren't kept in sync, so it wasn't always clear which clients had paid, which were overdue, and which needed a follow-up. Meetings followed a similar pattern — decisions were made verbally, action items were rarely written down, and follow-up depended on someone remembering what was discussed.</p>
         </details>
 
         <details class="fold">
-          <summary>Process</summary>
-          <div class="process-flow">
-            <span class="process-flow__step">Problem</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Analysis</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">System Design</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Implementation</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Results</span>
-          </div>
-          <p>Mapped the invoicing and meeting lifecycle end to end, then built a connected system linking Zoho Invoice to a live Google Sheets dashboard, paired with reusable meeting templates and a shared action tracker.</p>
-        </details>
-
-        <details class="fold">
-          <summary>Key workflow</summary>
-          <div class="process-flow">
-            <span class="process-flow__step">Invoice</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Zoho</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Google Sheets</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Dashboard</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Reminder</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Paid</span>
+          <summary>System architecture</summary>
+          <div class="shot-grid" style="grid-template-columns: 1fr;">
+            <figure class="shot" style="aspect-ratio: 16/9;"><img src="aklix finance/architecture.png" alt="Finance & Meeting Operations System — system architecture diagram" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/architecture.png</span></figure>
           </div>
         </details>
 
@@ -921,31 +865,11 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
           </ul>
         </details>
 
-        <details class="fold">
-          <summary>Timeline</summary>
-          <div class="timeline-row">
-            <div>
-              <p class="timeline-col__label">Duration</p>
-              <p style="margin:0;">2 weeks</p>
-            </div>
-            <div>
-              <p class="timeline-col__label">Deliverables</p>
-              <ul style="margin:0; padding-left:18px;">
-                <li>2 SOPs</li>
-                <li>Financial dashboard</li>
-                <li>Slack workspace</li>
-                <li>Meeting templates</li>
-                <li>Action tracker</li>
-              </ul>
-            </div>
-          </div>
-        </details>
-
         <div class="ledger">
           <p class="snapshot-group__label" style="margin-top:20px;">Measured Results</p>
           <p class="ledger__note">Based on before/after comparisons within the simulated system.</p>
-          <div class="ledger__row"><span>Simulated late payments reduced</span><span class="ledger__num">60%</span></div>
-          <div class="ledger__row"><span>Action items tracked to completion</span><span class="ledger__num">100%</span></div>
+          <div class="ledger__row"><span>Late payment follow-up</span><span class="ledger__num">Manual → Automated reminders</span></div>
+          <div class="ledger__row"><span>Meeting action items</span><span class="ledger__num">Tracked to completion</span></div>
           <div class="ledger__row"><span>Revenue visibility</span><span class="ledger__num">Real-time</span></div>
         </div>
 
