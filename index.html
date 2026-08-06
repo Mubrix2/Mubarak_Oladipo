@@ -4,18 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mubarak Oladipo — Technical Operations Assistant</title>
-<meta name="description" content="Technical Operations & Executive Support. Executive Operations Hub and Finance & Meeting Operations System — case studies.">
+<meta name="description" content="Technical Operations & Executive Support. Live automation builds and simulated business systems — case studies.">
 <link rel="icon" type="image/png" href="mubrix.png">
-<!-- EDIT: replace og-image.png with a real screenshot or logo (ideally 1200x630px) for link previews on LinkedIn/Slack/etc -->
 <meta property="og:title" content="Mubarak Oladipo — Technical Operations Assistant">
-<meta property="og:description" content="Technical Operations & Executive Support. Executive Operations Hub and Finance & Meeting Operations System — case studies.">
+<meta property="og:description" content="Technical Operations & Executive Support. Live automation builds and simulated business systems — case studies.">
 <meta property="og:image" content="og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mubarak Oladipo — Technical Operations Assistant">
-<meta name="twitter:description" content="Technical Operations & Executive Support. Executive Operations Hub and Finance & Meeting Operations System — case studies.">
+<meta name="twitter:description" content="Technical Operations & Executive Support. Live automation builds and simulated business systems — case studies.">
 <meta name="twitter:image" content="og-image.png">
-  
+
 <!-- Set theme before first paint, no flash -->
 <script>
 (function () {
@@ -24,7 +23,6 @@
     if (saved !== 'light') {
       document.documentElement.setAttribute('data-theme', 'dark');
     }
-    // Dark is the default in every other case; light only shows if the visitor picked it before.
   } catch (e) {}
 })();
 </script>
@@ -33,535 +31,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap" rel="stylesheet">
-
-<style>
-/* ============================================================
-   TOKENS — light (default) + dark
-   ============================================================ */
-:root {
-  --bg: #ECEEE7;
-  --surface: #F7F8F3;
-  --surface-2: #E3E6DC;
-  --ink: #000000;
-  --ink-soft: #4A5751;
-  --line: #9FAC9A;
-  --line-strong: #7C8B79;
-  --brass: #A8763A;
-  --brass-deep: #8A6029;
-  --teal: #2F6B5C;
-  --teal-bg: #E1EAE5;
-  --shadow: 0 2px 0 rgba(27,36,32,0.04);
-  --radius: 4px;
-  --max-w: 760px;
-  color-scheme: light;
-}
-
-:root[data-theme="dark"] {
-  --bg: #141F1A;
-  --surface: #1B2822;
-  --surface-2: #24342C;
-  --ink: #FFFFFF;
-  --ink-soft: #A9B8AD;
-  --line: #2C3B33;
-  --line-strong: #3B4C42;
-  --brass: #D3A25F;
-  --brass-deep: #E7BB78;
-  --teal: #6FBFA8;
-  --teal-bg: #223B33;
-  --shadow: 0 1px 0 rgba(0,0,0,0.2);
-  color-scheme: dark;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: 'Manrope', sans-serif;
-  font-weight: 700;
-  font-size: 17px;
-  line-height: 1.75;
-  -webkit-font-smoothing: antialiased;
-  transition: background .25s ease, color .25s ease;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  * { animation: none !important; transition: none !important; }
-}
-
-a { color: inherit; }
-
-/* ============================================================
-   TOP BAR — brand + theme toggle (always visible)
-   ============================================================ */
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 70;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 20px;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: blur(8px);
-  border-bottom: 2px solid var(--line);
-}
-.brand {
-  font-family: 'Manrope', monospace;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.06em;
-  text-decoration: none;
-}
-.topnav-links { display: none; gap: 26px; }
-.topnav-links a {
-  font-family: 'Manrope', monospace;
-  font-size: 12.5px;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  color: var(--ink-soft);
-  text-transform: uppercase;
-  transition: color .15s ease;
-}
-.topnav-links a.active, .topnav-links a:hover { color: var(--brass-deep); }
-
-@media (min-width: 860px) {
-  .topbar { padding: 16px 48px; }
-  .topnav-links { display: flex; }
-}
-
-/* Theme toggle — physical rocker-switch styling */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  border: 5px solid var(--line-strong);
-  border-radius: 999px;
-  padding: 4px;
-  cursor: pointer;
-  width: 56px;
-  height: 30px;
-  position: relative;
-  flex-shrink: 0;
-}
-.theme-toggle__thumb {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--brass);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: left .2s ease, background .2s ease;
-}
-:root[data-theme="dark"] .theme-toggle__thumb { left: 27px; background: var(--brass-deep); }
-.theme-toggle__thumb svg { width: 13px; height: 13px; color: var(--surface); }
-
-/* ============================================================
-   LAYOUT
-   ============================================================ */
-main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
-
-.section { padding: 48px 0 36px; border-bottom: 3px solid var(--line); }
-.section--last { border-bottom: none; padding-bottom: 96px; }
-@media (min-width: 860px) { .section { padding: 76px 0 56px; } }
-
-.eyebrow {
-  font-family: 'Manrope', monospace;
-  font-size: 15px;
-  letter-spacing: 0.12em;
-  color: var(--brass-deep);
-  text-transform: uppercase;
-  margin: 0 0 14px;
-}
-.display-xl {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 900;
-  font-size: clamp(30px, 8vw, 50px);
-  line-height: 1.06;
-  letter-spacing: -0.02em;
-  margin: 0 0 16px;
-}
-.display-lg {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 900;
-  font-size: clamp(23px, 5vw, 31px);
-  line-height: 1.18;
-  letter-spacing: -0.015em;
-  margin: 0 0 16px;
-}
-.role-line {
-  font-family: 'Manrope', monospace;
-  font-size: 14px;
-  color: var(--ink-soft);
-  margin: 0 0 18px;
-}
-.hero-body, .section-lead {
-  font-size: 16px;
-  max-width: 58ch;
-  margin: 0 0 24px;
-}
-.section-lead { color: var(--ink-soft); }
-
-/* ============================================================
-   HERO METRICS — instrument readout row
-   ============================================================ */
-.metric-strip {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 3px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  margin-bottom: 26px;
-}
-@media (min-width: 560px) { .metric-strip { grid-template-columns: repeat(4, 1fr); } }
-.metric-cell {
-  background: var(--surface);
-  padding: 14px 12px;
-  text-align: center;
-}
-.metric-cell__num {
-  font-family: 'Manrope', monospace;
-  font-weight: 900;
-  font-size: 20px;
-  color: var(--teal);
-  display: block;
-}
-.metric-cell__label {
-  font-size: 11px;
-  color: var(--ink-soft);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
-.chip {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11.5px;
-  letter-spacing: 0.03em;
-  padding: 6px 12px;
-  border: 3px solid var(--line);
-  border-radius: 999px;
-  color: var(--ink-soft);
-  background: var(--surface);
-}
-.chip--live { color: var(--teal); border-color: var(--teal); background: var(--teal-bg); }
-
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.btn {
-  font-family: 'Manrope', monospace;
-  font-size: 13px;
-  font-weight:600;
-  letter-spacing: 0.02em;
-  text-decoration: none;
-  padding: 12px 20px;
-  border-radius: var(--radius);
-  display: inline-block;
-  border: 3px solid transparent;
-  transition: transform .12s ease, background .15s ease, border-color .15s ease;
-  cursor: pointer;
-}
-.btn--primary { background: var(--ink); color: var(--bg); }
-.btn--primary:hover { background: var(--brass-deep); }
-.btn--ghost { border-color: var(--ink); }
-.btn--ghost:hover { background: var(--surface); }
-.btn:active { transform: scale(0.98); }
-
-/* ============================================================
-   ABOUT
-   ============================================================ */
-.about-card {
-  margin-top: 8px;
-  border-left: 3px solid var(--brass);
-  padding-left: 16px;
-}
-.about-card p { margin: 0 0 14px; max-width: 60ch; }
-.about-card p:last-child { margin-bottom: 0; }
-
-/* ============================================================
-   CASE FILES
-   ============================================================ */
-.case-file {
-  margin-top: 30px;
-  border: 3px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
-  overflow: hidden;
-}
-.case-file + .case-file { margin-top: 40px; }
-.case-file__tab {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 10px 18px;
-  background: var(--ink);
-}
-.case-file__stamp {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.08em;
-  padding: 3px 9px;
-  border: 3px solid var(--teal);
-  color: var(--teal);
-  border-radius: 999px;
-  transform: rotate(-2deg);
-}
-.case-file__body { padding: 22px 20px 26px; }
-.case-file__title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(19px, 3.4vw, 24px); margin: 0 0 6px; }
-.case-file__meta { font-size: 12.5px; color: var(--ink-soft); margin: 0 0 16px; }
-.case-file__overview { margin: 0 0 20px; padding-left: 14px; border-left: 2px solid var(--brass); }
-
-/* project metric strip variant (smaller, inline) */
-.proj-metrics {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 3px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-@media (min-width: 480px) { .proj-metrics { grid-template-columns: repeat(4, 1fr); } }
-.proj-metrics .metric-cell { padding: 10px 8px; }
-.proj-metrics .metric-cell__num { font-size: 16px; }
-.proj-metrics .metric-cell__label { font-size: 10px; }
-
-/* accordions */
-.fold { border-top: 1px solid var(--line); padding: 14px 0; }
-.fold summary {
-  font-family: 'Manrope', monospace;
-  font-size: 13px;
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  user-select: none;
-}
-.fold summary::-webkit-details-marker { display: none; }
-.fold summary::before { content: '+'; display: inline-block; width: 18px; color: var(--brass-deep); font-weight: 600; }
-.fold[open] summary::before { content: '\2013'; }
-.fold p, .fold ul { margin: 12px 0 0; font-size: 14.5px; }
-.fold ul { padding-left: 20px; }
-.fold li { margin-bottom: 6px; }
-
-.stack-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13.5px; }
-.stack-table td { padding: 8px 10px; border: 3px solid var(--line); vertical-align: top; }
-.stack-table td:first-child { font-family: 'Manrope', monospace; font-weight: 600; color: var(--brass-deep); white-space: nowrap; }
-.stack-table ul { margin: 0; padding-left: 16px; font-size: 13px; }
-.stack-table li { margin-bottom: 3px; }
-
-.impact-list { margin: 14px 0 0; padding: 0; list-style: none; }
-.impact-item { padding: 12px 0; border-top: 3px dashed var(--line); }
-.impact-item:last-child { border-bottom: 3px dashed var(--line); }
-.impact-item__head { font-family: 'Manrope', monospace; font-size: 13.5px; color: var(--teal); margin: 0 0 4px; }
-.impact-item p { margin: 0; font-size: 14px; }
-
-.ledger { margin-top: 8px; }
-.ledger__note { font-size: 12.5px; color: var(--ink-soft); margin: -2px 0 10px; }
-.ledger__row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-top: 3px dashed var(--line); font-size: 14px; }
-.ledger__row:last-child { border-bottom: 3px dashed var(--line); }
-.ledger__num { font-family: 'Manrope', monospace; font-weight: 600; color: var(--teal); white-space: nowrap; }
-
-/* process flow */
-.process-flow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-  margin-top: 12px;
-}
-.process-flow__step {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  padding: 7px 12px;
-  border: 3px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--bg);
-}
-.process-flow__arrow { color: var(--brass-deep); font-weight: 700; }
-
-/* role block */
-.role-block__title { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 6px; }
-.role-block__value { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 16px; margin: 0 0 14px; }
-
-/* timeline */
-.timeline-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
-.timeline-col__label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 6px; }
-
-/* ============================================================
-   RESPONSIVE SCREENSHOT SLOTS
-   ============================================================ */
-.snapshot-group { margin-top: 8px; }
-.snapshot-group__label {
-  font-family: 'Manrope', monospace;
-  font-size: 11.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin: 18px 0 10px;
-}
-.shot-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-@media (min-width: 560px) { .shot-grid { grid-template-columns: 1fr 1fr; } }
-
-.shot {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  border: 3px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--surface-2);
-  cursor: zoom-in;
-}
-.shot img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.shot__fallback {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 14px;
-  font-family: 'Manrope', monospace;
-  font-size: 11px;
-  color: var(--ink-soft);
-  line-height: 1.5;
-}
-.shot img.is-hidden { display: none; }
-
-/* lightbox */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.82);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  padding: 24px;
-}
-.lightbox.is-open { display: flex; }
-.lightbox img { max-width: 100%; max-height: 90vh; border-radius: var(--radius); }
-.lightbox__close {
-  position: absolute;
-  top: 20px; right: 20px;
-  background: none; border: 1px solid rgba(255,255,255,0.4);
-  color: #fff; width: 36px; height: 36px; border-radius: 50%;
-  font-size: 18px; cursor: pointer;
-}
-
-/* ============================================================
-   SKILLS / CERTS
-   ============================================================ */
-.cap-columns { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 8px; }
-@media (min-width: 640px) { .cap-columns { grid-template-columns: 1fr 1fr; } }
-.cap-col__title { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brass-deep); margin: 0 0 10px; }
-.tag-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag { font-family: 'Manrope', monospace; font-size: 12px; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
-
-.cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
-@media (min-width: 640px) { .cert-grid { grid-template-columns: repeat(3, 1fr); } }
-.cert-card {
-  border: 3px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
-  overflow: hidden;
-}
-.cert-card__thumb {
-  aspect-ratio: 4/3;
-  background: var(--surface-2);
-  position: relative;
-}
-.cert-card__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.cert-card__thumb .shot__fallback { font-size: 10px; }
-.cert-card__name { font-size: 12px; padding: 8px 10px 2px; font-family: 'Manrope', monospace; }
-.cert-card__date { font-size: 11px; padding: 0 10px 10px; font-family: 'IBM Plex Mono', monospace; color: var(--ink-soft); }
-
-/* ============================================================
-   RESUME (link only, no embedded content)
-   ============================================================ */
-.resume-card {
-  margin-top: 8px;
-  border: 3px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.resume-card__text { font-size: 14px; color: var(--ink-soft); max-width: 40ch; }
-
-/* ============================================================
-   CONTACT
-   ============================================================ */
-.availability-block { margin: 0 0 26px; }
-.availability-block__title { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 10px; }
-.contact-list { margin-top: 20px; }
-.contact-row {
-  display: flex; justify-content: space-between;
-  padding: 15px 0; border-top: 3px solid var(--line);
-  text-decoration: none; font-size: 14.5px;
-}
-.contact-row:last-child { border-bottom: 3px solid var(--line); }
-.contact-row span:first-child {
-  font-family: 'Manrope', monospace; color: var(--ink-soft);
-  font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em;
-}
-.contact-row__value { font-weight: 500; }
-.contact-row:hover .contact-row__value { color: var(--brass-deep); }
-
-.footer-note { margin-top: 32px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-soft); text-align: center; }
-
-/* ============================================================
-   BOTTOM TAB BAR (mobile)
-   ============================================================ */
-.tabbar {
-  position: fixed; bottom: 0; left: 0; right: 0;
-  display: flex; background: var(--surface);
-  border-top: 3px solid var(--line);
-  padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
-  z-index: 60;
-}
-.tabbar__item {
-  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
-  padding: 6px 2px; text-decoration: none; color: var(--ink-soft);
-  font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.02em;
-}
-.tabbar__item.active { color: var(--brass-deep); }
-.tabbar__icon { width: 20px; height: 20px; }
-@media (min-width: 860px) {
-  .tabbar { display: none; }
-  .section--last { padding-bottom: 64px; }
-}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
+<body>
+
 <body>
 
 <header class="topbar">
   <a href="#home" class="brand">M.O.O</a>
   <nav class="topnav-links">
     <a href="#home" data-nav="home">Home</a>
+    <!-- "Intro" nav link removed while the section above is disabled — add back <a href="#intro" data-nav="intro">Intro</a> here once re-enabled -->
+
     <a href="#about" data-nav="about">About</a>
     <a href="#work" data-nav="work">Systems</a>
     <a href="#skills" data-nav="skills">Capabilities</a>
@@ -575,9 +56,7 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
   </button>
 </header>
 
-<main>
 
-  <!-- ============ HOME ============ -->
   <section id="home" class="section hero">
     <h1 class="display-xl">Mubarak<br>Oladipo</h1>
     <p class="role-line">Technical Operations &amp; Executive Support</p>
@@ -589,7 +68,7 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
     </p>
 
     <div class="metric-strip">
-      <div class="metric-cell"><span class="metric-cell__num">2</span><span class="metric-cell__label">Operational Systems</span></div>
+      <div class="metric-cell"><span class="metric-cell__num">3</span><span class="metric-cell__label">Operational Systems</span></div>
       <div class="metric-cell"><span class="metric-cell__num">15+</span><span class="metric-cell__label">Business Tools</span></div>
       <div class="metric-cell"><span class="metric-cell__num">15+</span><span class="metric-cell__label">SOPs &amp; Process Docs</span></div>
       <div class="metric-cell"><span class="metric-cell__num">20+</span><span class="metric-cell__label">Business Workflows</span></div>
@@ -608,7 +87,24 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
     </div>
   </section>
 
+
+  <!-- ============ INTRO VIDEO ============ -->
+  <!-- Temporarily disabled — remove style="display:none" below to re-enable once the video is recorded. -->
+  <section id="intro" class="section" style="display:none;">
+    <p class="eyebrow">00 — INTRO</p>
+    <h2 class="display-lg">A minute on how I work</h2>
+    <p class="section-lead">A short walkthrough of who I am and how I approach building operational systems.</p>
+    <!-- EDIT: replace this placeholder with a real embed once the video is recorded.
+         Example (YouTube): <iframe width="100%" style="aspect-ratio:16/9; border-radius:var(--radius); border:2px solid var(--line);" src="https://www.youtube.com/embed/VIDEO_ID" title="Introduction — Mubarak Oladipo" frameborder="0" allowfullscreen></iframe>
+         Example (Loom): <div style="position:relative; padding-bottom:56.25%;"><iframe src="https://www.loom.com/embed/VIDEO_ID" frameborder="0" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:var(--radius);"></iframe></div> -->
+    <div class="shot" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:2px dashed var(--line-strong); border-radius:var(--radius); cursor:default;">
+      <span class="shot__fallback" style="display:flex;">Add intro video embed here<br>(YouTube / Loom link)</span>
+    </div>
+  </section>
+
   <!-- ============ ABOUT ============ -->
+  -->
+
   <section id="about" class="section">
     <p class="eyebrow">01 — ABOUT</p>
     <h2 class="display-lg">About</h2>
@@ -619,270 +115,359 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
     </div>
   </section>
 
+
   <!-- ============ SYSTEMS ============ -->
   <section id="work" class="section">
     <p class="eyebrow">02 — FEATURED SYSTEMS</p>
     <p class="section-lead">
-      Each system below is a complete simulated business build, documented
+      Each system below is a complete business build, documented
       end to end: the problem it solves, the architecture behind it, and
-      the tools underneath.
+      the tools underneath — including simulated systems and live automation builds.
     </p>
 
-    <!-- ===== CASE FILE — EOH ===== -->
-    <article class="case-file" id="project-eoh">
-      <!-- <div class="case-file__tab">
-        <span class="case-file__stamp">COMPLETED</span>
-      </div> -->
-      <div class="case-file__body">
-        <h3 class="case-file__title">Executive Operations Hub</h3>
-        <p class="case-file__meta">Simulated Business System &nbsp;·&nbsp; Business Consulting &nbsp;·&nbsp; Users: Founder, Executive Assistant, Operations Team</p>
-
-        <p class="role-block__title">Role</p>
-        <p class="role-block__value">Technical Operations Assistant</p>
-
-        <p class="case-file__overview">
-          A centralised operating system built to streamline executive
-          support activities combining communication, scheduling, project
-          management, documentation, and standardised operating procedures
-          into an organised workflow.
-        </p>
-
-        <div class="proj-metrics">
-          <div class="metric-cell"><span class="metric-cell__num">4</span><span class="metric-cell__label">Calendar Systems</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">SOP Documents</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">12</span><span class="metric-cell__label">Operational Workflows</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">4</span><span class="metric-cell__label">Platforms Used</span></div>
-        </div>
-
-        <details class="fold" open>
-          <summary>Business problem</summary>
-          <p>As the company grew past a handful of clients, the founder was still running day-to-day operations manually — replying to emails between meetings, tracking tasks in a personal notebook, and coordinating calendars over text. There was no shared system the assistant or operations team could step into, so every recurring task depended on the founder remembering it themselves.</p>
-        </details>
-
-        <details class="fold">
-          <summary>System architecture</summary>
-          <div class="shot-grid" style="grid-template-columns: 1fr;">
-            <figure class="shot" style="aspect-ratio: 16/9;"><img src="Executive Hub flow.png" alt="Executive Operations Hub — system architecture diagram" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
-          </div>
-        </details>
-
-        <details class="fold">
-          <summary>Technology stack</summary>
-          <table class="stack-table">
-            <tr><td>Google Workspace</td><td>
-              <ul>
-                <li>Gmail</li>
-                <li>Calendar</li>
-                <li>Drive</li>
-                <li>Docs</li>
-                <li>Sheets</li>
-                <li>Meet</li>
-              </ul>
-            </td></tr>
-            <tr><td>ClickUp</td><td>
-              <ul>
-                <li>Dashboards</li>
-                <li>Automations</li>
-                <li>Recurring Tasks</li>
-                <li>Docs</li>
-                <li>Custom Fields</li>
-              </ul>
-            </td></tr>
-            <tr><td>Google Drive</td><td>File management &amp; role-based access</td></tr>
-          </table>
-        </details>
-
-        <details class="fold">
-          <summary>System snapshots</summary>
-
-          <div class="snapshot-group">
-            <p class="snapshot-group__label">Communication Systems</p>
-            <div class="shot-grid">
-              <figure class="shot"><img src="executive/communication_1.png" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/communication_1.png</span></figure>
-              <figure class="shot"><img src="executive/communications_2.png" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/communications_2.png</span></figure>
-            </div>
-
-            <p class="snapshot-group__label">Planning &amp; Calendar</p>
-            <div class="shot-grid">
-              <figure class="shot"><img src="executive/planning_calendar1.png" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/planning_calendar1.png</span></figure>
-              <figure class="shot"><img src="executive/planning_calendar2.png" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/planning_calendar2.png</span></figure>
-            </div>
-
-            <p class="snapshot-group__label">Task &amp; Project Management</p>
-            <div class="shot-grid">
-              <figure class="shot"><img src="executive/task_n_project1.png" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/task_n_project1.png</span></figure>
-              <figure class="shot"><img src="executive/task_n_project2.png" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/task_n_project2.png</span></figure>
-            </div>
-
-            <p class="snapshot-group__label">Automation &amp; Recurring Tasks</p>
-            <div class="shot-grid">
-              <figure class="shot"><img src="executive/Automation & Recurring Tasks1.png" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/Automation & Recurring Tasks1.png</span></figure>
-              <figure class="shot"><img src="executive/Automation & Recurring Tasks2.png" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/Automation & Recurring Tasks2.png</span></figure>
-            </div>
-          </div>
-        </details>
-
-        <details class="fold">
-          <summary>Business impact</summary>
-          <ul class="impact-list">
-            <li class="impact-item">
-              <p class="impact-item__head">Centralized Executive Operations</p>
-              <p>Consolidated executive scheduling, communication, documentation, and task management into a single operational system, making information easier to locate and manage.</p>
-            </li>
-            <li class="impact-item">
-              <p class="impact-item__head">Improved Operational Consistency</p>
-              <p>Standardized recurring administrative processes through documented SOPs, reducing dependence on memory and enabling repeatable execution.</p>
-            </li>
-            <li class="impact-item">
-              <p class="impact-item__head">Better Collaboration</p>
-              <p>Established organized communication channels, shared documentation, and collaborative workspaces that support effective coordination across team members.</p>
-            </li>
-          </ul>
-        </details>
-
-        <div class="ledger">
-          <p class="snapshot-group__label" style="margin-top:20px;">Measured Results</p>
-          <p class="ledger__note">Based on before/after comparisons within the simulated system.</p>
-          <div class="ledger__row"><span>Average document retrieval reduced</span><span class="ledger__num">2 minutes → under 45 seconds</span></div>
-          <div class="ledger__row"><span>Missed deadline eliminated</span><span class="ledger__num">by 100%</span></div>
-          <div class="ledger__row"><span>Users with role-based Drive access</span><span class="ledger__num">5</span></div>
-        </div>
-
-        <details class="fold">
-          <summary>Lessons learned</summary>
-          <ul>
-            <li>Documentation reduces onboarding time.</li>
-            <li>Standardised templates reduce mistakes.</li>
-            <li>Visibility improves accountability.</li>
-            <li>Simple workflows outperform complicated ones.</li>
-          </ul>
-        </details>
-      </div>
-    </article>
-
-    <!-- ===== CASE FILE — FMO ===== -->
-    <article class="case-file" id="project-fmo">
+    <!-- ===== CASE FILE — FINANCE VISIBILITY DASHBOARD ===== -->
+    <article class="case-file" id="project-finance-dashboard">
       <div class="case-file__tab">
         <span class="case-file__stamp">COMPLETED</span>
       </div>
       <div class="case-file__body">
-        <h3 class="case-file__title">Finance &amp; Meeting Operations System</h3>
-        <p class="case-file__meta">Simulated Business System &nbsp;·&nbsp; Business Consulting</p>
+        <h3 class="case-file__title">Finance Visibility Dashboard</h3>
+        <p class="case-file__meta">Live Automation Build &nbsp;·&nbsp; AI-Assisted Finance Operations &nbsp;·&nbsp; Users: Founder, Finance/Accounts Receivable Owner</p>
 
         <p class="role-block__title">Role</p>
         <p class="role-block__value">Technical Operations Assistant</p>
 
         <p class="case-file__overview">
-          A centralised operational framework for invoicing, financial
-          reporting, meeting coordination, documentation, and team
-          communication — improving visibility, accountability, and
-          consistency across day-to-day operations.
+          A three-scenario no-code automation system that keeps a live finance
+          dashboard in sync with Zoho Invoice, drafts tone-escalating payment
+          reminders with AI, and holds every reminder behind a human approval
+          step before it sends — with the team alerted in Slack the moment a
+          new invoice goes out.
         </p>
 
         <div class="proj-metrics">
-          <div class="metric-cell"><span class="metric-cell__num">20</span><span class="metric-cell__label">Invoices Managed</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">10</span><span class="metric-cell__label">Clients Billed</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">Slack Channels</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">2</span><span class="metric-cell__label">SOP Documents</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">3</span><span class="metric-cell__label">Automated Scenarios</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">Hourly</span><span class="metric-cell__label">Dashboard Sync</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">3</span><span class="metric-cell__label">Reminder Escalation Tiers</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">Test Invoices Processed</span></div>
         </div>
 
         <details class="fold" open>
           <summary>Business problem</summary>
-          <p>Invoices were tracked in a mix of email threads and spreadsheets that weren't kept in sync, so it wasn't always clear which clients had paid, which were overdue, and which needed a follow-up. Meetings followed a similar pattern — decisions were made verbally, action items were rarely written down, and follow-up depended on someone remembering what was discussed.</p>
+          <p>Invoicing tends to live in three disconnected places — the invoicing tool, a spreadsheet someone updates "when they remember," and a founder's head, chasing payments manually. There's no live view of what's paid, outstanding, or overdue, and reminder emails go out inconsistently, if at all.</p>
+        </details>
+
+        <details class="fold">
+          <summary>Solution</summary>
+          <p>I designed a three-scenario automation system. The first syncs every Zoho Invoice change to a live Google Sheets dashboard on an hourly schedule, routing Paid/Sent/Overdue invoices down separate paths with a search-then-update-or-add pattern so nothing duplicates. The second runs daily, drafts a tone-escalating reminder email with AI based on how overdue an invoice is, and parks it in the sheet marked "Pending Review" — nothing sends automatically. A human approves each draft by changing one cell, which triggers the third scenario to actually send it and log the result. A fourth, smaller automation posts a Slack alert the moment any new invoice is created.</p>
         </details>
 
         <details class="fold">
           <summary>System architecture</summary>
-          <div class="shot-grid" style="grid-template-columns: 1fr;">
-            <figure class="shot" style="aspect-ratio: 16/9;"><img src="FInance & Meeting.png" alt="Finance & Meeting Operations System — system architecture diagram" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"></figure>
-          </div>
+          <pre style="background:var(--surface-2); border:2px solid var(--line); border-radius:var(--radius); padding:18px 20px; font-family:'IBM Plex Mono', monospace; font-size:13px; line-height:1.6; color:var(--ink-soft); overflow-x:auto; white-space:pre;">Zoho Invoice
+      │
+      ▼
+Scenario 1 — Sync (hourly)
+────────────────────────────
+Watch Invoices
+      │
+      ▼
+Router (Paid / Sent / Overdue)
+      │
+      ▼
+Search Row → Update or Add
+      │
+      ▼
+Google Sheets — CEO Dashboard
+────────────────────────────
+      │
+      ▼
+Scenario 2 — Draft & Queue (daily, 9AM)
+────────────────────────────
+Search Rows (Sent + Overdue)
+      │
+      ▼
+Router (Day 3 / 10 / 20)
+      │
+      ▼
+Gemini — draft reminder
+      │
+      ▼
+Write to sheet → "Pending Review"
+────────────────────────────
+      │
+Human reviews & approves
+      │
+      ▼
+Scenario 2B — Approve & Send (every 30 min)
+────────────────────────────
+Search Rows ("Approved")
+      │
+      ▼
+Gmail — send reminder
+      │
+      ▼
+Update row → "Sent"
+
+Zoho Invoice (new) ──▶ Scenario 3 ──▶ Slack #finance</pre>
         </details>
 
         <details class="fold">
           <summary>Technology stack</summary>
           <table class="stack-table">
-            <tr><td>Zoho Invoice</td><td>Client invoicing &amp; payment tracking</td></tr>
-            <tr><td>Google Sheets</td><td>
-              <ul>
-                <li>Financial dashboard</li>
-                <li>Action tracker</li>
-                <li>Conditional formatting</li>
-              </ul>
-            </td></tr>
-            <tr><td>Google Docs</td><td>SOPs, agendas, meeting minutes</td></tr>
-            <tr><td>Google Calendar</td><td>Meeting scheduling</td></tr>
-            <tr><td>Slack</td><td>Team communication</td></tr>
+            <tr><td>Make.com</td><td>Core workflow automation platform</td></tr>
+            <tr><td>Zoho Invoice</td><td>Invoicing &amp; the trigger source for every scenario</td></tr>
+            <tr><td>Google Sheets</td><td>Live CEO dashboard, data store, and KPI/chart calculations</td></tr>
+            <tr><td>Gemini 2.5 Flash</td><td>Drafts tone-escalating reminder emails</td></tr>
+            <tr><td>Gmail</td><td>Sends approved reminders only</td></tr>
+            <tr><td>Slack</td><td>Real-time team alert on every new invoice</td></tr>
           </table>
         </details>
 
         <details class="fold">
+          <summary>Demo video</summary>
+          <!-- EDIT: replace this placeholder with a real embed once the demo video is recorded.
+               Example (YouTube): <iframe width="100%" style="aspect-ratio:16/9; border-radius:var(--radius); border:2px solid var(--line);" src="https://www.youtube.com/embed/VIDEO_ID" title="Finance Visibility Dashboard demo" frameborder="0" allowfullscreen></iframe>
+               Example (Loom): <div style="position:relative; padding-bottom:56.25%;"><iframe src="https://www.loom.com/embed/VIDEO_ID" frameborder="0" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:var(--radius);"></iframe></div> -->
+          <div class="shot" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:2px dashed var(--line-strong); border-radius:var(--radius);">
+            <span class="shot__fallback" style="display:flex;">Add demo video embed here<br>(YouTube / Loom link)</span>
+          </div>
+        </details>
+
+        <details class="fold">
           <summary>System snapshots</summary>
-
           <div class="snapshot-group">
-            <p class="snapshot-group__label">Finance Operations</p>
+            <p class="snapshot-group__label">Live Dashboard</p>
             <div class="shot-grid">
-              <figure class="shot"><img src="aklix finance/Finance Operations1.png" alt="Finance & Meeting Operations System — finance dashboard screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Finance Operations1.png</span></figure>
-              <figure class="shot"><img src="aklix finance/Finance Operations2.png" alt="Finance & Meeting Operations System — finance dashboard screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Finance Operations2.png</span></figure>
-              <figure class="shot"><img src="aklix finance/Finance Operations3.png" alt="Finance & Meeting Operations System — finance dashboard screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Finance Operations3.png</span></figure>
+              <figure class="shot"><img src="finance-dashboard/ceo-dashboard.png" alt="Finance Visibility Dashboard — live CEO dashboard with KPIs and cash-in trend chart" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>finance-dashboard/ceo-dashboard.png</span></figure>
             </div>
-
-            <p class="snapshot-group__label">Meeting Operations</p>
+            <p class="snapshot-group__label">AI-Drafted Reminder</p>
             <div class="shot-grid">
-              <figure class="shot"><img src="aklix finance/Meeting Operations1.png" alt="Finance & Meeting Operations System — meeting tracker screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Meeting Operations1.png</span></figure>
-              <figure class="shot"><img src="aklix finance/Meeting Operations2.png" alt="Finance & Meeting Operations System — meeting tracker screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Meeting Operations2.png</span></figure>
+              <figure class="shot"><img src="finance-dashboard/reminder-email.png" alt="Finance Visibility Dashboard — AI-drafted payment reminder email" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>finance-dashboard/reminder-email.png</span></figure>
             </div>
-
-            <p class="snapshot-group__label">Documentation</p>
+            <p class="snapshot-group__label">Slack Alert</p>
             <div class="shot-grid">
-              <figure class="shot"><img src="aklix finance/Documentation1.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation1.png</span></figure>
-              <figure class="shot"><img src="aklix finance/Documentation2.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation2.png</span></figure>
-              <figure class="shot"><img src="aklix finance/Documentation3.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation3.png</span></figure>
-              <figure class="shot"><img src="aklix finance/Documentation4.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation4.png</span></figure>
-              <figure class="shot"><img src="aklix finance/Documentation5.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation5.png</span></figure>
+              <figure class="shot"><img src="finance-dashboard/slack-alert.png" alt="Finance Visibility Dashboard — new invoice Slack alert" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>finance-dashboard/slack-alert.png</span></figure>
             </div>
           </div>
         </details>
 
         <details class="fold">
-          <summary>Business impact</summary>
-          <ul class="impact-list">
-            <li class="impact-item">
-              <p class="impact-item__head">Centralized Financial Tracking</p>
-              <p>Structured invoicing and reporting processes for consistent financial record-keeping.</p>
-            </li>
-            <li class="impact-item">
-              <p class="impact-item__head">Revenue Visibility</p>
-              <p>Interactive dashboards showing revenue, outstanding balances, and payment status in real time.</p>
-            </li>
-            <li class="impact-item">
-              <p class="impact-item__head">Standardized Meeting Operations</p>
-              <p>Reusable templates and action trackers for meeting preparation and follow-up.</p>
-            </li>
-            <li class="impact-item">
-              <p class="impact-item__head">Documented Procedures</p>
-              <p>Established operational SOPs ensuring consistent execution and smoother onboarding.</p>
-            </li>
+          <summary>Features</summary>
+          <ul>
+            <li>✅ Automatic hourly sync from Zoho Invoice to Google Sheets</li>
+            <li>✅ Live dashboard — MRR, Outstanding, Overdue, Collected this month</li>
+            <li>✅ Cash-in trend chart</li>
+            <li>✅ AI-drafted reminder emails that escalate tone at 3 / 10 / 20+ days overdue</li>
+            <li>✅ Human approval required before any reminder sends</li>
+            <li>✅ Automated Slack alert on every new invoice</li>
+          </ul>
+        </details>
+
+        <details class="fold">
+          <summary>My role</summary>
+          <ul>
+            <li>Designed the three-scenario automation pipeline</li>
+            <li>Built the search-then-update-or-add sync logic to prevent duplicate rows</li>
+            <li>Wrote the escalating AI prompts for each reminder tier</li>
+            <li>Built the CEO dashboard formulas and cash-in trend chart</li>
+            <li>Implemented the human-in-the-loop approval gate before sending</li>
           </ul>
         </details>
 
         <div class="ledger">
-          <p class="snapshot-group__label" style="margin-top:20px;">Measured Results</p>
-          <p class="ledger__note">Based on before/after comparisons within the simulated system.</p>
-          <div class="ledger__row"><span>Late payment follow-up</span><span class="ledger__num">Manual → Automated reminders</span></div>
-          <div class="ledger__row"><span>Meeting action items</span><span class="ledger__num">Tracked to completion</span></div>
-          <div class="ledger__row"><span>Revenue visibility</span><span class="ledger__num">Real-time</span></div>
+          <p class="snapshot-group__label" style="margin-top:20px;">Business Results</p>
+          <p class="ledger__note">Based on internal test runs using simulated invoice data — not yet measured on a live account.</p>
+          <div class="ledger__row"><span>Dashboard updates</span><span class="ledger__num">Automatic, hourly</span></div>
+          <div class="ledger__row"><span>Manual invoice chasing</span><span class="ledger__num">Eliminated</span></div>
+          <div class="ledger__row"><span>Reminder tone</span><span class="ledger__num">Escalates by days overdue</span></div>
+          <div class="ledger__row"><span>Team visibility</span><span class="ledger__num">Real-time via Slack</span></div>
+          <div class="ledger__row"><span>Send oversight</span><span class="ledger__num">Human approval required</span></div>
         </div>
 
         <details class="fold">
           <summary>Lessons learned</summary>
           <ul>
-            <li>Real-time dashboards only get used if they're trusted — consistent update cadence matters more than extra features.</li>
-            <li>Reusable templates reduce meeting prep time significantly.</li>
-            <li>Shared action trackers improve accountability across a team.</li>
+            <li>Filtering has to happen after the trigger, not inside it — Zoho's "Watch Invoices" fires on every change, so status splitting is a router job, not a trigger setting.</li>
+            <li>A live spreadsheet formula is more reliable than an extra automation module for a simple calculation like days overdue — fewer moving parts, fewer ways to break mid-demo.</li>
+            <li>Status filters are case-sensitive and fail silently on a mismatch — worth checking the exact field casing before setting any filter condition.</li>
           </ul>
         </details>
       </div>
     </article>
+
+    <!-- ===== CASE FILE — AI LEAD RESPONSE & APPROVAL SYSTEM ===== -->
+    <article class="case-file" id="project-ai-lead-response">
+      <div class="case-file__tab">
+        <span class="case-file__stamp">COMPLETED</span>
+      </div>
+      <div class="case-file__body">
+        <h3 class="case-file__title">AI Lead Response &amp; Approval System</h3>
+        <p class="case-file__meta">Live Automation Build &nbsp;·&nbsp; AI-Assisted Sales Operations &nbsp;·&nbsp; Users: Founder, Sales/Lead Response Owner</p>
+
+        <p class="role-block__title">Role</p>
+        <p class="role-block__value">Technical Operations Assistant</p>
+
+        <p class="case-file__overview">
+          A two-stage no-code automation system that captures inbound leads, drafts a
+          personalised first-response email with AI, and routes it through a human
+          approval step before sending — with every stage logged for response-time
+          reporting.
+        </p>
+
+        <div class="proj-metrics">
+          <div class="metric-cell"><span class="metric-cell__num">2</span><span class="metric-cell__label">Linked Automations</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">8</span><span class="metric-cell__label">Workflow Steps</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">Test Leads Processed</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">~1 min</span><span class="metric-cell__label">Avg. Response (Test Run)</span></div>
+        </div>
+
+        <details class="fold" open>
+          <summary>Business problem</summary>
+          <p>A growing business receives enquiries through its website. Responding manually causes delays, inconsistent messaging, and poor lead tracking. The objective was to automate lead intake, generate a personalised first-response email using AI, require human approval before sending, and measure response times for operational reporting.</p>
+        </details>
+
+        <details class="fold">
+          <summary>Solution</summary>
+          <p>I designed a two-stage automation system. The first workflow captures incoming leads, stores them in a CRM table, generates an AI draft, and routes it to Slack for review. A second workflow is triggered when the reviewer approves the draft with a Slack reaction. The system sends the email, updates the CRM, timestamps the response, and calculates the first-response SLA automatically.</p>
+        </details>
+
+        <details class="fold">
+          <summary>System architecture</summary>
+          <pre style="background:var(--surface-2); border:2px solid var(--line); border-radius:var(--radius); padding:18px 20px; font-family:'IBM Plex Mono', monospace; font-size:13px; line-height:1.6; color:var(--ink-soft); overflow-x:auto; white-space:pre;">Website Form
+      │
+      ▼
+Zap #1
+────────────────────────────
+Capture Lead
+      │
+      ▼
+Zapier Tables
+      │
+      ▼
+OpenAI
+      │
+      ▼
+Slack Approval
+────────────────────────────
+      │
+Human reviews
+      │
+      ▼
+✅ Reaction
+      │
+      ▼
+Zap #2
+────────────────────────────
+Extract Record ID
+      │
+      ▼
+Find Lead
+      │
+      ▼
+Gmail
+      │
+      ▼
+Update CRM
+      │
+      ▼
+Calculate Response Time
+────────────────────────────</pre>
+        </details>
+
+        <details class="fold">
+          <summary>Technology stack</summary>
+          <table class="stack-table">
+            <tr><td>Zapier</td><td>Core workflow automation platform</td></tr>
+            <tr><td>OpenAI</td><td>AI-generated first-response drafts</td></tr>
+            <tr><td>Slack</td><td>Human-in-the-loop approval step</td></tr>
+            <tr><td>Gmail</td><td>Email delivery</td></tr>
+            <tr><td>Zapier Tables</td><td>Lead/CRM data store &amp; response-time reporting</td></tr>
+            <tr><td>Calendly</td><td>Meeting booking link for approved leads</td></tr>
+          </table>
+        </details>
+
+        <details class="fold">
+          <summary>Demo video</summary>
+          <!-- EDIT: replace this placeholder with a real embed once the demo video is recorded.
+               Example (YouTube): <iframe width="100%" style="aspect-ratio:16/9; border-radius:var(--radius); border:2px solid var(--line);" src="https://www.youtube.com/embed/VIDEO_ID" title="AI Lead Response & Approval System demo" frameborder="0" allowfullscreen></iframe>
+               Example (Loom): <div style="position:relative; padding-bottom:56.25%;"><iframe src="https://www.loom.com/embed/VIDEO_ID" frameborder="0" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:var(--radius);"></iframe></div> -->
+          <div class="shot" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:2px dashed var(--line-strong); border-radius:var(--radius);">
+            <span class="shot__fallback" style="display:flex;">Add demo video embed here<br>(YouTube / Loom link)</span>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>System snapshots</summary>
+          <div class="snapshot-group">
+            <p class="snapshot-group__label">Zapier Workflow</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="ai-lead-response/zap-1-capture.png" alt="AI Lead Response — Zap 1, lead capture and AI draft" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>ai-lead-response/zap-1-capture.png</span></figure>
+              <figure class="shot"><img src="ai-lead-response/zap-2-send.png" alt="AI Lead Response — Zap 2, approval to send" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>ai-lead-response/zap-2-send.png</span></figure>
+            </div>
+            <p class="snapshot-group__label">Slack Approval</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="ai-lead-response/slack-approval.png" alt="AI Lead Response — Slack approval step" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>ai-lead-response/slack-approval.png</span></figure>
+            </div>
+            <p class="snapshot-group__label">CRM &amp; Response Tracking</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="ai-lead-response/crm-tracking.png" alt="AI Lead Response — Zapier Tables CRM and response-time tracking" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>ai-lead-response/crm-tracking.png</span></figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>Features</summary>
+          <ul>
+            <li>✅ Lead capture</li>
+            <li>✅ AI-generated email drafts</li>
+            <li>✅ Human approval workflow</li>
+            <li>✅ Slack-based approval system</li>
+            <li>✅ Automated email delivery</li>
+            <li>✅ CRM status tracking</li>
+            <li>✅ First-response timestamp logging</li>
+            <li>✅ SLA (Response Time) calculation</li>
+          </ul>
+        </details>
+
+        <details class="fold">
+          <summary>My role</summary>
+          <ul>
+            <li>Designed the end-to-end operational workflow</li>
+            <li>Created the AI prompting strategy</li>
+            <li>Built multi-step Zapier automations</li>
+            <li>Implemented the approval-based email workflow</li>
+            <li>Designed the CRM data structure</li>
+            <li>Implemented response-time reporting</li>
+          </ul>
+        </details>
+
+        <div class="ledger">
+          <p class="snapshot-group__label" style="margin-top:20px;">Business Results</p>
+          <p class="ledger__note">Based on internal test runs using simulated lead data — not yet measured on a live client account.</p>
+          <div class="ledger__row"><span>Manual work eliminated</span><span class="ledger__num">AI drafts every enquiry</span></div>
+          <div class="ledger__row"><span>Human review</span><span class="ledger__num">Slack approval before sending</span></div>
+          <div class="ledger__row"><span>CRM updates</span><span class="ledger__num">Automatic</span></div>
+          <div class="ledger__row"><span>Lead tracking</span><span class="ledger__num">Centralized</span></div>
+          <div class="ledger__row"><span>Average first response</span><span class="ledger__num">~1 minute (test run)</span></div>
+          <div class="ledger__row"><span>Email consistency</span><span class="ledger__num">Standardized AI responses</span></div>
+        </div>
+
+        <details class="fold">
+          <summary>Lessons learned</summary>
+          <ul>
+            <li>Human-in-the-loop approval builds trust faster than full autonomy.</li>
+            <li>A clean CRM schema up front makes response-time reporting almost automatic.</li>
+            <li>AI drafts need explicit instructions to actually answer the question asked, not defer to a call.</li>
+          </ul>
+        </details>
+      </div>
+    </article>
+
+
+    <div style="text-align:center; margin-top:36px;">
+      <a href="projects.html" class="btn btn--ghost">See all projects →</a>
+    </div>
   </section>
 
   <!-- ============ CAPABILITIES ============ -->
@@ -949,7 +534,7 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
         <p class="cert-card__date">2024</p>
       </div>
       <div class="cert-card">
-        <div class="cert-card__thumb"><img src="x_culture certificate.png" alt="International Business Certificate, X-Culture" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>x_culture-certificate.png</span></div>
+        <div class="cert-card__thumb"><img src="x_culture-certificate.png" alt="International Business Certificate, X-Culture" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>x_culture-certificate.png</span></div>
         <p class="cert-card__name">International Business — X-Culture</p>
         <p class="cert-card__date">2024</p>
       </div>
@@ -1005,6 +590,7 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
 
 </main>
 
+
 <nav class="tabbar" id="tabbar">
   <a href="#home" data-nav="home" class="tabbar__item">
     <svg viewBox="0 0 24 24" class="tabbar__icon"><path d="M4 11.5 12 4l8 7.5V20a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1029,58 +615,13 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
 </nav>
 
 <!-- Lightbox for enlarging screenshots -->
+
 <div class="lightbox" id="lightbox">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
   <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
   <img id="lightboxImg" src="" alt="">
 </div>
 
-<script>
-  // ============================================================
-  // EDIT THIS: your résumé's Google Drive share link
-  // ============================================================
-  const RESUME_LINK = "https://docs.google.com/document/d/1QXiAnBYrRhauo6_rETuVBrLUF6KQZAHgu0mvw9DSLVE/edit?usp=sharing";
-  document.getElementById('resumeLink').setAttribute('href', RESUME_LINK);
-
-  // ---- Theme toggle ----
-  const themeToggle = document.getElementById('themeToggle');
-  function setTheme(t) {
-    document.documentElement.setAttribute('data-theme', t);
-    try { localStorage.setItem('portfolio-theme', t); } catch (e) {}
-  }
-  themeToggle.addEventListener('click', function () {
-    const current = document.documentElement.getAttribute('data-theme') || 'light';
-    setTheme(current === 'dark' ? 'light' : 'dark');
-  });
-
-  // ---- Active nav highlight on scroll ----
-  const sections = document.querySelectorAll('main .section[id]');
-  const navLinks = document.querySelectorAll('[data-nav]');
-  function setActive(id) {
-    navLinks.forEach((link) => link.classList.toggle('active', link.dataset.nav === id));
-  }
-  if ('IntersectionObserver' in window && sections.length) {
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); }),
-      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
-    );
-    sections.forEach((s) => observer.observe(s));
-  }
-
-  // ---- Lightbox for screenshots ----
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  document.querySelectorAll('.shot img, .cert-card__thumb img').forEach((img) => {
-    img.addEventListener('click', function () {
-      if (this.classList.contains('is-hidden') || this.style.display === 'none') return;
-      lightboxImg.src = this.src;
-      lightboxImg.alt = this.alt;
-      lightbox.classList.add('is-open');
-    });
-  });
-  function closeLightbox() { lightbox.classList.remove('is-open'); lightboxImg.src = ''; }
-  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
-</script>
+<script src="script.js"></script>
 </body>
 </html>
