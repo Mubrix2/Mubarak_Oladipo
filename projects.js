@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Projects — Mubarak Oladipo</title>
+<meta name="description" content="The complete project archive: live automation builds and simulated business systems.">
+<link rel="icon" type="image/png" href="mubrix.png">
+<meta property="og:title" content="All Projects — Mubarak Oladipo">
+<meta property="og:description" content="The complete project archive: live automation builds and simulated business systems.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="All Projects — Mubarak Oladipo">
+<meta name="twitter:description" content="The complete project archive: live automation builds and simulated business systems.">
+<meta name="twitter:image" content="og-image.png">
+
+<!-- Set theme before first paint, no flash -->
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('portfolio-theme');
+    if (saved !== 'light') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch (e) {}
+})();
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a href="index.html" class="brand">M.O.O</a>
+  <nav class="topnav-links">
+    <a href="index.html">← Back to Home</a>
+  </nav>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <span class="theme-toggle__thumb">
+      <svg id="themeIcon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </span>
+  </button>
+</header>
+
+<main>
+  <section id="all-work" class="section">
+    <p class="eyebrow">ARCHIVE</p>
+    <h1 class="display-lg">All Projects</h1>
+    <p class="section-lead">The complete set — live automation builds and simulated business systems, documented end to end.</p>
+
+    <!-- ===== CASE FILE — FINANCE VISIBILITY DASHBOARD ===== -->
+    <article class="case-file" id="project-finance-dashboard">
+      <div class="case-file__tab">
+        <span class="case-file__stamp">COMPLETED</span>
+      </div>
+      <div class="case-file__body">
+        <h3 class="case-file__title">Finance Visibility Dashboard</h3>
+        <p class="case-file__meta">Live Automation Build &nbsp;·&nbsp; AI-Assisted Finance Operations &nbsp;·&nbsp; Users: Founder, Finance/Accounts Receivable Owner</p>
+
+        <p class="role-block__title">Role</p>
+        <p class="role-block__value">Technical Operations Assistant</p>
+
+        <p class="case-file__overview">
+          A three-scenario no-code automation system that keeps a live finance
+          dashboard in sync with Zoho Invoice, drafts tone-escalating payment
+          reminders with AI, and holds every reminder behind a human approval
+          step before it sends — with the team alerted in Slack the moment a
+          new invoice goes out.
+        </p>
+
+        <div class="proj-metrics">
+          <div class="metric-cell"><span class="metric-cell__num">3</span><span class="metric-cell__label">Automated Scenarios</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">Hourly</span><span class="metric-cell__label">Dashboard Sync</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">3</span><span class="metric-cell__label">Reminder Escalation Tiers</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">Test Invoices Processed</span></div>
+        </div>
+
+        <details class="fold" open>
+          <summary>Business problem</summary>
+          <p>Invoicing tends to live in three disconnected places — the invoicing tool, a spreadsheet someone updates "when they remember," and a founder's head, chasing payments manually. There's no live view of what's paid, outstanding, or overdue, and reminder emails go out inconsistently, if at all.</p>
+        </details>
+
+        <details class="fold">
+          <summary>Solution</summary>
+          <p>I designed a three-scenario automation system. The first syncs every Zoho Invoice change to a live Google Sheets dashboard on an hourly schedule, routing Paid/Sent/Overdue invoices down separate paths with a search-then-update-or-add pattern so nothing duplicates. The second runs daily, drafts a tone-escalating reminder email with AI based on how overdue an invoice is, and parks it in the sheet marked "Pending Review" — nothing sends automatically. A human approves each draft by changing one cell, which triggers the third scenario to actually send it and log the result. A fourth, smaller automation posts a Slack alert the moment any new invoice is created.</p>
+        </details>
+
+        <details class="fold">
+          <summary>System architecture</summary>
+          <pre style="background:var(--surface-2); border:2px solid var(--line); border-radius:var(--radius); padding:18px 20px; font-family:'IBM Plex Mono', monospace; font-size:13px; line-height:1.6; color:var(--ink-soft); overflow-x:auto; white-space:pre;">Zoho Invoice
+      │
+      ▼
+Scenario 1 — Sync (hourly)
+────────────────────────────
+Watch Invoices
+      │
+      ▼
+Router (Paid / Sent / Overdue)
+      │
+      ▼
+Search Row → Update or Add
+      │
+      ▼
+Google Sheets — CEO Dashboard
+────────────────────────────
+      │
+      ▼
+Scenario 2 — Draft & Queue (daily, 9AM)
+────────────────────────────
+Search Rows (Sent + Overdue)
+      │
+      ▼
+Router (Day 3 / 10 / 20)
+      │
+      ▼
+Gemini — draft reminder
+      │
+      ▼
+Write to sheet → "Pending Review"
+────────────────────────────
+      │
+Human reviews & approves
+      │
+      ▼
+Scenario 2B — Approve & Send (every 30 min)
+────────────────────────────
+Search Rows ("Approved")
+      │
+      ▼
+Gmail — send reminder
+      │
+      ▼
+Update row → "Sent"
+
+Zoho Invoice (new) ──▶ Scenario 3 ──▶ Slack #finance</pre>
+        </details>
+
+        <details class="fold">
+          <summary>Technology stack</summary>
+          <table class="stack-table">
+            <tr><td>Make.com</td><td>Core workflow automation platform</td></tr>
+            <tr><td>Zoho Invoice</td><td>Invoicing &amp; the trigger source for every scenario</td></tr>
+            <tr><td>Google Sheets</td><td>Live CEO dashboard, data store, and KPI/chart calculations</td></tr>
+            <tr><td>Gemini 2.5 Flash</td><td>Drafts tone-escalating reminder emails</td></tr>
+            <tr><td>Gmail</td><td>Sends approved reminders only</td></tr>
+            <tr><td>Slack</td><td>Real-time team alert on every new invoice</td></tr>
+          </table>
+        </details>
+
+        <details class="fold">
+          <summary>Demo video</summary>
+          <!-- EDIT: replace this placeholder with a real embed once the demo video is recorded.
+               Example (YouTube): <iframe width="100%" style="aspect-ratio:16/9; border-radius:var(--radius); border:2px solid var(--line);" src="https://www.youtube.com/embed/VIDEO_ID" title="Finance Visibility Dashboard demo" frameborder="0" allowfullscreen></iframe>
+               Example (Loom): <div style="position:relative; padding-bottom:56.25%;"><iframe src="https://www.loom.com/embed/VIDEO_ID" frameborder="0" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:var(--radius);"></iframe></div> -->
+          <div class="shot" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:2px dashed var(--line-strong); border-radius:var(--radius);">
+            <span class="shot__fallback" style="display:flex;">Add demo video embed here<br>(YouTube / Loom link)</span>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>System snapshots</summary>
+          <div class="snapshot-group">
+            <p class="snapshot-group__label">Live Dashboard</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="finance-dashboard/ceo-dashboard.png" alt="Finance Visibility Dashboard — live CEO dashboard with KPIs and cash-in trend chart" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>finance-dashboard/ceo-dashboard.png</span></figure>
+            </div>
+            <p class="snapshot-group__label">AI-Drafted Reminder</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="finance-dashboard/reminder-email.png" alt="Finance Visibility Dashboard — AI-drafted payment reminder email" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>finance-dashboard/reminder-email.png</span></figure>
+            </div>
+            <p class="snapshot-group__label">Slack Alert</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="finance-dashboard/slack-alert.png" alt="Finance Visibility Dashboard — new invoice Slack alert" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>finance-dashboard/slack-alert.png</span></figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>Features</summary>
+          <ul>
+            <li>✅ Automatic hourly sync from Zoho Invoice to Google Sheets</li>
+            <li>✅ Live dashboard — MRR, Outstanding, Overdue, Collected this month</li>
+            <li>✅ Cash-in trend chart</li>
+            <li>✅ AI-drafted reminder emails that escalate tone at 3 / 10 / 20+ days overdue</li>
+            <li>✅ Human approval required before any reminder sends</li>
+            <li>✅ Automated Slack alert on every new invoice</li>
+          </ul>
+        </details>
+
+        <details class="fold">
+          <summary>My role</summary>
+          <ul>
+            <li>Designed the three-scenario automation pipeline</li>
+            <li>Built the search-then-update-or-add sync logic to prevent duplicate rows</li>
+            <li>Wrote the escalating AI prompts for each reminder tier</li>
+            <li>Built the CEO dashboard formulas and cash-in trend chart</li>
+            <li>Implemented the human-in-the-loop approval gate before sending</li>
+          </ul>
+        </details>
+
+        <div class="ledger">
+          <p class="snapshot-group__label" style="margin-top:20px;">Business Results</p>
+          <p class="ledger__note">Based on internal test runs using simulated invoice data — not yet measured on a live account.</p>
+          <div class="ledger__row"><span>Dashboard updates</span><span class="ledger__num">Automatic, hourly</span></div>
+          <div class="ledger__row"><span>Manual invoice chasing</span><span class="ledger__num">Eliminated</span></div>
+          <div class="ledger__row"><span>Reminder tone</span><span class="ledger__num">Escalates by days overdue</span></div>
+          <div class="ledger__row"><span>Team visibility</span><span class="ledger__num">Real-time via Slack</span></div>
+          <div class="ledger__row"><span>Send oversight</span><span class="ledger__num">Human approval required</span></div>
+        </div>
+
+        <details class="fold">
+          <summary>Lessons learned</summary>
+          <ul>
+            <li>Filtering has to happen after the trigger, not inside it — Zoho's "Watch Invoices" fires on every change, so status splitting is a router job, not a trigger setting.</li>
+            <li>A live spreadsheet formula is more reliable than an extra automation module for a simple calculation like days overdue — fewer moving parts, fewer ways to break mid-demo.</li>
+            <li>Status filters are case-sensitive and fail silently on a mismatch — worth checking the exact field casing before setting any filter condition.</li>
+          </ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- ===== CASE FILE — AI LEAD RESPONSE & APPROVAL SYSTEM ===== -->
+    <article class="case-file" id="project-ai-lead-response">
+      <div class="case-file__tab">
+        <span class="case-file__stamp">COMPLETED</span>
+      </div>
+      <div class="case-file__body">
+        <h3 class="case-file__title">AI Lead Response &amp; Approval System</h3>
+        <p class="case-file__meta">Live Automation Build &nbsp;·&nbsp; AI-Assisted Sales Operations &nbsp;·&nbsp; Users: Founder, Sales/Lead Response Owner</p>
+
+        <p class="role-block__title">Role</p>
+        <p class="role-block__value">Technical Operations Assistant</p>
+
+        <p class="case-file__overview">
+          A two-stage no-code automation system that captures inbound leads, drafts a
+          personalised first-response email with AI, and routes it through a human
+          approval step before sending — with every stage logged for response-time
+          reporting.
+        </p>
+
+        <div class="proj-metrics">
+          <div class="metric-cell"><span class="metric-cell__num">2</span><span class="metric-cell__label">Linked Automations</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">8</span><span class="metric-cell__label">Workflow Steps</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">Test Leads Processed</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">~1 min</span><span class="metric-cell__label">Avg. Response (Test Run)</span></div>
+        </div>
+
+        <details class="fold" open>
+          <summary>Business problem</summary>
+          <p>A growing business receives enquiries through its website. Responding manually causes delays, inconsistent messaging, and poor lead tracking. The objective was to automate lead intake, generate a personalised first-response email using AI, require human approval before sending, and measure response times for operational reporting.</p>
+        </details>
+
+        <details class="fold">
+          <summary>Solution</summary>
+          <p>I designed a two-stage automation system. The first workflow captures incoming leads, stores them in a CRM table, generates an AI draft, and routes it to Slack for review. A second workflow is triggered when the reviewer approves the draft with a Slack reaction. The system sends the email, updates the CRM, timestamps the response, and calculates the first-response SLA automatically.</p>
+        </details>
+
+        <details class="fold">
+          <summary>System architecture</summary>
+          <pre style="background:var(--surface-2); border:2px solid var(--line); border-radius:var(--radius); padding:18px 20px; font-family:'IBM Plex Mono', monospace; font-size:13px; line-height:1.6; color:var(--ink-soft); overflow-x:auto; white-space:pre;">Website Form
+      │
+      ▼
+Zap #1
+────────────────────────────
+Capture Lead
+      │
+      ▼
+Zapier Tables
+      │
+      ▼
+OpenAI
+      │
+      ▼
+Slack Approval
+────────────────────────────
+      │
+Human reviews
+      │
+      ▼
+✅ Reaction
+      │
+      ▼
+Zap #2
+────────────────────────────
+Extract Record ID
+      │
+      ▼
+Find Lead
+      │
+      ▼
+Gmail
+      │
+      ▼
+Update CRM
+      │
+      ▼
+Calculate Response Time
+────────────────────────────</pre>
+        </details>
+
+        <details class="fold">
+          <summary>Technology stack</summary>
+          <table class="stack-table">
+            <tr><td>Zapier</td><td>Core workflow automation platform</td></tr>
+            <tr><td>OpenAI</td><td>AI-generated first-response drafts</td></tr>
+            <tr><td>Slack</td><td>Human-in-the-loop approval step</td></tr>
+            <tr><td>Gmail</td><td>Email delivery</td></tr>
+            <tr><td>Zapier Tables</td><td>Lead/CRM data store &amp; response-time reporting</td></tr>
+            <tr><td>Calendly</td><td>Meeting booking link for approved leads</td></tr>
+          </table>
+        </details>
+
+        <details class="fold">
+          <summary>Demo video</summary>
+          <!-- EDIT: replace this placeholder with a real embed once the demo video is recorded.
+               Example (YouTube): <iframe width="100%" style="aspect-ratio:16/9; border-radius:var(--radius); border:2px solid var(--line);" src="https://www.youtube.com/embed/VIDEO_ID" title="AI Lead Response & Approval System demo" frameborder="0" allowfullscreen></iframe>
+               Example (Loom): <div style="position:relative; padding-bottom:56.25%;"><iframe src="https://www.loom.com/embed/VIDEO_ID" frameborder="0" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:var(--radius);"></iframe></div> -->
+          <div class="shot" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:2px dashed var(--line-strong); border-radius:var(--radius);">
+            <span class="shot__fallback" style="display:flex;">Add demo video embed here<br>(YouTube / Loom link)</span>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>System snapshots</summary>
+          <div class="snapshot-group">
+            <p class="snapshot-group__label">Zapier Workflow</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="ai-lead-response/zap-1-capture.png" alt="AI Lead Response — Zap 1, lead capture and AI draft" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>ai-lead-response/zap-1-capture.png</span></figure>
+              <figure class="shot"><img src="ai-lead-response/zap-2-send.png" alt="AI Lead Response — Zap 2, approval to send" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>ai-lead-response/zap-2-send.png</span></figure>
+            </div>
+            <p class="snapshot-group__label">Slack Approval</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="ai-lead-response/slack-approval.png" alt="AI Lead Response — Slack approval step" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>ai-lead-response/slack-approval.png</span></figure>
+            </div>
+            <p class="snapshot-group__label">CRM &amp; Response Tracking</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="ai-lead-response/crm-tracking.png" alt="AI Lead Response — Zapier Tables CRM and response-time tracking" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>ai-lead-response/crm-tracking.png</span></figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>Features</summary>
+          <ul>
+            <li>✅ Lead capture</li>
+            <li>✅ AI-generated email drafts</li>
+            <li>✅ Human approval workflow</li>
+            <li>✅ Slack-based approval system</li>
+            <li>✅ Automated email delivery</li>
+            <li>✅ CRM status tracking</li>
+            <li>✅ First-response timestamp logging</li>
+            <li>✅ SLA (Response Time) calculation</li>
+          </ul>
+        </details>
+
+        <details class="fold">
+          <summary>My role</summary>
+          <ul>
+            <li>Designed the end-to-end operational workflow</li>
+            <li>Created the AI prompting strategy</li>
+            <li>Built multi-step Zapier automations</li>
+            <li>Implemented the approval-based email workflow</li>
+            <li>Designed the CRM data structure</li>
+            <li>Implemented response-time reporting</li>
+          </ul>
+        </details>
+
+        <div class="ledger">
+          <p class="snapshot-group__label" style="margin-top:20px;">Business Results</p>
+          <p class="ledger__note">Based on internal test runs using simulated lead data — not yet measured on a live client account.</p>
+          <div class="ledger__row"><span>Manual work eliminated</span><span class="ledger__num">AI drafts every enquiry</span></div>
+          <div class="ledger__row"><span>Human review</span><span class="ledger__num">Slack approval before sending</span></div>
+          <div class="ledger__row"><span>CRM updates</span><span class="ledger__num">Automatic</span></div>
+          <div class="ledger__row"><span>Lead tracking</span><span class="ledger__num">Centralized</span></div>
+          <div class="ledger__row"><span>Average first response</span><span class="ledger__num">~1 minute (test run)</span></div>
+          <div class="ledger__row"><span>Email consistency</span><span class="ledger__num">Standardized AI responses</span></div>
+        </div>
+
+        <details class="fold">
+          <summary>Lessons learned</summary>
+          <ul>
+            <li>Human-in-the-loop approval builds trust faster than full autonomy.</li>
+            <li>A clean CRM schema up front makes response-time reporting almost automatic.</li>
+            <li>AI drafts need explicit instructions to actually answer the question asked, not defer to a call.</li>
+          </ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- ===== CASE FILE — EXECUTIVE BUSINESS TRAVEL PLAN ===== -->
+    <article class="case-file" id="project-travel-plan">
+      <div class="case-file__tab">
+        <span class="case-file__stamp">IN PROGRESS</span>
+      </div>
+      <div class="case-file__body">
+        <h3 class="case-file__title">Executive Business Travel Plan</h3>
+        <p class="case-file__meta">Simulated Business System &nbsp;·&nbsp; Executive Travel &amp; Investor Readiness &nbsp;·&nbsp; Users: CEO, Executive Assistant</p>
+
+        <p class="role-block__title">Role</p>
+        <p class="role-block__value">Technical Operations Assistant</p>
+
+        <p class="case-file__overview">
+          End-to-end coordination of a 4-day international trip for a CEO attending
+          investor and partner meetings — researching and evaluating flight and hotel
+          options against a standing preferences profile, securing sign-off before any
+          booking, and delivering a complete pre-trip, in-trip, and post-trip
+          operational package.
+        </p>
+
+        <p class="snapshot-group__label">Deliverables</p>
+        <div class="tag-grid" style="margin-bottom:20px;">
+          <span class="tag">Travel Request &amp; Preferences Profile</span>
+          <span class="tag">Flight &amp; Hotel Comparison</span>
+          <span class="tag">Budget Dashboard</span>
+          <span class="tag">Outlook Calendar</span>
+          <span class="tag">Executive Briefing Notebook</span>
+          <span class="tag">Briefing Deck</span>
+          <span class="tag">Finalized Investor Deck</span>
+          <span class="tag">OneDrive Workspace</span>
+          <span class="tag">Post-Travel Report</span>
+        </div>
+
+        <div class="proj-metrics">
+          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">Flight &amp; Hotel Options Evaluated</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">4</span><span class="metric-cell__label">Meetings Coordinated</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">2</span><span class="metric-cell__label">Presentation Decks Delivered</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">1</span><span class="metric-cell__label">Approval Checkpoint Before Booking</span></div>
+        </div>
+
+        <details class="fold" open>
+          <summary>Business problem</summary>
+          <p>A CEO needed to travel internationally for back-to-back investor and partner meetings with no time to personally manage logistics. The requirement wasn't just booking a flight — it was owning the full arc: evaluating options against standing preferences, getting sign-off before committing spend, keeping the trip resilient to disruption, and closing out cleanly afterward.</p>
+        </details>
+
+        <details class="fold">
+          <summary>Executive travel summary</summary>
+          <div class="ledger">
+            <div class="ledger__row"><span>Destination</span><span class="ledger__num">London → New York</span></div>
+            <div class="ledger__row"><span>Travel dates</span><span class="ledger__num">Sept 14–18</span></div>
+            <div class="ledger__row"><span>Recommended flight</span><span class="ledger__num">Selected after 3-option comparison</span></div>
+            <div class="ledger__row"><span>Recommended hotel</span><span class="ledger__num">Selected after 3-option comparison</span></div>
+            <div class="ledger__row"><span>Key meetings</span><span class="ledger__num">4 + investor dinner</span></div>
+            <div class="ledger__row"><span>Primary risk</span><span class="ledger__num">Cross-town meeting outside walking range</span></div>
+            <div class="ledger__row"><span>Contingency</span><span class="ledger__num">Uber Business + buffered calendar blocks</span></div>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>Decision &amp; approval process</summary>
+          <p>Three flight options and three hotel options were evaluated against the executive's standing preferences profile (cabin class, timing window, budget ceiling, proximity to meetings) rather than pre-selected. Each comparison was scored on cost, schedule fit, and — for hotels — actual travel time to every meeting venue, not just distance to one. The cheapest option that still met every hard constraint was recommended, with the trade-offs written up for the executive to approve before anything was booked.</p>
+          <div class="process-flow" style="margin-top:14px;">
+            <span class="process-flow__step">Travel Request</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Research Options</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Recommendation</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Executive Approval</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Booking</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Calendar Updates</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Travel Package Sent</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Trip Completed</span><span class="process-flow__arrow">→</span>
+            <span class="process-flow__step">Expense Reconciliation</span>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>System architecture</summary>
+          <div class="shot-grid" style="grid-template-columns: 1fr;">
+            <figure class="shot" style="aspect-ratio: 16/9;"><img src="executive-travel/architecture.png" alt="Executive Business Travel Plan — system architecture diagram" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive-travel/architecture.png</span></figure>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>Technology stack</summary>
+          <table class="stack-table">
+            <tr><td>Word</td><td>Travel request intake &amp; standing preferences profile</td></tr>
+            <tr><td>Excel</td><td>Flight/hotel comparison, travel-time matrix, budget dashboard</td></tr>
+            <tr><td>Outlook</td><td>Calendar, confirmations, out-of-office coverage</td></tr>
+            <tr><td>OneNote</td><td>Executive briefing notebook — objectives, expected outcomes, key decisions, and follow-up actions per meeting, not just logistics</td></tr>
+            <tr><td>PowerPoint</td><td>Offline flight briefing deck; finalized investor pitch deck</td></tr>
+            <tr><td>OneDrive</td><td>Organized trip workspace, shared with the executive</td></tr>
+          </table>
+        </details>
+
+        <details class="fold">
+          <summary>Risk assessment &amp; mitigation</summary>
+          <table class="stack-table">
+            <tr><td>Flight delayed</td><td>Booked on a flexible fare</td></tr>
+            <tr><td>Heavy city traffic</td><td>30-minute buffer added ahead of every meeting</td></tr>
+            <tr><td>Meeting runs long</td><td>Calendar buffer built in before the next commitment</td></tr>
+            <tr><td>Hotel overbooked</td><td>Backup hotel pre-identified from the comparison shortlist</td></tr>
+            <tr><td>No wifi in transit</td><td>All briefing documents saved offline in advance</td></tr>
+          </table>
+        </details>
+
+        <details class="fold">
+          <summary>Budget overview</summary>
+          <div class="ledger">
+            <div class="ledger__row"><span>Flights</span><span class="ledger__num">Business class, round trip</span></div>
+            <div class="ledger__row"><span>Accommodation</span><span class="ledger__num">4 nights</span></div>
+            <div class="ledger__row"><span>Ground transportation</span><span class="ledger__num">Airport transfers + local rides</span></div>
+            <div class="ledger__row"><span>Meals &amp; client entertainment</span><span class="ledger__num">Per diem + investor dinner</span></div>
+            <div class="ledger__row"><span>Wifi, baggage &amp; incidentals</span><span class="ledger__num">Flat contingency allowance</span></div>
+            <div class="ledger__row"><span>Travel insurance</span><span class="ledger__num">Included</span></div>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>System snapshots</summary>
+          <div class="snapshot-group">
+            <p class="snapshot-group__label">Travel Request &amp; Preferences Profile</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="executive-travel/request-profile.png" alt="Executive Business Travel Plan — travel request and preferences profile" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive-travel/request-profile.png</span></figure>
+            </div>
+            <p class="snapshot-group__label">Comparison &amp; Budget (Excel)</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="executive-travel/comparison-budget.png" alt="Executive Business Travel Plan — flight/hotel comparison and budget dashboard" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive-travel/comparison-budget.png</span></figure>
+            </div>
+            <p class="snapshot-group__label">Calendar (Outlook)</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="executive-travel/calendar.png" alt="Executive Business Travel Plan — Outlook calendar" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive-travel/calendar.png</span></figure>
+            </div>
+            <p class="snapshot-group__label">Executive Briefing Notebook (OneNote)</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="executive-travel/onenote.png" alt="Executive Business Travel Plan — OneNote executive command center" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive-travel/onenote.png</span></figure>
+            </div>
+            <p class="snapshot-group__label">Briefing &amp; Investor Decks (PowerPoint)</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="executive-travel/decks.png" alt="Executive Business Travel Plan — briefing deck and investor deck" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive-travel/decks.png</span></figure>
+            </div>
+            <p class="snapshot-group__label">Trip Workspace (OneDrive)</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="executive-travel/onedrive.png" alt="Executive Business Travel Plan — OneDrive folder structure" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive-travel/onedrive.png</span></figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>Post-travel closeout</summary>
+          <ul>
+            <li>Expense reconciliation against the approved budget</li>
+            <li>Receipt collection and filing</li>
+            <li>Meeting follow-up emails sent within 24 hours</li>
+            <li>Action items from each meeting logged to a tracker</li>
+            <li>Travel documents archived to OneDrive</li>
+            <li>CRM updated with meeting outcomes</li>
+            <li>Executive debrief to confirm next steps</li>
+          </ul>
+        </details>
+
+        <details class="fold">
+          <summary>Automation opportunities identified</summary>
+          <p>Not built into this version, but scoped as natural next steps: Power Automate for travel-approval notifications, automatic OneDrive folder creation per trip, and Teams meeting reminders — noted here to show where this system would go next, not just what it does today.</p>
+        </details>
+
+        <details class="fold">
+          <summary>Lessons learned</summary>
+          <ul>
+            <li>No single hotel was within walking distance of every meeting venue — "close to meetings" had to be redefined as 15 minutes by car, not on foot, which changed which option actually won the comparison.</li>
+            <li>An approval checkpoint before booking isn't extra bureaucracy — it's the difference between "I did some tasks" and "I made a recommendation the executive trusted."</li>
+            <li>A trip isn't done when the flight lands — the post-travel closeout is where half the real administrative value shows up.</li>
+          </ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- ===== CASE FILE — EOH ===== -->
+    <article class="case-file" id="project-eoh">
+      <!-- <div class="case-file__tab">
+        <span class="case-file__stamp">COMPLETED</span>
+      </div> -->
+      <div class="case-file__body">
+        <h3 class="case-file__title">Executive Operations Hub</h3>
+        <p class="case-file__meta">Simulated Business System &nbsp;·&nbsp; Business Consulting &nbsp;·&nbsp; Users: Founder, Executive Assistant, Operations Team</p>
+
+        <p class="role-block__title">Role</p>
+        <p class="role-block__value">Technical Operations Assistant</p>
+
+        <p class="case-file__overview">
+          A centralised operating system built to streamline executive
+          support activities combining communication, scheduling, project
+          management, documentation, and standardised operating procedures
+          into an organised workflow.
+        </p>
+
+        <div class="proj-metrics">
+          <div class="metric-cell"><span class="metric-cell__num">4</span><span class="metric-cell__label">Calendar Systems</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">SOP Documents</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">12</span><span class="metric-cell__label">Operational Workflows</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">4</span><span class="metric-cell__label">Platforms Used</span></div>
+        </div>
+
+        <details class="fold" open>
+          <summary>Business problem</summary>
+          <p>As the company grew past a handful of clients, the founder was still running day-to-day operations manually — replying to emails between meetings, tracking tasks in a personal notebook, and coordinating calendars over text. There was no shared system the assistant or operations team could step into, so every recurring task depended on the founder remembering it themselves.</p>
+        </details>
+
+        <details class="fold">
+          <summary>System architecture</summary>
+          <div class="shot-grid" style="grid-template-columns: 1fr;">
+            <figure class="shot" style="aspect-ratio: 16/9;"><img src="executive/architecture.png" alt="Executive Operations Hub — system architecture diagram" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/architecture.png</span></figure>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>Technology stack</summary>
+          <table class="stack-table">
+            <tr><td>Google Workspace</td><td>
+              <ul>
+                <li>Gmail</li>
+                <li>Calendar</li>
+                <li>Drive</li>
+                <li>Docs</li>
+                <li>Sheets</li>
+                <li>Meet</li>
+              </ul>
+            </td></tr>
+            <tr><td>ClickUp</td><td>
+              <ul>
+                <li>Dashboards</li>
+                <li>Automations</li>
+                <li>Recurring Tasks</li>
+                <li>Docs</li>
+                <li>Custom Fields</li>
+              </ul>
+            </td></tr>
+            <tr><td>Google Drive</td><td>File management &amp; role-based access</td></tr>
+          </table>
+        </details>
+
+        <details class="fold">
+          <summary>System snapshots</summary>
+
+          <div class="snapshot-group">
+            <p class="snapshot-group__label">Communication Systems</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="executive/communication_1.png" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/communication_1.png</span></figure>
+              <figure class="shot"><img src="executive/communications_2.png" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/communications_2.png</span></figure>
+            </div>
+
+            <p class="snapshot-group__label">Planning &amp; Calendar</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="executive/planning_calendar1.png" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/planning_calendar1.png</span></figure>
+              <figure class="shot"><img src="executive/planning_calendar2.png" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/planning_calendar2.png</span></figure>
+            </div>
+
+            <p class="snapshot-group__label">Task &amp; Project Management</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="executive/task_n_project1.png" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/task_n_project1.png</span></figure>
+              <figure class="shot"><img src="executive/task_n_project2.png" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/task_n_project2.png</span></figure>
+            </div>
+
+            <p class="snapshot-group__label">Automation &amp; Recurring Tasks</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="executive/Automation & Recurring Tasks1.png" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/Automation & Recurring Tasks1.png</span></figure>
+              <figure class="shot"><img src="executive/Automation & Recurring Tasks2.png" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/Automation & Recurring Tasks2.png</span></figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>Business impact</summary>
+          <ul class="impact-list">
+            <li class="impact-item">
+              <p class="impact-item__head">Centralized Executive Operations</p>
+              <p>Consolidated executive scheduling, communication, documentation, and task management into a single operational system, making information easier to locate and manage.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Improved Operational Consistency</p>
+              <p>Standardized recurring administrative processes through documented SOPs, reducing dependence on memory and enabling repeatable execution.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Better Collaboration</p>
+              <p>Established organized communication channels, shared documentation, and collaborative workspaces that support effective coordination across team members.</p>
+            </li>
+          </ul>
+        </details>
+
+        <div class="ledger">
+          <p class="snapshot-group__label" style="margin-top:20px;">Measured Results</p>
+          <p class="ledger__note">Based on before/after comparisons within the simulated system.</p>
+          <div class="ledger__row"><span>Average document retrieval reduced</span><span class="ledger__num">2 minutes → under 45 seconds</span></div>
+          <div class="ledger__row"><span>Missed deadline eliminated</span><span class="ledger__num">by 100%</span></div>
+          <div class="ledger__row"><span>Users with role-based Drive access</span><span class="ledger__num">5</span></div>
+        </div>
+
+        <details class="fold">
+          <summary>Lessons learned</summary>
+          <ul>
+            <li>Documentation reduces onboarding time.</li>
+            <li>Standardised templates reduce mistakes.</li>
+            <li>Visibility improves accountability.</li>
+            <li>Simple workflows outperform complicated ones.</li>
+          </ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- ===== CASE FILE — FMO ===== -->
+    <article class="case-file" id="project-fmo">
+      <div class="case-file__tab">
+        <span class="case-file__stamp">COMPLETED</span>
+      </div>
+      <div class="case-file__body">
+        <h3 class="case-file__title">Finance &amp; Meeting Operations System</h3>
+        <p class="case-file__meta">Simulated Business System &nbsp;·&nbsp; Business Consulting</p>
+
+        <p class="role-block__title">Role</p>
+        <p class="role-block__value">Technical Operations Assistant</p>
+
+        <p class="case-file__overview">
+          A centralised operational framework for invoicing, financial
+          reporting, meeting coordination, documentation, and team
+          communication — improving visibility, accountability, and
+          consistency across day-to-day operations.
+        </p>
+
+        <div class="proj-metrics">
+          <div class="metric-cell"><span class="metric-cell__num">20</span><span class="metric-cell__label">Invoices Managed</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">10</span><span class="metric-cell__label">Clients Billed</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">Slack Channels</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">2</span><span class="metric-cell__label">SOP Documents</span></div>
+        </div>
+
+        <details class="fold" open>
+          <summary>Business problem</summary>
+          <p>Invoices were tracked in a mix of email threads and spreadsheets that weren't kept in sync, so it wasn't always clear which clients had paid, which were overdue, and which needed a follow-up. Meetings followed a similar pattern — decisions were made verbally, action items were rarely written down, and follow-up depended on someone remembering what was discussed.</p>
+        </details>
+
+        <details class="fold">
+          <summary>System architecture</summary>
+          <div class="shot-grid" style="grid-template-columns: 1fr;">
+            <figure class="shot" style="aspect-ratio: 16/9;"><img src="aklix finance/architecture.png" alt="Finance & Meeting Operations System — system architecture diagram" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/architecture.png</span></figure>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>Technology stack</summary>
+          <table class="stack-table">
+            <tr><td>Zoho Invoice</td><td>Client invoicing &amp; payment tracking</td></tr>
+            <tr><td>Google Sheets</td><td>
+              <ul>
+                <li>Financial dashboard</li>
+                <li>Action tracker</li>
+                <li>Conditional formatting</li>
+              </ul>
+            </td></tr>
+            <tr><td>Google Docs</td><td>SOPs, agendas, meeting minutes</td></tr>
+            <tr><td>Google Calendar</td><td>Meeting scheduling</td></tr>
+            <tr><td>Slack</td><td>Team communication</td></tr>
+          </table>
+        </details>
+
+        <details class="fold">
+          <summary>System snapshots</summary>
+
+          <div class="snapshot-group">
+            <p class="snapshot-group__label">Finance Operations</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="aklix finance/Finance Operations1.png" alt="Finance & Meeting Operations System — finance dashboard screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Finance Operations1.png</span></figure>
+              <figure class="shot"><img src="aklix finance/Finance Operations2.png" alt="Finance & Meeting Operations System — finance dashboard screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Finance Operations2.png</span></figure>
+              <figure class="shot"><img src="aklix finance/Finance Operations3.png" alt="Finance & Meeting Operations System — finance dashboard screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Finance Operations3.png</span></figure>
+            </div>
+
+            <p class="snapshot-group__label">Meeting Operations</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="aklix finance/Meeting Operations1.png" alt="Finance & Meeting Operations System — meeting tracker screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Meeting Operations1.png</span></figure>
+              <figure class="shot"><img src="aklix finance/Meeting Operations2.png" alt="Finance & Meeting Operations System — meeting tracker screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Meeting Operations2.png</span></figure>
+            </div>
+
+            <p class="snapshot-group__label">Documentation</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="aklix finance/Documentation1.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation1.png</span></figure>
+              <figure class="shot"><img src="aklix finance/Documentation2.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation2.png</span></figure>
+              <figure class="shot"><img src="aklix finance/Documentation3.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation3.png</span></figure>
+              <figure class="shot"><img src="aklix finance/Documentation4.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation4.png</span></figure>
+              <figure class="shot"><img src="aklix finance/Documentation5.png" alt="Finance & Meeting Operations System — documentation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/Documentation5.png</span></figure>
+            </div>
+          </div>
+        </details>
+
+        <details class="fold">
+          <summary>Business impact</summary>
+          <ul class="impact-list">
+            <li class="impact-item">
+              <p class="impact-item__head">Centralized Financial Tracking</p>
+              <p>Structured invoicing and reporting processes for consistent financial record-keeping.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Revenue Visibility</p>
+              <p>Interactive dashboards showing revenue, outstanding balances, and payment status in real time.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Standardized Meeting Operations</p>
+              <p>Reusable templates and action trackers for meeting preparation and follow-up.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Documented Procedures</p>
+              <p>Established operational SOPs ensuring consistent execution and smoother onboarding.</p>
+            </li>
+          </ul>
+        </details>
+
+        <div class="ledger">
+          <p class="snapshot-group__label" style="margin-top:20px;">Measured Results</p>
+          <p class="ledger__note">Based on before/after comparisons within the simulated system.</p>
+          <div class="ledger__row"><span>Late payment follow-up</span><span class="ledger__num">Manual → Automated reminders</span></div>
+          <div class="ledger__row"><span>Meeting action items</span><span class="ledger__num">Tracked to completion</span></div>
+          <div class="ledger__row"><span>Revenue visibility</span><span class="ledger__num">Real-time</span></div>
+        </div>
+
+        <details class="fold">
+          <summary>Lessons learned</summary>
+          <ul>
+            <li>Real-time dashboards only get used if they're trusted — consistent update cadence matters more than extra features.</li>
+            <li>Reusable templates reduce meeting prep time significantly.</li>
+            <li>Shared action trackers improve accountability across a team.</li>
+          </ul>
+        </details>
+      </div>
+    </article>
+  </section>
+
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
