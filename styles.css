@@ -259,6 +259,7 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
   border-radius: var(--radius);
   background: var(--surface);
   overflow: hidden;
+  scroll-margin-top: 90px;
 }
 .case-file + .case-file { margin-top: 40px; }
 .case-file__tab {
