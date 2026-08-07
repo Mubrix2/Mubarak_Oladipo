@@ -193,10 +193,6 @@
           <p>Invoicing tends to live in three disconnected places — the invoicing tool, a spreadsheet someone updates "when they remember," and a founder's head, chasing payments manually. There's no live view of what's paid, outstanding, or overdue, and reminder emails go out inconsistently, if at all.</p>
         </details>
 
-        <details class="fold">
-          <summary>Solution</summary>
-          <p>I designed a three-scenario automation system. The first syncs every Zoho Invoice change to a live Google Sheets dashboard on an hourly schedule, routing Paid/Sent/Overdue invoices down separate paths with a search-then-update-or-add pattern so nothing duplicates. The second runs daily, drafts a tone-escalating reminder email with AI based on how overdue an invoice is, and parks it in the sheet marked "Pending Review" — nothing sends automatically. A human approves each draft by changing one cell, which triggers the third scenario to actually send it and log the result. A fourth, smaller automation posts a Slack alert the moment any new invoice is created.</p>
-        </details>
 
         <details class="fold">
           <summary>Tool stack</summary>
@@ -210,15 +206,6 @@
           </table>
         </details>
 
-        <details class="fold">
-          <summary>Demo video</summary>
-          <!-- EDIT: replace this placeholder with a real embed once the demo video is recorded.
-               Example (YouTube): <iframe width="100%" style="aspect-ratio:16/9; border-radius:var(--radius); border:2px solid var(--line);" src="https://www.youtube.com/embed/VIDEO_ID" title="Finance Visibility Dashboard demo" frameborder="0" allowfullscreen></iframe>
-               Example (Loom): <div style="position:relative; padding-bottom:56.25%;"><iframe src="https://www.loom.com/embed/VIDEO_ID" frameborder="0" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:var(--radius);"></iframe></div> -->
-          <div class="shot" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:2px dashed var(--line-strong); border-radius:var(--radius);">
-            <span class="shot__fallback" style="display:flex;">Add demo video embed here<br>(YouTube / Loom link)</span>
-          </div>
-        </details>
 
         <details class="fold">
           <summary>System snapshots</summary>
@@ -235,20 +222,31 @@
             <div class="shot-grid">
               <figure class="shot"><img src="finance-dashboard/slack-alert.png" alt="Finance Visibility Dashboard — new invoice Slack alert" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>finance-dashboard/slack-alert.png</span></figure>
             </div>
-          </div>
-        </details>
 
-        <details class="fold">
-          <summary>Features</summary>
-          <ul>
-            <li>✅ Automatic hourly sync from Zoho Invoice to Google Sheets</li>
-            <li>✅ Live dashboard — MRR, Outstanding, Overdue, Collected this month</li>
-            <li>✅ Cash-in trend chart</li>
-            <li>✅ AI-drafted reminder emails that escalate tone at 3 / 10 / 20+ days overdue</li>
-            <li>✅ Human approval required before any reminder sends</li>
-            <li>✅ Automated Slack alert on every new invoice</li>
+            <details class="fold">
+          <summary>Business impact</summary>
+          <ul class="impact-list">
+            <li class="impact-item">
+              <p class="impact-item__head">Centralized Financial Tracking</p>
+              <p>Structured invoicing and reporting processes for consistent financial record-keeping.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Revenue Visibility</p>
+              <p>Interactive dashboards showing revenue, outstanding balances, and payment status in real time.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Standardized Meeting Operations</p>
+              <p>Reusable templates and action trackers for meeting preparation and follow-up.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Documented Procedures</p>
+              <p>Established operational SOPs ensuring consistent execution and smoother onboarding.</p>
+            </li>
           </ul>
         </details>
+          </div>
+        </details>
+        
       </div>
 
       
@@ -309,7 +307,7 @@
           <!-- <div class="shot" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:2px dashed var(--line-strong); border-radius:var(--radius);">
             <span class="shot__fallback" style="display:flex;">Add demo video embed here<br>(YouTube / Loom link)</span>
           </div>
-        </details> --> -->
+        </details> --> 
 
         <details class="fold">
           <summary>System snapshots</summary>
@@ -330,17 +328,25 @@
           </div>
         </details>
 
-        <details class="fold">
-          <summary>Features</summary>
-          <ul>
-            <li>✅ Lead capture</li>
-            <li>✅ AI-generated email drafts</li>
-            <li>✅ Human approval workflow</li>
-            <li>✅ Slack-based approval system</li>
-            <li>✅ Automated email delivery</li>
-            <li>✅ CRM status tracking</li>
-            <li>✅ First-response timestamp logging</li>
-            <li>✅ SLA (Response Time) calculation</li>
+<details class="fold">
+          <summary>Business impact</summary>
+          <ul class="impact-list">
+            <li class="impact-item">
+              <p class="impact-item__head">Centralized Financial Tracking</p>
+              <p>Structured invoicing and reporting processes for consistent financial record-keeping.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Revenue Visibility</p>
+              <p>Interactive dashboards showing revenue, outstanding balances, and payment status in real time.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Standardized Meeting Operations</p>
+              <p>Reusable templates and action trackers for meeting preparation and follow-up.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Documented Procedures</p>
+              <p>Established operational SOPs ensuring consistent execution and smoother onboarding.</p>
+            </li>
           </ul>
         </details>
       </div>
@@ -388,35 +394,6 @@
           <p>A CEO needed to travel internationally for back-to-back investor and partner meetings with no time to personally manage logistics. The requirement wasn't just booking a flight — it was owning the full arc: evaluating options against standing preferences, getting sign-off before committing spend, keeping the trip resilient to disruption, and closing out cleanly afterward.</p>
         </details>
 
-        <details class="fold">
-          <summary>Executive travel summary</summary>
-          <div class="ledger">
-            <div class="ledger__row"><span>Destination</span><span class="ledger__num">London → New York</span></div>
-            <div class="ledger__row"><span>Travel dates</span><span class="ledger__num">Sept 14–18</span></div>
-            <div class="ledger__row"><span>Recommended flight</span><span class="ledger__num">Selected after 3-option comparison</span></div>
-            <div class="ledger__row"><span>Recommended hotel</span><span class="ledger__num">Selected after 3-option comparison</span></div>
-            <div class="ledger__row"><span>Key meetings</span><span class="ledger__num">4 + investor dinner</span></div>
-            <div class="ledger__row"><span>Primary risk</span><span class="ledger__num">Cross-town meeting outside walking range</span></div>
-            <div class="ledger__row"><span>Contingency</span><span class="ledger__num">Uber Business + buffered calendar blocks</span></div>
-          </div>
-        </details>
-
-        <details class="fold">
-          <summary>Decision &amp; approval process</summary>
-          <p>Three flight options and three hotel options were evaluated against the executive's standing preferences profile (cabin class, timing window, budget ceiling, proximity to meetings) rather than pre-selected. Each comparison was scored on cost, schedule fit, and — for hotels — actual travel time to every meeting venue, not just distance to one. The cheapest option that still met every hard constraint was recommended, with the trade-offs written up for the executive to approve before anything was booked.</p>
-          <div class="process-flow" style="margin-top:14px;">
-            <span class="process-flow__step">Travel Request</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Research Options</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Recommendation</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Executive Approval</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Booking</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Calendar Updates</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Travel Package Sent</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Trip Completed</span><span class="process-flow__arrow">→</span>
-            <span class="process-flow__step">Expense Reconciliation</span>
-          </div>
-        </details>
-
 
         <details class="fold">
           <summary>Tool stack</summary>
@@ -430,28 +407,7 @@
           </table>
         </details>
 
-        <details class="fold">
-          <summary>Risk assessment &amp; mitigation</summary>
-          <table class="stack-table">
-            <tr><td>Flight delayed</td><td>Booked on a flexible fare</td></tr>
-            <tr><td>Heavy city traffic</td><td>30-minute buffer added ahead of every meeting</td></tr>
-            <tr><td>Meeting runs long</td><td>Calendar buffer built in before the next commitment</td></tr>
-            <tr><td>Hotel overbooked</td><td>Backup hotel pre-identified from the comparison shortlist</td></tr>
-            <tr><td>No wifi in transit</td><td>All briefing documents saved offline in advance</td></tr>
-          </table>
-        </details>
 
-        <details class="fold">
-          <summary>Budget overview</summary>
-          <div class="ledger">
-            <div class="ledger__row"><span>Flights</span><span class="ledger__num">Business class, round trip</span></div>
-            <div class="ledger__row"><span>Accommodation</span><span class="ledger__num">4 nights</span></div>
-            <div class="ledger__row"><span>Ground transportation</span><span class="ledger__num">Airport transfers + local rides</span></div>
-            <div class="ledger__row"><span>Meals &amp; client entertainment</span><span class="ledger__num">Per diem + investor dinner</span></div>
-            <div class="ledger__row"><span>Wifi, baggage &amp; incidentals</span><span class="ledger__num">Flat contingency allowance</span></div>
-            <div class="ledger__row"><span>Travel insurance</span><span class="ledger__num">Included</span></div>
-          </div>
-        </details>
 
         <details class="fold">
           <summary>System snapshots</summary>
@@ -484,17 +440,27 @@
         </details>
 
         <details class="fold">
-          <summary>Post-travel closeout</summary>
-          <ul>
-            <li>Expense reconciliation against the approved budget</li>
-            <li>Receipt collection and filing</li>
-            <li>Meeting follow-up emails sent within 24 hours</li>
-            <li>Action items from each meeting logged to a tracker</li>
-            <li>Travel documents archived to OneDrive</li>
-            <li>CRM updated with meeting outcomes</li>
-            <li>Executive debrief to confirm next steps</li>
+          <summary>Business impact</summary>
+          <ul class="impact-list">
+            <li class="impact-item">
+              <p class="impact-item__head">Centralized Financial Tracking</p>
+              <p>Structured invoicing and reporting processes for consistent financial record-keeping.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Revenue Visibility</p>
+              <p>Interactive dashboards showing revenue, outstanding balances, and payment status in real time.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Standardized Meeting Operations</p>
+              <p>Reusable templates and action trackers for meeting preparation and follow-up.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Documented Procedures</p>
+              <p>Established operational SOPs ensuring consistent execution and smoother onboarding.</p>
+            </li>
           </ul>
         </details>
+
         </details>
       </div>
     </article>
