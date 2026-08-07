@@ -127,336 +127,131 @@
       approach, tools used, and operational outcome.
     </p>
 
-    <!-- ===== CASE FILE — FINANCE VISIBILITY DASHBOARD ===== -->
-    <article class="case-file" id="project-finance-dashboard">
-      <div class="case-file__tab">
+    <!-- ===== CASE FILE — EOH ===== -->
+    <article class="case-file" id="project-eoh">
+      <!-- <div class="case-file__tab">
         <span class="case-file__stamp">COMPLETED</span>
-      </div>
+      </div> -->
       <div class="case-file__body">
-        <h3 class="case-file__title">Finance Visibility Dashboard</h3>
-        <p class="case-file__meta">Live Automation Build &nbsp;·&nbsp; AI-Assisted Finance Operations &nbsp;·&nbsp; Users: Founder, Finance/Accounts Receivable Owner</p>
+        <h3 class="case-file__title">Executive Operations Hub</h3>
+        <p class="case-file__meta">Simulated Business System &nbsp;·&nbsp; Business Consulting &nbsp;·&nbsp; Users: Founder, Executive Assistant, Operations Team</p>
 
 
         <p class="case-file__overview">
-          A three-scenario no-code automation system that keeps a live finance
-          dashboard in sync with Zoho Invoice, drafts tone-escalating payment
-          reminders with AI, and holds every reminder behind a human approval
-          step before it sends — with the team alerted in Slack the moment a
-          new invoice goes out.
+          A centralised operating system built to streamline executive
+          support activities combining communication, scheduling, project
+          management, documentation, and standardised operating procedures
+          into an organised workflow.
         </p>
 
         <div class="proj-metrics">
-          <div class="metric-cell"><span class="metric-cell__num">3</span><span class="metric-cell__label">Automated Scenarios</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">Hourly</span><span class="metric-cell__label">Dashboard Sync</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">3</span><span class="metric-cell__label">Reminder Escalation Tiers</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">Test Invoices Processed</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">4</span><span class="metric-cell__label">Calendar Systems</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">SOP Documents</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">12</span><span class="metric-cell__label">Operational Workflows</span></div>
+          <div class="metric-cell"><span class="metric-cell__num">4</span><span class="metric-cell__label">Platforms Used</span></div>
         </div>
 
         <details class="fold" open>
           <summary>Business problem</summary>
-          <p>Invoicing tends to live in three disconnected places — the invoicing tool, a spreadsheet someone updates "when they remember," and a founder's head, chasing payments manually. There's no live view of what's paid, outstanding, or overdue, and reminder emails go out inconsistently, if at all.</p>
-        </details>
-
-        <details class="fold">
-          <summary>Solution</summary>
-          <p>I designed a three-scenario automation system. The first syncs every Zoho Invoice change to a live Google Sheets dashboard on an hourly schedule, routing Paid/Sent/Overdue invoices down separate paths with a search-then-update-or-add pattern so nothing duplicates. The second runs daily, drafts a tone-escalating reminder email with AI based on how overdue an invoice is, and parks it in the sheet marked "Pending Review" — nothing sends automatically. A human approves each draft by changing one cell, which triggers the third scenario to actually send it and log the result. A fourth, smaller automation posts a Slack alert the moment any new invoice is created.</p>
+          <p>As the company grew past a handful of clients, the founder was still running day-to-day operations manually — replying to emails between meetings, tracking tasks in a personal notebook, and coordinating calendars over text. There was no shared system the assistant or operations team could step into, so every recurring task depended on the founder remembering it themselves.</p>
         </details>
 
         <details class="fold">
           <summary>System architecture</summary>
-          <pre style="background:var(--surface-2); border:2px solid var(--line); border-radius:var(--radius); padding:18px 20px; font-family:'IBM Plex Mono', monospace; font-size:13px; line-height:1.6; color:var(--ink-soft); overflow-x:auto; white-space:pre;">Zoho Invoice
-      │
-      ▼
-Scenario 1 — Sync (hourly)
-────────────────────────────
-Watch Invoices
-      │
-      ▼
-Router (Paid / Sent / Overdue)
-      │
-      ▼
-Search Row → Update or Add
-      │
-      ▼
-Google Sheets — CEO Dashboard
-────────────────────────────
-      │
-      ▼
-Scenario 2 — Draft & Queue (daily, 9AM)
-────────────────────────────
-Search Rows (Sent + Overdue)
-      │
-      ▼
-Router (Day 3 / 10 / 20)
-      │
-      ▼
-Gemini — draft reminder
-      │
-      ▼
-Write to sheet → "Pending Review"
-────────────────────────────
-      │
-Human reviews & approves
-      │
-      ▼
-Scenario 2B — Approve & Send (every 30 min)
-────────────────────────────
-Search Rows ("Approved")
-      │
-      ▼
-Gmail — send reminder
-      │
-      ▼
-Update row → "Sent"
-
-Zoho Invoice (new) ──▶ Scenario 3 ──▶ Slack #finance</pre>
+          <div class="shot-grid" style="grid-template-columns: 1fr;">
+            <figure class="shot" style="aspect-ratio: 16/9;"><img src="executive/architecture.png" alt="Executive Operations Hub — system architecture diagram" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/architecture.png</span></figure>
+          </div>
         </details>
 
         <details class="fold">
           <summary>Technology stack</summary>
           <table class="stack-table">
-            <tr><td>Make.com</td><td>Core workflow automation platform</td></tr>
-            <tr><td>Zoho Invoice</td><td>Invoicing &amp; the trigger source for every scenario</td></tr>
-            <tr><td>Google Sheets</td><td>Live CEO dashboard, data store, and KPI/chart calculations</td></tr>
-            <tr><td>Gemini 2.5 Flash</td><td>Drafts tone-escalating reminder emails</td></tr>
-            <tr><td>Gmail</td><td>Sends approved reminders only</td></tr>
-            <tr><td>Slack</td><td>Real-time team alert on every new invoice</td></tr>
+            <tr><td>Google Workspace</td><td>
+              <ul>
+                <li>Gmail</li>
+                <li>Calendar</li>
+                <li>Drive</li>
+                <li>Docs</li>
+                <li>Sheets</li>
+                <li>Meet</li>
+              </ul>
+            </td></tr>
+            <tr><td>ClickUp</td><td>
+              <ul>
+                <li>Dashboards</li>
+                <li>Automations</li>
+                <li>Recurring Tasks</li>
+                <li>Docs</li>
+                <li>Custom Fields</li>
+              </ul>
+            </td></tr>
+            <tr><td>Google Drive</td><td>File management &amp; role-based access</td></tr>
           </table>
         </details>
 
         <details class="fold">
-          <summary>Demo video</summary>
-          <!-- EDIT: replace this placeholder with a real embed once the demo video is recorded.
-               Example (YouTube): <iframe width="100%" style="aspect-ratio:16/9; border-radius:var(--radius); border:2px solid var(--line);" src="https://www.youtube.com/embed/VIDEO_ID" title="Finance Visibility Dashboard demo" frameborder="0" allowfullscreen></iframe>
-               Example (Loom): <div style="position:relative; padding-bottom:56.25%;"><iframe src="https://www.loom.com/embed/VIDEO_ID" frameborder="0" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:var(--radius);"></iframe></div> -->
-          <div class="shot" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:2px dashed var(--line-strong); border-radius:var(--radius);">
-            <span class="shot__fallback" style="display:flex;">Add demo video embed here<br>(YouTube / Loom link)</span>
-          </div>
-        </details>
-
-        <details class="fold">
           <summary>System snapshots</summary>
+
           <div class="snapshot-group">
-            <p class="snapshot-group__label">Live Dashboard</p>
+            <p class="snapshot-group__label">Communication Systems</p>
             <div class="shot-grid">
-              <figure class="shot"><img src="finance-dashboard/ceo-dashboard.png" alt="Finance Visibility Dashboard — live CEO dashboard with KPIs and cash-in trend chart" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>finance-dashboard/ceo-dashboard.png</span></figure>
+              <figure class="shot"><img src="executive/communication_1.png" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/communication_1.png</span></figure>
+              <figure class="shot"><img src="executive/communications_2.png" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/communications_2.png</span></figure>
             </div>
-            <p class="snapshot-group__label">AI-Drafted Reminder</p>
+
+            <p class="snapshot-group__label">Planning &amp; Calendar</p>
             <div class="shot-grid">
-              <figure class="shot"><img src="finance-dashboard/reminder-email.png" alt="Finance Visibility Dashboard — AI-drafted payment reminder email" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>finance-dashboard/reminder-email.png</span></figure>
+              <figure class="shot"><img src="executive/planning_calendar1.png" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/planning_calendar1.png</span></figure>
+              <figure class="shot"><img src="executive/planning_calendar2.png" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/planning_calendar2.png</span></figure>
             </div>
-            <p class="snapshot-group__label">Slack Alert</p>
+
+            <p class="snapshot-group__label">Task &amp; Project Management</p>
             <div class="shot-grid">
-              <figure class="shot"><img src="finance-dashboard/slack-alert.png" alt="Finance Visibility Dashboard — new invoice Slack alert" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>finance-dashboard/slack-alert.png</span></figure>
+              <figure class="shot"><img src="executive/task_n_project1.png" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/task_n_project1.png</span></figure>
+              <figure class="shot"><img src="executive/task_n_project2.png" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/task_n_project2.png</span></figure>
+            </div>
+
+            <p class="snapshot-group__label">Automation &amp; Recurring Tasks</p>
+            <div class="shot-grid">
+              <figure class="shot"><img src="executive/Automation & Recurring Tasks1.png" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/Automation & Recurring Tasks1.png</span></figure>
+              <figure class="shot"><img src="executive/Automation & Recurring Tasks2.png" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/Automation & Recurring Tasks2.png</span></figure>
             </div>
           </div>
         </details>
 
         <details class="fold">
-          <summary>Features</summary>
-          <ul>
-            <li>✅ Automatic hourly sync from Zoho Invoice to Google Sheets</li>
-            <li>✅ Live dashboard — MRR, Outstanding, Overdue, Collected this month</li>
-            <li>✅ Cash-in trend chart</li>
-            <li>✅ AI-drafted reminder emails that escalate tone at 3 / 10 / 20+ days overdue</li>
-            <li>✅ Human approval required before any reminder sends</li>
-            <li>✅ Automated Slack alert on every new invoice</li>
-          </ul>
-        </details>
-
-        <details class="fold">
-          <summary>My role</summary>
-          <ul>
-            <li>Designed the three-scenario automation pipeline</li>
-            <li>Built the search-then-update-or-add sync logic to prevent duplicate rows</li>
-            <li>Wrote the escalating AI prompts for each reminder tier</li>
-            <li>Built the CEO dashboard formulas and cash-in trend chart</li>
-            <li>Implemented the human-in-the-loop approval gate before sending</li>
+          <summary>Business impact</summary>
+          <ul class="impact-list">
+            <li class="impact-item">
+              <p class="impact-item__head">Centralized Executive Operations</p>
+              <p>Consolidated executive scheduling, communication, documentation, and task management into a single operational system, making information easier to locate and manage.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Improved Operational Consistency</p>
+              <p>Standardized recurring administrative processes through documented SOPs, reducing dependence on memory and enabling repeatable execution.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Better Collaboration</p>
+              <p>Established organized communication channels, shared documentation, and collaborative workspaces that support effective coordination across team members.</p>
+            </li>
           </ul>
         </details>
 
         <div class="ledger">
-          <p class="snapshot-group__label" style="margin-top:20px;">Business Results</p>
-          <p class="ledger__note">Based on internal test runs using simulated invoice data — not yet measured on a live account.</p>
-          <div class="ledger__row"><span>Dashboard updates</span><span class="ledger__num">Automatic, hourly</span></div>
-          <div class="ledger__row"><span>Manual invoice chasing</span><span class="ledger__num">Eliminated</span></div>
-          <div class="ledger__row"><span>Reminder tone</span><span class="ledger__num">Escalates by days overdue</span></div>
-          <div class="ledger__row"><span>Team visibility</span><span class="ledger__num">Real-time via Slack</span></div>
-          <div class="ledger__row"><span>Send oversight</span><span class="ledger__num">Human approval required</span></div>
+          <p class="snapshot-group__label" style="margin-top:20px;">Measured Results</p>
+          <p class="ledger__note">Based on before/after comparisons within the simulated system.</p>
+          <div class="ledger__row"><span>Average document retrieval reduced</span><span class="ledger__num">2 minutes → under 45 seconds</span></div>
+          <div class="ledger__row"><span>Missed deadline eliminated</span><span class="ledger__num">by 100%</span></div>
+          <div class="ledger__row"><span>Users with role-based Drive access</span><span class="ledger__num">5</span></div>
         </div>
 
         <details class="fold">
           <summary>Lessons learned</summary>
           <ul>
-            <li>Filtering has to happen after the trigger, not inside it — Zoho's "Watch Invoices" fires on every change, so status splitting is a router job, not a trigger setting.</li>
-            <li>A live spreadsheet formula is more reliable than an extra automation module for a simple calculation like days overdue — fewer moving parts, fewer ways to break mid-demo.</li>
-            <li>Status filters are case-sensitive and fail silently on a mismatch — worth checking the exact field casing before setting any filter condition.</li>
-          </ul>
-        </details>
-      </div>
-    </article>
-
-    <!-- ===== CASE FILE — AI LEAD RESPONSE & APPROVAL SYSTEM ===== -->
-    <article class="case-file" id="project-ai-lead-response">
-      <div class="case-file__tab">
-        <span class="case-file__stamp">COMPLETED</span>
-      </div>
-      <div class="case-file__body">
-        <h3 class="case-file__title">AI Lead Response &amp; Approval System</h3>
-        <p class="case-file__meta">Live Automation Build &nbsp;·&nbsp; AI-Assisted Sales Operations &nbsp;·&nbsp; Users: Founder, Sales/Lead Response Owner</p>
-
-
-        <p class="case-file__overview">
-          A two-stage no-code automation system that captures inbound leads, drafts a
-          personalised first-response email with AI, and routes it through a human
-          approval step before sending — with every stage logged for response-time
-          reporting.
-        </p>
-
-        <div class="proj-metrics">
-          <div class="metric-cell"><span class="metric-cell__num">2</span><span class="metric-cell__label">Linked Automations</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">8</span><span class="metric-cell__label">Workflow Steps</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">Test Leads Processed</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">~1 min</span><span class="metric-cell__label">Avg. Response (Test Run)</span></div>
-        </div>
-
-        <details class="fold" open>
-          <summary>Business problem</summary>
-          <p>A growing business receives enquiries through its website. Responding manually causes delays, inconsistent messaging, and poor lead tracking. The objective was to automate lead intake, generate a personalised first-response email using AI, require human approval before sending, and measure response times for operational reporting.</p>
-        </details>
-
-        <details class="fold">
-          <summary>Solution</summary>
-          <p>I designed a two-stage automation system. The first workflow captures incoming leads, stores them in a CRM table, generates an AI draft, and routes it to Slack for review. A second workflow is triggered when the reviewer approves the draft with a Slack reaction. The system sends the email, updates the CRM, timestamps the response, and calculates the first-response SLA automatically.</p>
-        </details>
-
-        <details class="fold">
-          <summary>System architecture</summary>
-          <pre style="background:var(--surface-2); border:2px solid var(--line); border-radius:var(--radius); padding:18px 20px; font-family:'IBM Plex Mono', monospace; font-size:13px; line-height:1.6; color:var(--ink-soft); overflow-x:auto; white-space:pre;">Website Form
-      │
-      ▼
-Zap #1
-────────────────────────────
-Capture Lead
-      │
-      ▼
-Zapier Tables
-      │
-      ▼
-OpenAI
-      │
-      ▼
-Slack Approval
-────────────────────────────
-      │
-Human reviews
-      │
-      ▼
-✅ Reaction
-      │
-      ▼
-Zap #2
-────────────────────────────
-Extract Record ID
-      │
-      ▼
-Find Lead
-      │
-      ▼
-Gmail
-      │
-      ▼
-Update CRM
-      │
-      ▼
-Calculate Response Time
-────────────────────────────</pre>
-        </details>
-
-        <details class="fold">
-          <summary>Technology stack</summary>
-          <table class="stack-table">
-            <tr><td>Zapier</td><td>Core workflow automation platform</td></tr>
-            <tr><td>OpenAI</td><td>AI-generated first-response drafts</td></tr>
-            <tr><td>Slack</td><td>Human-in-the-loop approval step</td></tr>
-            <tr><td>Gmail</td><td>Email delivery</td></tr>
-            <tr><td>Zapier Tables</td><td>Lead/CRM data store &amp; response-time reporting</td></tr>
-            <tr><td>Calendly</td><td>Meeting booking link for approved leads</td></tr>
-          </table>
-        </details>
-
-        <details class="fold">
-          <summary>Demo video</summary>
-          <!-- EDIT: replace this placeholder with a real embed once the demo video is recorded.
-               Example (YouTube): <iframe width="100%" style="aspect-ratio:16/9; border-radius:var(--radius); border:2px solid var(--line);" src="https://www.youtube.com/embed/VIDEO_ID" title="AI Lead Response & Approval System demo" frameborder="0" allowfullscreen></iframe>
-               Example (Loom): <div style="position:relative; padding-bottom:56.25%;"><iframe src="https://www.loom.com/embed/VIDEO_ID" frameborder="0" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:var(--radius);"></iframe></div> -->
-          <div class="shot" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:2px dashed var(--line-strong); border-radius:var(--radius);">
-            <span class="shot__fallback" style="display:flex;">Add demo video embed here<br>(YouTube / Loom link)</span>
-          </div>
-        </details>
-
-        <details class="fold">
-          <summary>System snapshots</summary>
-          <div class="snapshot-group">
-            <p class="snapshot-group__label">Zapier Workflow</p>
-            <div class="shot-grid">
-              <figure class="shot"><img src="ai-lead-response/zap-1-capture.png" alt="AI Lead Response — Zap 1, lead capture and AI draft" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>ai-lead-response/zap-1-capture.png</span></figure>
-              <figure class="shot"><img src="ai-lead-response/zap-2-send.png" alt="AI Lead Response — Zap 2, approval to send" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>ai-lead-response/zap-2-send.png</span></figure>
-            </div>
-            <p class="snapshot-group__label">Slack Approval</p>
-            <div class="shot-grid">
-              <figure class="shot"><img src="ai-lead-response/slack-approval.png" alt="AI Lead Response — Slack approval step" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>ai-lead-response/slack-approval.png</span></figure>
-            </div>
-            <p class="snapshot-group__label">CRM &amp; Response Tracking</p>
-            <div class="shot-grid">
-              <figure class="shot"><img src="ai-lead-response/crm-tracking.png" alt="AI Lead Response — Zapier Tables CRM and response-time tracking" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>ai-lead-response/crm-tracking.png</span></figure>
-            </div>
-          </div>
-        </details>
-
-        <details class="fold">
-          <summary>Features</summary>
-          <ul>
-            <li>✅ Lead capture</li>
-            <li>✅ AI-generated email drafts</li>
-            <li>✅ Human approval workflow</li>
-            <li>✅ Slack-based approval system</li>
-            <li>✅ Automated email delivery</li>
-            <li>✅ CRM status tracking</li>
-            <li>✅ First-response timestamp logging</li>
-            <li>✅ SLA (Response Time) calculation</li>
-          </ul>
-        </details>
-
-        <details class="fold">
-          <summary>My role</summary>
-          <ul>
-            <li>Designed the end-to-end operational workflow</li>
-            <li>Created the AI prompting strategy</li>
-            <li>Built multi-step Zapier automations</li>
-            <li>Implemented the approval-based email workflow</li>
-            <li>Designed the CRM data structure</li>
-            <li>Implemented response-time reporting</li>
-          </ul>
-        </details>
-
-        <div class="ledger">
-          <p class="snapshot-group__label" style="margin-top:20px;">Business Results</p>
-          <p class="ledger__note">Based on internal test runs using simulated lead data — not yet measured on a live client account.</p>
-          <div class="ledger__row"><span>Manual work eliminated</span><span class="ledger__num">AI drafts every enquiry</span></div>
-          <div class="ledger__row"><span>Human review</span><span class="ledger__num">Slack approval before sending</span></div>
-          <div class="ledger__row"><span>CRM updates</span><span class="ledger__num">Automatic</span></div>
-          <div class="ledger__row"><span>Lead tracking</span><span class="ledger__num">Centralized</span></div>
-          <div class="ledger__row"><span>Average first response</span><span class="ledger__num">~1 minute (test run)</span></div>
-          <div class="ledger__row"><span>Email consistency</span><span class="ledger__num">Standardized AI responses</span></div>
-        </div>
-
-        <details class="fold">
-          <summary>Lessons learned</summary>
-          <ul>
-            <li>Human-in-the-loop approval builds trust faster than full autonomy.</li>
-            <li>A clean CRM schema up front makes response-time reporting almost automatic.</li>
-            <li>AI drafts need explicit instructions to actually answer the question asked, not defer to a call.</li>
+            <li>Documentation reduces onboarding time.</li>
+            <li>Standardised templates reduce mistakes.</li>
+            <li>Visibility improves accountability.</li>
+            <li>Simple workflows outperform complicated ones.</li>
           </ul>
         </details>
       </div>
