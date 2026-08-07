@@ -90,7 +90,7 @@
         </details>
 
         <details class="fold">
-          <summary>Technology stack</summary>
+          <summary>Tool stack</summary>
           <table class="stack-table">
             <tr><td>Google Workspace</td><td>
               <ul>
@@ -162,25 +162,8 @@
             </li>
           </ul>
         </details>
-
-        <div class="ledger">
-          <p class="snapshot-group__label" style="margin-top:20px;">Measured Results</p>
-          <p class="ledger__note">Based on before/after comparisons within the simulated system.</p>
-          <div class="ledger__row"><span>Average document retrieval reduced</span><span class="ledger__num">2 minutes → under 45 seconds</span></div>
-          <div class="ledger__row"><span>Missed deadline eliminated</span><span class="ledger__num">by 100%</span></div>
-          <div class="ledger__row"><span>Users with role-based Drive access</span><span class="ledger__num">5</span></div>
-        </div>
-
-        <details class="fold">
-          <summary>Lessons learned</summary>
-          <ul>
-            <li>Documentation reduces onboarding time.</li>
-            <li>Standardised templates reduce mistakes.</li>
-            <li>Visibility improves accountability.</li>
-            <li>Simple workflows outperform complicated ones.</li>
-          </ul>
-        </details>
       </div>
+      
     </article>
     <!-- ===== CASE FILE — FINANCE VISIBILITY DASHBOARD ===== -->
     <article class="case-file" id="project-finance-dashboard">
@@ -216,57 +199,7 @@
         </details>
 
         <details class="fold">
-          <summary>System architecture</summary>
-          <pre style="background:var(--surface-2); border:2px solid var(--line); border-radius:var(--radius); padding:18px 20px; font-family:'IBM Plex Mono', monospace; font-size:13px; line-height:1.6; color:var(--ink-soft); overflow-x:auto; white-space:pre;">Zoho Invoice
-      │
-      ▼
-Scenario 1 — Sync (hourly)
-────────────────────────────
-Watch Invoices
-      │
-      ▼
-Router (Paid / Sent / Overdue)
-      │
-      ▼
-Search Row → Update or Add
-      │
-      ▼
-Google Sheets — CEO Dashboard
-────────────────────────────
-      │
-      ▼
-Scenario 2 — Draft & Queue (daily, 9AM)
-────────────────────────────
-Search Rows (Sent + Overdue)
-      │
-      ▼
-Router (Day 3 / 10 / 20)
-      │
-      ▼
-Gemini — draft reminder
-      │
-      ▼
-Write to sheet → "Pending Review"
-────────────────────────────
-      │
-Human reviews & approves
-      │
-      ▼
-Scenario 2B — Approve & Send (every 30 min)
-────────────────────────────
-Search Rows ("Approved")
-      │
-      ▼
-Gmail — send reminder
-      │
-      ▼
-Update row → "Sent"
-
-Zoho Invoice (new) ──▶ Scenario 3 ──▶ Slack #finance</pre>
-        </details>
-
-        <details class="fold">
-          <summary>Technology stack</summary>
+          <summary>Tool stack</summary>
           <table class="stack-table">
             <tr><td>Make.com</td><td>Core workflow automation platform</td></tr>
             <tr><td>Zoho Invoice</td><td>Invoicing &amp; the trigger source for every scenario</td></tr>
@@ -316,27 +249,9 @@ Zoho Invoice (new) ──▶ Scenario 3 ──▶ Slack #finance</pre>
             <li>✅ Automated Slack alert on every new invoice</li>
           </ul>
         </details>
-
-
-        <div class="ledger">
-          <p class="snapshot-group__label" style="margin-top:20px;">Business Results</p>
-          <p class="ledger__note">Based on internal test runs using simulated invoice data — not yet measured on a live account.</p>
-          <div class="ledger__row"><span>Dashboard updates</span><span class="ledger__num">Automatic, hourly</span></div>
-          <div class="ledger__row"><span>Manual invoice chasing</span><span class="ledger__num">Eliminated</span></div>
-          <div class="ledger__row"><span>Reminder tone</span><span class="ledger__num">Escalates by days overdue</span></div>
-          <div class="ledger__row"><span>Team visibility</span><span class="ledger__num">Real-time via Slack</span></div>
-          <div class="ledger__row"><span>Send oversight</span><span class="ledger__num">Human approval required</span></div>
-        </div>
-
-        <details class="fold">
-          <summary>Lessons learned</summary>
-          <ul>
-            <li>Filtering has to happen after the trigger, not inside it — Zoho's "Watch Invoices" fires on every change, so status splitting is a router job, not a trigger setting.</li>
-            <li>A live spreadsheet formula is more reliable than an extra automation module for a simple calculation like days overdue — fewer moving parts, fewer ways to break mid-demo.</li>
-            <li>Status filters are case-sensitive and fail silently on a mismatch — worth checking the exact field casing before setting any filter condition.</li>
-          </ul>
-        </details>
       </div>
+
+      
     </article>
 
     <!-- ===== CASE FILE — AI LEAD RESPONSE & APPROVAL SYSTEM ===== -->
@@ -373,51 +288,9 @@ Zoho Invoice (new) ──▶ Scenario 3 ──▶ Slack #finance</pre>
           <p>I designed a two-stage automation system. The first workflow captures incoming leads, stores them in a CRM table, generates an AI draft, and routes it to Slack for review. A second workflow is triggered when the reviewer approves the draft with a Slack reaction. The system sends the email, updates the CRM, timestamps the response, and calculates the first-response SLA automatically.</p>
         </details>
 
+       
         <details class="fold">
-          <summary>System architecture</summary>
-          <pre style="background:var(--surface-2); border:2px solid var(--line); border-radius:var(--radius); padding:18px 20px; font-family:'IBM Plex Mono', monospace; font-size:13px; line-height:1.6; color:var(--ink-soft); overflow-x:auto; white-space:pre;">Website Form
-      │
-      ▼
-Zap #1
-────────────────────────────
-Capture Lead
-      │
-      ▼
-Zapier Tables
-      │
-      ▼
-OpenAI
-      │
-      ▼
-Slack Approval
-────────────────────────────
-      │
-Human reviews
-      │
-      ▼
-✅ Reaction
-      │
-      ▼
-Zap #2
-────────────────────────────
-Extract Record ID
-      │
-      ▼
-Find Lead
-      │
-      ▼
-Gmail
-      │
-      ▼
-Update CRM
-      │
-      ▼
-Calculate Response Time
-────────────────────────────</pre>
-        </details>
-
-        <details class="fold">
-          <summary>Technology stack</summary>
+          <summary>Tool stack</summary>
           <table class="stack-table">
             <tr><td>Zapier</td><td>Core workflow automation platform</td></tr>
             <tr><td>OpenAI</td><td>AI-generated first-response drafts</td></tr>
@@ -428,15 +301,15 @@ Calculate Response Time
           </table>
         </details>
 
-        <details class="fold">
+        <!-- <details class="fold">
           <summary>Demo video</summary>
           <!-- EDIT: replace this placeholder with a real embed once the demo video is recorded.
                Example (YouTube): <iframe width="100%" style="aspect-ratio:16/9; border-radius:var(--radius); border:2px solid var(--line);" src="https://www.youtube.com/embed/VIDEO_ID" title="AI Lead Response & Approval System demo" frameborder="0" allowfullscreen></iframe>
                Example (Loom): <div style="position:relative; padding-bottom:56.25%;"><iframe src="https://www.loom.com/embed/VIDEO_ID" frameborder="0" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:var(--radius);"></iframe></div> -->
-          <div class="shot" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:2px dashed var(--line-strong); border-radius:var(--radius);">
+          <!-- <div class="shot" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:2px dashed var(--line-strong); border-radius:var(--radius);">
             <span class="shot__fallback" style="display:flex;">Add demo video embed here<br>(YouTube / Loom link)</span>
           </div>
-        </details>
+        </details> --> -->
 
         <details class="fold">
           <summary>System snapshots</summary>
@@ -470,40 +343,9 @@ Calculate Response Time
             <li>✅ SLA (Response Time) calculation</li>
           </ul>
         </details>
-
-        <details class="fold">
-          <summary>My role</summary>
-          <ul>
-            <li>Designed the end-to-end operational workflow</li>
-            <li>Created the AI prompting strategy</li>
-            <li>Built multi-step Zapier automations</li>
-            <li>Implemented the approval-based email workflow</li>
-            <li>Designed the CRM data structure</li>
-            <li>Implemented response-time reporting</li>
-          </ul>
-        </details>
-
-        <div class="ledger">
-          <p class="snapshot-group__label" style="margin-top:20px;">Business Results</p>
-          <p class="ledger__note">Based on internal test runs using simulated lead data — not yet measured on a live client account.</p>
-          <div class="ledger__row"><span>Manual work eliminated</span><span class="ledger__num">AI drafts every enquiry</span></div>
-          <div class="ledger__row"><span>Human review</span><span class="ledger__num">Slack approval before sending</span></div>
-          <div class="ledger__row"><span>CRM updates</span><span class="ledger__num">Automatic</span></div>
-          <div class="ledger__row"><span>Lead tracking</span><span class="ledger__num">Centralized</span></div>
-          <div class="ledger__row"><span>Average first response</span><span class="ledger__num">~1 minute (test run)</span></div>
-          <div class="ledger__row"><span>Email consistency</span><span class="ledger__num">Standardized AI responses</span></div>
-        </div>
-
-        <details class="fold">
-          <summary>Lessons learned</summary>
-          <ul>
-            <li>Human-in-the-loop approval builds trust faster than full autonomy.</li>
-            <li>A clean CRM schema up front makes response-time reporting almost automatic.</li>
-            <li>AI drafts need explicit instructions to actually answer the question asked, not defer to a call.</li>
-          </ul>
-        </details>
       </div>
     </article>
+    
 
     <!-- ===== CASE FILE — EXECUTIVE BUSINESS TRAVEL PLAN ===== -->
     <article class="case-file" id="project-travel-plan">
@@ -575,15 +417,9 @@ Calculate Response Time
           </div>
         </details>
 
-        <details class="fold">
-          <summary>System architecture</summary>
-          <div class="shot-grid" style="grid-template-columns: 1fr;">
-            <figure class="shot" style="aspect-ratio: 16/9;"><img src="executive-travel/architecture.png" alt="Executive Business Travel Plan — system architecture diagram" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive-travel/architecture.png</span></figure>
-          </div>
-        </details>
 
         <details class="fold">
-          <summary>Technology stack</summary>
+          <summary>Tool stack</summary>
           <table class="stack-table">
             <tr><td>Word</td><td>Travel request intake &amp; standing preferences profile</td></tr>
             <tr><td>Excel</td><td>Flight/hotel comparison, travel-time matrix, budget dashboard</td></tr>
@@ -659,19 +495,6 @@ Calculate Response Time
             <li>Executive debrief to confirm next steps</li>
           </ul>
         </details>
-
-        <details class="fold">
-          <summary>Automation opportunities identified</summary>
-          <p>Not built into this version, but scoped as natural next steps: Power Automate for travel-approval notifications, automatic OneDrive folder creation per trip, and Teams meeting reminders — noted here to show where this system would go next, not just what it does today.</p>
-        </details>
-
-        <details class="fold">
-          <summary>Lessons learned</summary>
-          <ul>
-            <li>No single hotel was within walking distance of every meeting venue — "close to meetings" had to be redefined as 15 minutes by car, not on foot, which changed which option actually won the comparison.</li>
-            <li>An approval checkpoint before booking isn't extra bureaucracy — it's the difference between "I did some tasks" and "I made a recommendation the executive trusted."</li>
-            <li>A trip isn't done when the flight lands — the post-travel closeout is where half the real administrative value shows up.</li>
-          </ul>
         </details>
       </div>
     </article>
@@ -706,15 +529,9 @@ Calculate Response Time
           <p>Invoices were tracked in a mix of email threads and spreadsheets that weren't kept in sync, so it wasn't always clear which clients had paid, which were overdue, and which needed a follow-up. Meetings followed a similar pattern — decisions were made verbally, action items were rarely written down, and follow-up depended on someone remembering what was discussed.</p>
         </details>
 
-        <details class="fold">
-          <summary>System architecture</summary>
-          <div class="shot-grid" style="grid-template-columns: 1fr;">
-            <figure class="shot" style="aspect-ratio: 16/9;"><img src="aklix finance/architecture.png" alt="Finance & Meeting Operations System — system architecture diagram" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>aklix finance/architecture.png</span></figure>
-          </div>
-        </details>
 
         <details class="fold">
-          <summary>Technology stack</summary>
+          <summary>Tool stack</summary>
           <table class="stack-table">
             <tr><td>Zoho Invoice</td><td>Client invoicing &amp; payment tracking</td></tr>
             <tr><td>Google Sheets</td><td>
@@ -780,22 +597,6 @@ Calculate Response Time
           </ul>
         </details>
 
-        <div class="ledger">
-          <p class="snapshot-group__label" style="margin-top:20px;">Measured Results</p>
-          <p class="ledger__note">Based on before/after comparisons within the simulated system.</p>
-          <div class="ledger__row"><span>Late payment follow-up</span><span class="ledger__num">Manual → Automated reminders</span></div>
-          <div class="ledger__row"><span>Meeting action items</span><span class="ledger__num">Tracked to completion</span></div>
-          <div class="ledger__row"><span>Revenue visibility</span><span class="ledger__num">Real-time</span></div>
-        </div>
-
-        <details class="fold">
-          <summary>Lessons learned</summary>
-          <ul>
-            <li>Real-time dashboards only get used if they're trusted — consistent update cadence matters more than extra features.</li>
-            <li>Reusable templates reduce meeting prep time significantly.</li>
-            <li>Shared action trackers improve accountability across a team.</li>
-          </ul>
-        </details>
       </div>
     </article>
   </section>
