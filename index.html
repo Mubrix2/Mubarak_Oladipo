@@ -6,13 +6,13 @@
 <title>Mubarak Oladipo — Executive Assistant | Operations Support</title>
 <meta name="description" content="Technical Operations & Executive Support. Live automation builds and simulated business systems — case studies.">
 <link rel="icon" type="image/png" href="mubrix.png">
-<meta property="og:title" content="Mubarak Oladipo — Executive Assistant | Operations Support">
-<meta property="og:description" content="Executive Assistant & Operations Support. Practical systems for executive coordination, workflow organization, documentation, and business operations.">
+<meta property="og:title" content="Mubarak Oladipo — Technical Operations Assistant">
+<meta property="og:description" content="Technical Operations & Executive Support. Live automation builds and simulated business systems — case studies.">
 <meta property="og:image" content="og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Mubarak Oladipo — Executive Assistant | Operations Support">
-<meta name="twitter:description" content="Executive Assistant & Operations Support. Practical systems for executive coordination, workflow organization, documentation, and business operations.">
+<meta name="twitter:title" content="Mubarak Oladipo — Technical Operations Assistant">
+<meta name="twitter:description" content="Technical Operations & Executive Support. Live automation builds and simulated business systems — case studies.">
 <meta name="twitter:image" content="og-image.png">
 
 <!-- Set theme before first paint, no flash -->
@@ -27,9 +27,10 @@
 })();
 </script>
 
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -94,6 +95,9 @@
     <p class="eyebrow">00 — INTRO</p>
     <h2 class="display-lg">A minute on how I work</h2>
     <p class="section-lead">A short walkthrough of who I am and how I approach building operational systems.</p>
+    <!-- EDIT: replace this placeholder with a real embed once the video is recorded.
+         Example (YouTube): <iframe width="100%" style="aspect-ratio:16/9; border-radius:var(--radius); border:2px solid var(--line);" src="https://www.youtube.com/embed/VIDEO_ID" title="Introduction — Mubarak Oladipo" frameborder="0" allowfullscreen></iframe>
+         Example (Loom): <div style="position:relative; padding-bottom:56.25%;"><iframe src="https://www.loom.com/embed/VIDEO_ID" frameborder="0" allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:var(--radius);"></iframe></div> -->
     <div class="shot" style="aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:2px dashed var(--line-strong); border-radius:var(--radius); cursor:default;">
       <span class="shot__fallback" style="display:flex;">Add intro video embed here<br>(YouTube / Loom link)</span>
     </div>
@@ -123,62 +127,90 @@
       approach, tools used, and operational outcome.
     </p>
 
+    <!-- ===== CASE FILE — EOH ===== -->
     <article class="case-file" id="project-eoh">
+      <!-- <div class="case-file__tab">
+        <span class="case-file__stamp">COMPLETED</span>
+      </div> -->
       <div class="case-file__body">
         <h3 class="case-file__title">Executive Operations Hub</h3>
         <p class="case-file__meta">Simulated Business System &nbsp;·&nbsp; Business Consulting &nbsp;·&nbsp; Users: Founder, Executive Assistant, Operations Team</p>
+
+
         <p class="case-file__overview">
           A centralised operating system built to streamline executive
           support activities combining communication, scheduling, project
           management, documentation, and standardised operating procedures
           into an organised workflow.
         </p>
+
         <div class="proj-metrics">
           <div class="metric-cell"><span class="metric-cell__num">4</span><span class="metric-cell__label">Calendar Systems</span></div>
           <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">SOP Documents</span></div>
           <div class="metric-cell"><span class="metric-cell__num">12</span><span class="metric-cell__label">Operational Workflows</span></div>
           <div class="metric-cell"><span class="metric-cell__num">4</span><span class="metric-cell__label">Platforms Used</span></div>
         </div>
+
         <details class="fold" open>
           <summary>Business problem</summary>
           <p>As the company grew past a handful of clients, the founder was still running day-to-day operations manually — replying to emails between meetings, tracking tasks in a personal notebook, and coordinating calendars over text. There was no shared system the assistant or operations team could step into, so every recurring task depended on the founder remembering it themselves.</p>
         </details>
+
         <details class="fold">
           <summary>System architecture</summary>
           <div class="shot-grid" style="grid-template-columns: 1fr;">
             <figure class="shot" style="aspect-ratio: 16/9;"><img src="executive/architecture.png" alt="Executive Operations Hub — system architecture diagram" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/architecture.png</span></figure>
           </div>
         </details>
+
         <details class="fold">
           <summary>Technology stack</summary>
           <table class="stack-table">
             <tr><td>Google Workspace</td><td>
-              <ul><li>Gmail</li><li>Calendar</li><li>Drive</li><li>Docs</li><li>Sheets</li><li>Meet</li></ul>
+              <ul>
+                <li>Gmail</li>
+                <li>Calendar</li>
+                <li>Drive</li>
+                <li>Docs</li>
+                <li>Sheets</li>
+                <li>Meet</li>
+              </ul>
             </td></tr>
             <tr><td>ClickUp</td><td>
-              <ul><li>Dashboards</li><li>Automations</li><li>Recurring Tasks</li><li>Docs</li><li>Custom Fields</li></ul>
+              <ul>
+                <li>Dashboards</li>
+                <li>Automations</li>
+                <li>Recurring Tasks</li>
+                <li>Docs</li>
+                <li>Custom Fields</li>
+              </ul>
             </td></tr>
             <tr><td>Google Drive</td><td>File management &amp; role-based access</td></tr>
           </table>
         </details>
+
         <details class="fold">
           <summary>System snapshots</summary>
+
           <div class="snapshot-group">
             <p class="snapshot-group__label">Communication Systems</p>
             <div class="shot-grid">
               <figure class="shot"><img src="executive/communication_1.png" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/communication_1.png</span></figure>
               <figure class="shot"><img src="executive/communications_2.png" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/communications_2.png</span></figure>
             </div>
+
             <p class="snapshot-group__label">Planning &amp; Calendar</p>
             <div class="shot-grid">
               <figure class="shot"><img src="executive/planning_calendar1.png" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/planning_calendar1.png</span></figure>
               <figure class="shot"><img src="executive/planning_calendar2.png" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/planning_calendar2.png</span></figure>
             </div>
+
             <p class="snapshot-group__label">Task &amp; Project Management</p>
             <div class="shot-grid">
               <figure class="shot"><img src="executive/task_n_project1.png" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/task_n_project1.png</span></figure>
               <figure class="shot"><img src="executive/task_n_project2.png" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/task_n_project2.png</span></figure>
             </div>
+
             <p class="snapshot-group__label">Automation &amp; Recurring Tasks</p>
             <div class="shot-grid">
               <figure class="shot"><img src="executive/Automation & Recurring Tasks1.png" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/Automation & Recurring Tasks1.png</span></figure>
@@ -186,14 +218,25 @@
             </div>
           </div>
         </details>
+
         <details class="fold">
           <summary>Business impact</summary>
           <ul class="impact-list">
-            <li class="impact-item"><p class="impact-item__head">Centralized Executive Operations</p><p>Consolidated executive scheduling, communication, documentation, and task management into a single operational system, making information easier to locate and manage.</p></li>
-            <li class="impact-item"><p class="impact-item__head">Improved Operational Consistency</p><p>Standardized recurring administrative processes through documented SOPs, reducing dependence on memory and enabling repeatable execution.</p></li>
-            <li class="impact-item"><p class="impact-item__head">Better Collaboration</p><p>Established organized communication channels, shared documentation, and collaborative workspaces that support effective coordination across team members.</p></li>
+            <li class="impact-item">
+              <p class="impact-item__head">Centralized Executive Operations</p>
+              <p>Consolidated executive scheduling, communication, documentation, and task management into a single operational system, making information easier to locate and manage.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Improved Operational Consistency</p>
+              <p>Standardized recurring administrative processes through documented SOPs, reducing dependence on memory and enabling repeatable execution.</p>
+            </li>
+            <li class="impact-item">
+              <p class="impact-item__head">Better Collaboration</p>
+              <p>Established organized communication channels, shared documentation, and collaborative workspaces that support effective coordination across team members.</p>
+            </li>
           </ul>
         </details>
+
         <div class="ledger">
           <p class="snapshot-group__label" style="margin-top:20px;">Measured Results</p>
           <p class="ledger__note">Based on before/after comparisons within the simulated system.</p>
@@ -201,6 +244,7 @@
           <div class="ledger__row"><span>Missed deadline eliminated</span><span class="ledger__num">by 100%</span></div>
           <div class="ledger__row"><span>Users with role-based Drive access</span><span class="ledger__num">5</span></div>
         </div>
+
         <details class="fold">
           <summary>Lessons learned</summary>
           <ul>
@@ -212,6 +256,7 @@
         </details>
       </div>
     </article>
+
 
     <div style="text-align:center; margin-top:36px;">
       <a href="projects.html" class="btn btn--ghost">See all projects →</a>
@@ -259,6 +304,7 @@
     <p class="eyebrow">04 — CREDENTIALS</p>
     <h2 class="display-lg">Certifications</h2>
     <p class="section-lead">Selected professional certifications and training supporting executive administration, business communication, productivity tools, and operational coordination.</p>
+
     <div class="cert-grid">
       <div class="cert-card">
         <div class="cert-card__thumb"><img src="clickup_certificate.png" alt="ClickUp Foundations Certificate" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add image:<br>clickup_certificate.png</span></div>
@@ -310,6 +356,7 @@
     <p class="section-lead">
       If you'd like to discuss a role or collaboration, feel free to reach out.
     </p>
+
     <div class="availability-block">
       <p class="availability-block__title">Available for</p>
       <div class="tag-grid">
@@ -324,6 +371,7 @@
         <span class="chip chip--live">Full-Time</span>
       </div>
     </div>
+
     <div class="contact-list">
       <a href="mailto:oladipomubarak2017@gmail.com" class="contact-row">
         <span>Email</span><span class="contact-row__value">oladipomubarak2017@gmail.com</span>
@@ -339,6 +387,7 @@
   </section>
 
 </main>
+
 
 <nav class="tabbar" id="tabbar">
   <a href="#home" data-nav="home" class="tabbar__item">
@@ -363,7 +412,10 @@
   </a>
 </nav>
 
+<!-- Lightbox for enlarging screenshots -->
+</main>
 <div class="lightbox" id="lightbox">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
   <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
   <img id="lightboxImg" src="" alt="">
 </div>
