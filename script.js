@@ -32,37 +32,7 @@
     sections.forEach((s) => observer.observe(s));
   }
 
-  // ---- Lightbox for screenshots (with prev/next through the same gallery) ----
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxPrev = document.getElementById('lightboxPrev');
-  const lightboxNext = document.getElementById('lightboxNext');
-  const lightboxCounter = document.getElementById('lightboxCounter');
-  if (lightbox && lightboxImg) {
-    let currentGroup = [];
-    let currentIndex = 0;
-
-    function usableImgs(imgs) {
-      return imgs.filter((im) => !im.classList.contains('is-hidden') && im.style.display !== 'none');
-    }
-
-    function openAt(group, index) {
-      currentGroup = group;
-      currentIndex = index;
-      const img = currentGroup[currentIndex];
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      lightbox.classList.add('is-open');
-      const showNav = currentGroup.length > 1;
-      if (lightboxPrev) lightboxPrev.style.display = showNav ? 'flex' : 'none';
-      if (lightboxNext) lightboxNext.style.display = showNav ? 'flex' : 'none';
-      if (lightboxCounter) {
-        lightboxCounter.style.display = showNav ? 'block' : 'none';
-        lightboxCounter.textContent = (currentIndex + 1) + ' / ' + currentGroup.length;
-      }
-    }
-
-    function show(delta) {
+     function show(delta) {
       if (!currentGroup.length) return;
       currentIndex = (currentIndex + delta + currentGroup.length) % currentGroup.length;
       openAt(currentGroup, currentIndex);
