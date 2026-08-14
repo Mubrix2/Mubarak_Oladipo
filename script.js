@@ -32,36 +32,21 @@
     sections.forEach((s) => observer.observe(s));
   }
 
-     function show(delta) {
-      if (!currentGroup.length) return;
-      currentIndex = (currentIndex + delta + currentGroup.length) % currentGroup.length;
-      openAt(currentGroup, currentIndex);
-    }
-
-    document.querySelectorAll('.shot-grid, .shot-grid--stack').forEach((grid) => {
-      const imgs = usableImgs(Array.from(grid.querySelectorAll('.shot img')));
-      imgs.forEach((img, i) => {
-        img.addEventListener('click', function () { openAt(imgs, i); });
-      });
-    });
-    // Cert thumbnails: each treated as its own single-image group
-    document.querySelectorAll('.cert-card__thumb img').forEach((img) => {
+  // ---- Lightbox for screenshots ----
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  if (lightbox && lightboxImg) {
+    document.querySelectorAll('.shot img, .cert-card__thumb img').forEach((img) => {
       img.addEventListener('click', function () {
-        if (img.classList.contains('is-hidden') || img.style.display === 'none') return;
-        openAt([img], 0);
+        if (this.classList.contains('is-hidden') || this.style.display === 'none') return;
+        lightboxImg.src = this.src;
+        lightboxImg.alt = this.alt;
+        lightbox.classList.add('is-open');
       });
     });
-
-    function closeLightbox() { lightbox.classList.remove('is-open'); lightboxImg.src = ''; currentGroup = []; }
+    function closeLightbox() { lightbox.classList.remove('is-open'); lightboxImg.src = ''; }
     const lightboxCloseEl = document.getElementById('lightboxClose');
     if (lightboxCloseEl) lightboxCloseEl.addEventListener('click', closeLightbox);
-    if (lightboxPrev) lightboxPrev.addEventListener('click', function (e) { e.stopPropagation(); show(-1); });
-    if (lightboxNext) lightboxNext.addEventListener('click', function (e) { e.stopPropagation(); show(1); });
     lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', function (e) {
-      if (!lightbox.classList.contains('is-open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') show(-1);
-      if (e.key === 'ArrowRight') show(1);
-    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
   }
