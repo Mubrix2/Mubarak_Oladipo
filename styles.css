@@ -411,7 +411,7 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--surface-2);
-  cursor: zoom-in;
+  cursor: default;
 }
 .shot img {
   width: 100%;
