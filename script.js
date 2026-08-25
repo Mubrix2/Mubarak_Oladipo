@@ -36,7 +36,7 @@
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   if (lightbox && lightboxImg) {
-    document.querySelectorAll('.shot img, .cert-card__thumb img').forEach((img) => {
+    document.querySelectorAll('.shot img, .cert-card__thumb img', .snapshot-document img').forEach((img) => {
       img.addEventListener('click', function () {
         if (this.classList.contains('is-hidden') || this.style.display === 'none') return;
         lightboxImg.src = this.src;
