@@ -572,3 +572,16 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
   .tabbar { display: none; }
   .section--last { padding-bottom: 64px; }
 }
+
+.snapshot-document {
+  margin-top: 14px;
+}
+.snapshot-document img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: var(--radius);
+  border: 2px solid var(--line);
+  cursor: zoom-in;
+}
