@@ -114,107 +114,49 @@
       approach, tools used, and operational outcome.
     </p>
 
-    <!-- ===== CASE FILE — EOH ===== -->
-   <article class="case-file" id="project-eoh">
-      <!-- <div class="case-file__tab">
-        <span class="case-file__stamp">COMPLETED</span>
-      </div> -->
+     <!-- ===== CASE FILE — cleint-onboarding ===== -->
+   <article class="case-file" id="project-clo">
       <div class="case-file__body">
-        <h3 class="case-file__title">Executive Operations Hub</h3>
-        <p class="case-file__meta">Self-Directed Project &nbsp;·&nbsp; Executive Support & Operations </p>
+        <h3 class="case-file__title">Client Onboarding & Data Routing Ecosystem</h3>
+        <p class="case-file__meta">Self-Directed Project &nbsp;·&nbsp; Client Onboarding & Executive Operations </p>
 
-
-        <p class="case-file__overview">
-          A centralized executive operations workspace for managing communication, 
-          scheduling, tasks, documentation, and recurring administrative workflows.
-        </p>
-
-        <div class="proj-metrics">
-          <div class="metric-cell"><span class="metric-cell__num">1</span><span class="metric-cell__label">Executive Workspace</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">6</span><span class="metric-cell__label">SOP Documents</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">12</span><span class="metric-cell__label">Operational Workflows</span></div>
-          <div class="metric-cell"><span class="metric-cell__num">4</span><span class="metric-cell__label">Core Tools</span></div>
-        </div>
 
         <details class="fold" open>
-          <summary>Description</summary>
-          <p>This project involved building a centralized executive support environment for a simulated business 
-            where day-to-day operations were previously managed across scattered channels. The system organizes communication, 
-            calendar management, task and project tracking, documentation, recurring workflows, 
-            and SOPs into a structured workspace that an executive assistant can operate and maintain.</p>
+          <summary>The Business Problem</summary>
+          <p>Manual client onboarding caused communication bottlenecks, 
+           data fragmentation across disjointed tools, and a lack of real-time visibility into onboarding pipelines.</p>
         </details>
 
 
         <details class="fold">
-          <summary>Tool stack</summary>
-          <table class="stack-table">
-            <tr><td>Google Workspace</td><td>
-              <ul>
-                <li>Gmail</li>
-                <li>Calendar</li>
-                <li>Drive</li>
-                <li>Docs</li>
-                <li>Sheets</li>
-                <li>Meet</li>
-              </ul>
-            </td></tr>
-            <tr><td>ClickUp</td><td>
-              <ul>
-                <li>Dashboards</li>
-                <li>Automations</li>
-                <li>Recurring Tasks</li>
-                <li>Docs</li>
-                <li>Custom Fields</li>
-              </ul>
-            </td></tr>
-            <tr><td>Google Drive</td><td>File management &amp; role-based access</td></tr>
-          </table>
-        </details>
+      <summary>Solution (Action Taken) </summary>
+        <p>Engineered a multi-stage automated onboarding pipeline using Make.com to orchestrate workflows across Zoho Invoice, 
+         Google Workspace (Drive, Forms, Sheets, Gmail), Gemini AI, and Slack. 
+         Designed a human-in-the-loop QA checkpoint in Slack for internal verification before triggering AI-generated briefs and automated client folders.</p>
+       </details>
 
+       <details class="fold">
+         <summary>System snapshots</summary>
+       
+         <div class="snapshot-document">
+           <img
+             src="onboardingclient-onboarding-snapshots.png"
+             alt="Client onboarding ecosystem showing a nine-stage automated workflow connecting Zoho Invoice, Google Workspace, Gemini AI, Slack, and Make.com."
+           >
+         </div>
+       </details>
+       
         <details class="fold">
-          <summary>System snapshots</summary>
-
-          <div class="snapshot-group">
-            <p class="snapshot-group__label">Communication Systems</p>
-            <div class="shot-grid">
-              <figure class="shot"><img src="executive/communication_1.png" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/communication_1.png</span></figure>
-              <figure class="shot"><img src="executive/communications_2.png" alt="Executive Operations Hub — communication system screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/communications_2.png</span></figure>
-            </div>
-
-            <p class="snapshot-group__label">Planning &amp; Calendar</p>
-            <div class="shot-grid">
-              <figure class="shot"><img src="executive/planning_calendar1.png" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/planning_calendar1.png</span></figure>
-              <figure class="shot"><img src="executive/planning_calendar2.png" alt="Executive Operations Hub — planning and calendar screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/planning_calendar2.png</span></figure>
-            </div>
-
-            <p class="snapshot-group__label">Task &amp; Project Management</p>
-            <div class="shot-grid">
-              <figure class="shot"><img src="executive/task_n_project1.png" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/task_n_project1.png</span></figure>
-              <figure class="shot"><img src="executive/task_n_project2.png" alt="Executive Operations Hub — ClickUp workspace screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/task_n_project2.png</span></figure>
-            </div>
-
-            <p class="snapshot-group__label">Automation &amp; Recurring Tasks</p>
-            <div class="shot-grid">
-              <figure class="shot"><img src="executive/Automation & Recurring Tasks1.png" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/Automation & Recurring Tasks1.png</span></figure>
-              <figure class="shot"><img src="executive/Automation & Recurring Tasks2.png" alt="Executive Operations Hub — automation screenshot" onerror="this.classList.add('is-hidden'); this.nextElementSibling.style.display='flex';"><span class="shot__fallback" style="display:none">Add screenshot:<br>executive/Automation & Recurring Tasks2.png</span></figure>
-            </div>
-          </div>
-        </details>
-
-        <details class="fold">
-          <summary>Operational Impact</summary>
+          <summary>Operational Metrics & Impact</summary>
           <ul class="impact-list">
             <li class="impact-item">
-              <p class="impact-item__head">Centralized Executive Operations</p>
-              <p>Consolidated executive scheduling, communication, documentation, and task management into a single operational system, making information easier to locate and manage.</p>
+              <p>Integrated 8 core tools into a centralized command dashboard to eliminate manual cross-tool data transfer.</p>
             </li>
             <li class="impact-item">
-              <p class="impact-item__head">Improved Operational Consistency</p>
-              <p>Standardized recurring administrative processes through documented SOPs, reducing dependence on memory and enabling repeatable execution.</p>
+              <p>Standardized 9 distinct onboarding stages, ensuring 100% operational consistency and data integrity.</p>
             </li>
             <li class="impact-item">
-              <p class="impact-item__head">Better Collaboration</p>
-              <p>Established organized communication channels, shared documentation, and collaborative workspaces that support effective coordination across team members.</p>
+              <p>Created real-time tracking for active client lifecycles, enabling management to immediately spot bottlenecks.</p>
             </li>
           </ul>
         </details>
@@ -222,7 +164,7 @@
       
     </article>
 
-
+    
     <div style="text-align:center; margin-top:36px;">
       <a href="projects.html" class="btn btn--ghost">See all projects →</a>
     </div>
