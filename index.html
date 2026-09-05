@@ -347,17 +347,17 @@
   <img id="lightboxImg" src="" alt="">
 </div>
 
-<script src="script.js"></script>
-  <script>
+<script>
 (function() {
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightboxImg');
   var lightboxClose = document.getElementById('lightboxClose');
   if (!lightbox || !lightboxImg) return;
 
-  document.querySelectorAll('.snapshot-document img').forEach(function(img) {
+  document.querySelectorAll('.snapshot-document img, .cert-card__thumb img').forEach(function(img) {
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', function() {
+      if (img.classList.contains('is-hidden') || img.style.display === 'none') return;
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt || '';
       lightbox.classList.add('is-open');
